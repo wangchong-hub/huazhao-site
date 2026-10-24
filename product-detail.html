@@ -56,28 +56,45 @@ tailwind.config = {
   })();
 </script>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased leading-[1.6]">
+<body class="bg-slate-50 text-slate-800 antialiased leading-[1.6] overflow-x-hidden lg:overflow-x-visible">
 <!-- ========== 顶部导航（三页共用） ========== -->
 <header class="sticky top-0 z-40 bg-white border-b border-[#E5E6EB]">
 <div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
 <a aria-label="HUAZHAO 华昭新能源 首页" class="flex items-center gap-2 h-[56px] shrink-0" href="index.html"><span class="relative block w-[60px] h-[52px] overflow-hidden bg-white shrink-0"><span class="absolute left-1/2 top-[-22px] w-[117px] h-[117px] max-w-none -translate-x-1/2 object-contain" data-hz-img="logo"></span></span><span class="text-[22px] leading-none font-bold tracking-wide text-[#1F6FE0]">HUAZHAO</span></a>
-<div class="flex items-center gap-10 h-full">
-<nav class="flex items-center gap-10 h-full text-[15px] font-medium whitespace-nowrap">
-<a class="h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html">首页</a>
-<a class="relative h-full flex items-center text-[#165DFF] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:bg-[#165DFF]" href="index.html#product-center">产品中心</a>
-<a class="h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html#about">关于华昭</a>
+<div class="hidden absolute left-0 right-0 top-full flex-col items-start gap-4 px-6 py-4 bg-white border-b border-[#E5E6EB] shadow-[0_8px_24px_rgba(22,93,255,0.08)] lg:flex lg:static lg:flex-row lg:items-center lg:gap-10 lg:h-full lg:p-0 lg:border-0 lg:shadow-none lg:bg-transparent" id="hzMenu">
+<nav class="flex flex-col items-start gap-1 w-full lg:w-auto lg:flex-row lg:items-center lg:gap-10 lg:h-full text-[15px] font-medium whitespace-nowrap">
+<a class="h-11 lg:h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html">首页</a>
+<a class="relative h-11 lg:h-full flex items-center text-[#165DFF] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:bg-[#165DFF]" href="index.html#product-center">产品中心</a>
+<a class="h-11 lg:h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html#about">关于华昭</a>
 </nav>
 <div aria-label="Language" class="flex items-center h-8 p-0.5 rounded-full border border-[#E5E6EB] bg-white text-[13px] font-medium whitespace-nowrap shrink-0" data-i18n-skip="" role="group">
 <button class="h-7 px-3 rounded-full transition-colors bg-[#165DFF] text-white" data-lang-btn="en" onclick="hzSetLang('en')" type="button">EN</button>
 <button class="h-7 px-3 rounded-full transition-colors text-[#4E5969] hover:text-[#165DFF]" data-lang-btn="zh" onclick="hzSetLang('zh')" type="button">中文</button>
 </div>
 </div>
+<button aria-controls="hzMenu" aria-expanded="false" aria-label="Menu" class="lg:hidden w-10 h-10 -mr-2 rounded-lg flex items-center justify-center text-[#1D2129] hover:bg-[#F4F7FC] transition-colors" id="hzMenuBtn" onclick="hzToggleMenu()" type="button"><iconify-icon class="text-2xl" icon="mdi:menu"></iconify-icon></button>
 </div>
 </header>
-<main class="max-w-[1200px] mx-auto px-6 pt-8 pb-20">
+<script>
+  /* ---- 手机端导航：汉堡菜单展开/收起（≥1024px 时菜单常显，不受影响） ---- */
+  function hzToggleMenu(open) {
+    var m = document.getElementById('hzMenu');
+    var b = document.getElementById('hzMenuBtn');
+    if (!m || !b) return;
+    if (typeof open !== 'boolean') open = m.classList.contains('hidden');
+    m.classList.toggle('hidden', !open);
+    m.classList.toggle('flex', open);
+    b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    b.querySelector('iconify-icon').setAttribute('icon', open ? 'mdi:close' : 'mdi:menu');
+  }
+  document.querySelectorAll('#hzMenu nav a').forEach(function (a) {
+    a.addEventListener('click', function () { hzToggleMenu(false); });
+  });
+</script>
+<main class="max-w-[1200px] mx-auto px-6 pt-6 lg:pt-8 pb-20">
 <!-- 面包屑 + 上下款 -->
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-2 text-sm text-slate-500">
+<div class="flex flex-wrap lg:flex-nowrap items-center justify-between gap-3 lg:gap-0">
+<div class="flex flex-wrap lg:flex-nowrap items-center gap-x-2 gap-y-1 lg:gap-2 min-w-0 text-sm text-slate-500">
 <a class="hover:text-emerald-700 transition-colors" href="index.html">首页</a><iconify-icon icon="mdi:chevron-right"></iconify-icon>
 <a class="hover:text-emerald-700 transition-colors" href="index.html#product-center">产品中心</a><iconify-icon icon="mdi:chevron-right"></iconify-icon>
 <a class="hover:text-emerald-700 transition-colors" href="index.html#product-center" id="crumbSeries"></a><iconify-icon icon="mdi:chevron-right"></iconify-icon>
@@ -89,10 +106,10 @@ tailwind.config = {
 </div>
 </div>
 <!-- 主信息 -->
-<section class="mt-6 grid grid-cols-12 gap-12">
+<section class="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 <!-- 视觉 -->
-<div class="col-span-6">
-<div class="relative h-[460px] rounded-2xl bg-[linear-gradient(135deg,#E8F3FF_0%,#F4F7FC_55%,#FFFFFF_100%)] border border-slate-200 shadow-card overflow-hidden flex items-center justify-center">
+<div class="lg:col-span-6 min-w-0 lg:min-w-[auto]">
+<div class="relative h-[320px] sm:h-[400px] lg:h-[460px] rounded-2xl bg-[linear-gradient(135deg,#E8F3FF_0%,#F4F7FC_55%,#FFFFFF_100%)] border border-slate-200 shadow-card overflow-hidden flex items-center justify-center">
 <div class="pointer-events-none absolute -right-24 -bottom-24 w-80 h-80 rounded-full bg-[radial-gradient(circle,rgba(82,196,26,0.16)_0%,rgba(82,196,26,0)_70%)]"></div>
 <div class="pointer-events-none absolute inset-0 opacity-50 bg-[linear-gradient(rgba(22,93,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(22,93,255,0.05)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
 <div class="relative scale-[2]" id="viewMain"></div>
@@ -101,7 +118,7 @@ tailwind.config = {
 <span class="absolute right-5 top-5 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600 flex items-center gap-1"><iconify-icon class="text-emerald-600" icon="mdi:tag-outline"></iconify-icon>支持 OEM 贴牌</span>
 <span class="absolute left-5 bottom-5 text-[11px] text-slate-400">产品渲染示意，实物以样品为准</span>
 </div>
-<div class="mt-4 grid grid-cols-4 gap-4">
+<div class="mt-4 grid grid-cols-4 gap-2 lg:gap-4">
 <button class="gl h-20 rounded-lg border-2 border-emerald-500 bg-white flex flex-col items-center justify-center gap-1 text-xs text-slate-500 hover:border-emerald-300 hover:text-emerald-700 transition-colors" onclick="setGallery(0)"><iconify-icon class="text-2xl" icon="mdi:battery-high"></iconify-icon>产品示意</button>
 <button class="gl h-20 rounded-lg border-2 border-slate-200 bg-white flex flex-col items-center justify-center gap-1 text-xs text-slate-500 hover:border-emerald-300 hover:text-emerald-700 transition-colors" onclick="setGallery(1)"><iconify-icon class="text-2xl" icon="mdi:camera-outline"></iconify-icon>实拍图</button>
 <button class="gl h-20 rounded-lg border-2 border-slate-200 bg-white flex flex-col items-center justify-center gap-1 text-xs text-slate-500 hover:border-emerald-300 hover:text-emerald-700 transition-colors" onclick="setGallery(2)"><iconify-icon class="text-2xl" icon="mdi:ruler-square-compass"></iconify-icon>尺寸图</button>
@@ -109,21 +126,21 @@ tailwind.config = {
 </div>
 </div>
 <!-- 信息 -->
-<div class="col-span-6">
+<div class="lg:col-span-6 min-w-0 lg:min-w-[auto]">
 <p class="text-sm font-semibold tracking-widest text-emerald-600" id="seriesEn"></p>
-<h1 class="mt-2 text-4xl font-bold text-slate-900" id="pModel"></h1>
+<h1 class="mt-2 text-[28px] lg:text-4xl font-bold text-slate-900 break-words" id="pModel"></h1>
 <p class="mt-4 text-slate-600 leading-relaxed" id="pIntro"></p>
-<div class="mt-6 grid grid-cols-4 gap-4">
-<div class="rounded-2xl bg-[linear-gradient(135deg,#0A192F_0%,#165DFF_100%)] text-white p-4"><iconify-icon class="text-xl text-lime-400" icon="mdi:flash"></iconify-icon><p class="mt-2 text-2xl font-bold" id="kV"></p><p class="text-xs text-white/70">额定电压</p></div>
-<div class="rounded-2xl bg-white border border-slate-200 p-4"><iconify-icon class="text-xl text-emerald-600" icon="mdi:battery-charging-high"></iconify-icon><p class="mt-2 text-2xl font-bold text-slate-900" id="kAh"></p><p class="text-xs text-slate-500">额定容量</p></div>
-<div class="rounded-2xl bg-white border border-slate-200 p-4"><iconify-icon class="text-xl text-[#00B4D8]" icon="mdi:lightning-bolt-circle"></iconify-icon><p class="mt-2 text-2xl font-bold text-slate-900" id="kKwh"></p><p class="text-xs text-slate-500">标称能量（计算值）</p></div>
-<div class="rounded-2xl bg-white border border-slate-200 p-4"><iconify-icon class="text-xl text-lime-500" icon="mdi:weight-kilogram"></iconify-icon><p class="mt-2 text-2xl font-bold text-slate-900" id="kNw"></p><p class="text-xs text-slate-500">净重</p></div>
+<div class="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+<div class="rounded-2xl bg-[linear-gradient(135deg,#0A192F_0%,#165DFF_100%)] text-white p-4"><iconify-icon class="text-xl text-lime-400" icon="mdi:flash"></iconify-icon><p class="mt-2 text-xl lg:text-2xl font-bold break-words" id="kV"></p><p class="text-xs text-white/70">额定电压</p></div>
+<div class="rounded-2xl bg-white border border-slate-200 p-4"><iconify-icon class="text-xl text-emerald-600" icon="mdi:battery-charging-high"></iconify-icon><p class="mt-2 text-xl lg:text-2xl font-bold text-slate-900 break-words" id="kAh"></p><p class="text-xs text-slate-500">额定容量</p></div>
+<div class="rounded-2xl bg-white border border-slate-200 p-4"><iconify-icon class="text-xl text-[#00B4D8]" icon="mdi:lightning-bolt-circle"></iconify-icon><p class="mt-2 text-xl lg:text-2xl font-bold text-slate-900 break-words" id="kKwh"></p><p class="text-xs text-slate-500">标称能量（计算值）</p></div>
+<div class="rounded-2xl bg-white border border-slate-200 p-4"><iconify-icon class="text-xl text-lime-500" icon="mdi:weight-kilogram"></iconify-icon><p class="mt-2 text-xl lg:text-2xl font-bold text-slate-900 break-words" id="kNw"></p><p class="text-xs text-slate-500">净重</p></div>
 </div>
-<div class="mt-6 rounded-2xl bg-white border border-slate-200 p-6">
+<div class="mt-6 rounded-2xl bg-white border border-slate-200 p-4 lg:p-6">
 <p class="text-sm font-semibold text-slate-700">同系列可选规格</p>
 <div class="mt-3 flex flex-wrap gap-2" id="variantBox"></div>
 </div>
-<div class="mt-6 flex items-center gap-2">
+<div class="mt-6 flex flex-wrap lg:flex-nowrap items-center gap-2">
 <span class="flex items-center gap-1.5 px-3 h-8 rounded-full bg-slate-100 text-xs font-semibold text-slate-700"><iconify-icon class="text-emerald-600" icon="mdi:check-decagram"></iconify-icon>CE</span>
 <span class="flex items-center gap-1.5 px-3 h-8 rounded-full bg-slate-100 text-xs font-semibold text-slate-700"><iconify-icon class="text-emerald-600" icon="mdi:check-decagram"></iconify-icon>MSDS</span>
 <span class="flex items-center gap-1.5 px-3 h-8 rounded-full bg-slate-100 text-xs font-semibold text-slate-700"><iconify-icon class="text-emerald-600" icon="mdi:check-decagram"></iconify-icon>UN38.3</span>
@@ -136,18 +153,18 @@ tailwind.config = {
 </div>
 </section>
 <!-- Tab 内容 -->
-<section class="mt-20 grid grid-cols-12 gap-8">
-<div class="col-span-8">
-<div class="flex border-b border-slate-200 text-[15px] font-semibold" id="tabBar">
-<button class="tb -mb-px px-6 h-12 border-b-2 border-emerald-600 text-emerald-700 transition-colors" onclick="switchTab(0)">规格参数</button>
-<button class="tb -mb-px px-6 h-12 border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-colors" onclick="switchTab(1)">包装与物流</button>
-<button class="tb -mb-px px-6 h-12 border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-colors" onclick="switchTab(2)">OEM 贴牌定制</button>
-<button class="tb -mb-px px-6 h-12 border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-colors" onclick="switchTab(3)">认证与质量</button>
+<section class="mt-12 lg:mt-20 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-8 min-w-0 lg:min-w-[auto]">
+<div class="flex border-b border-slate-200 text-[15px] font-semibold overflow-x-auto lg:overflow-visible [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden" id="tabBar">
+<button class="tb -mb-px shrink-0 whitespace-nowrap px-4 lg:px-6 h-12 border-b-2 border-emerald-600 text-emerald-700 transition-colors" onclick="switchTab(0)">规格参数</button>
+<button class="tb -mb-px shrink-0 whitespace-nowrap px-4 lg:px-6 h-12 border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-colors" onclick="switchTab(1)">包装与物流</button>
+<button class="tb -mb-px shrink-0 whitespace-nowrap px-4 lg:px-6 h-12 border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-colors" onclick="switchTab(2)">OEM 贴牌定制</button>
+<button class="tb -mb-px shrink-0 whitespace-nowrap px-4 lg:px-6 h-12 border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-colors" onclick="switchTab(3)">认证与质量</button>
 </div>
 <!-- 规格参数 -->
 <div class="tp mt-6">
 <div class="rounded-2xl bg-white border border-slate-200 shadow-card overflow-hidden">
-<div class="px-6 h-12 bg-[#F4F7FC] border-b border-slate-200 text-slate-900 flex items-center justify-between text-sm font-bold">
+<div class="px-4 lg:px-6 min-h-12 lg:h-12 py-2 lg:py-0 bg-[#F4F7FC] border-b border-slate-200 text-slate-900 flex flex-wrap lg:flex-nowrap items-center justify-between gap-x-4 gap-y-1 lg:gap-0 text-sm font-bold">
 <span class="flex items-center gap-2"><span class="w-1 h-4 rounded-full bg-[linear-gradient(180deg,#00B4D8_0%,#52C41A_100%)]"></span>基础规格参数</span><span class="text-xs font-normal text-slate-400">数据来源：《锂电池目录-0901》</span>
 </div>
 <table class="w-full text-sm" id="specTable"></table>
@@ -159,15 +176,15 @@ tailwind.config = {
 </div>
 <!-- 包装与物流 -->
 <div class="tp hidden mt-6">
-<div class="grid grid-cols-2 gap-6">
-<div class="rounded-2xl bg-white border border-slate-200 shadow-card p-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+<div class="rounded-2xl bg-white border border-slate-200 shadow-card p-5 lg:p-6">
 <div class="flex items-center gap-3"><span class="w-11 h-11 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center"><iconify-icon class="text-2xl" icon="mdi:cube-outline"></iconify-icon></span><h4 class="font-bold text-slate-900">电池本体</h4></div>
 <dl class="mt-5 space-y-3 text-sm">
 <div class="flex justify-between gap-4"><dt class="text-slate-500 shrink-0">电池尺寸</dt><dd class="font-semibold text-slate-800 text-right" id="lgSize"></dd></div>
 <div class="flex justify-between"><dt class="text-slate-500">净重</dt><dd class="font-semibold text-slate-800" id="lgNw"></dd></div>
 </dl>
 </div>
-<div class="rounded-2xl bg-white border border-slate-200 shadow-card p-6">
+<div class="rounded-2xl bg-white border border-slate-200 shadow-card p-5 lg:p-6">
 <div class="flex items-center gap-3"><span class="w-11 h-11 rounded-lg bg-lime-50 text-lime-600 flex items-center justify-center"><iconify-icon class="text-2xl" icon="mdi:package-variant-closed"></iconify-icon></span><h4 class="font-bold text-slate-900">出口包装</h4></div>
 <dl class="mt-5 space-y-3 text-sm">
 <div class="flex justify-between gap-4"><dt class="text-slate-500 shrink-0">包装方式</dt><dd class="font-semibold text-slate-800 text-right" id="lgType"></dd></div>
@@ -176,9 +193,9 @@ tailwind.config = {
 </dl>
 </div>
 </div>
-<div class="mt-6 rounded-2xl bg-white border border-slate-200 shadow-card p-6">
+<div class="mt-6 rounded-2xl bg-white border border-slate-200 shadow-card p-5 lg:p-6">
 <h4 class="font-bold text-slate-900">出口运输说明</h4>
-<ul class="mt-4 grid grid-cols-2 gap-4 text-sm text-slate-600">
+<ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-600">
 <li class="flex gap-2"><iconify-icon class="text-lg text-emerald-600 shrink-0" icon="mdi:ferry"></iconify-icon>大容量储能产品通常以海运为主，按目的港安排整柜或拼箱</li>
 <li class="flex gap-2"><iconify-icon class="text-lg text-emerald-600 shrink-0" icon="mdi:file-document-multiple-outline"></iconify-icon>随货提供 MSDS、UN38.3 等运输所需文件</li>
 <li class="flex gap-2"><iconify-icon class="text-lg text-emerald-600 shrink-0" icon="mdi:forklift"></iconify-icon>“含木托”规格便于叉车装卸与仓储堆放</li>
@@ -188,17 +205,17 @@ tailwind.config = {
 </div>
 <!-- OEM -->
 <div class="tp hidden mt-6">
-<div class="relative overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#0A192F_0%,#165DFF_100%)] text-white p-8 grid grid-cols-12 gap-6 items-center">
+<div class="relative overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#0A192F_0%,#165DFF_100%)] text-white p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
 <div class="pointer-events-none absolute -right-20 -bottom-28 w-72 h-72 rounded-full bg-[radial-gradient(circle,rgba(82,196,26,0.32)_0%,rgba(82,196,26,0)_70%)]"></div>
-<div class="relative col-span-8">
-<h4 class="text-xl font-bold">将 <span id="oemModel"></span> 打造成您的品牌</h4>
+<div class="relative lg:col-span-8 min-w-0">
+<h4 class="text-xl font-bold break-words">将 <span id="oemModel"></span> 打造成您的品牌</h4>
 <p class="mt-2 text-white/80 text-sm leading-relaxed">基于本型号平台提供 Logo 丝印、外观配色、包装与多语言说明书定制，并可搭配光伏及配套产品形成系统方案。</p>
 </div>
-<div class="relative col-span-4 flex justify-end">
+<div class="relative lg:col-span-4 flex justify-start lg:justify-end">
 <a class="h-11 px-5 rounded-lg bg-white text-emerald-700 font-semibold flex items-center gap-2 hover:bg-emerald-50 transition-colors" href="index.html#oem">查看合作流程<iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
 </div>
 </div>
-<div class="mt-6 grid grid-cols-3 gap-4">
+<div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
 <label class="oemopt cursor-pointer rounded-2xl border-2 border-emerald-500 bg-emerald-50 p-6 hover:border-emerald-400 transition-colors"><input checked="" class="hidden" onchange="toggleOem(this)" type="checkbox"/><iconify-icon class="text-2xl text-emerald-600" icon="mdi:tag-text-outline"></iconify-icon><p class="mt-2 font-semibold text-slate-900">Logo 丝印 / 铭牌</p><p class="text-xs text-slate-500 mt-1">外壳及标签使用您的品牌</p></label>
 <label class="oemopt cursor-pointer rounded-2xl border-2 border-slate-200 bg-white p-6 hover:border-emerald-400 transition-colors"><input class="hidden" onchange="toggleOem(this)" type="checkbox"/><iconify-icon class="text-2xl text-emerald-600" icon="mdi:format-color-fill"></iconify-icon><p class="mt-2 font-semibold text-slate-900">外观配色</p><p class="text-xs text-slate-500 mt-1">外壳颜色与面板样式</p></label>
 <label class="oemopt cursor-pointer rounded-2xl border-2 border-slate-200 bg-white p-6 hover:border-emerald-400 transition-colors"><input class="hidden" onchange="toggleOem(this)" type="checkbox"/><iconify-icon class="text-2xl text-emerald-600" icon="mdi:package-variant"></iconify-icon><p class="mt-2 font-semibold text-slate-900">包装与说明书</p><p class="text-xs text-slate-500 mt-1">彩盒、唛头与多语言说明书</p></label>
@@ -207,14 +224,14 @@ tailwind.config = {
 </div>
 <!-- 认证 -->
 <div class="tp hidden mt-6">
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 <div class="rounded-2xl bg-white border border-slate-200 shadow-card p-6 text-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300"><span class="mx-auto w-16 h-16 rounded-2xl border-4 border-slate-900 flex items-center justify-center text-2xl font-black text-slate-900">CE</span><p class="mt-4 font-bold">CE</p><p class="mt-1 text-xs text-slate-500">欧盟市场符合性</p></div>
 <div class="rounded-2xl bg-white border border-slate-200 shadow-card p-6 text-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300"><span class="mx-auto w-16 h-16 rounded-2xl bg-[linear-gradient(135deg,#00B4D8_0%,#52C41A_100%)] text-white flex items-center justify-center"><iconify-icon class="text-3xl" icon="mdi:file-document-alert-outline"></iconify-icon></span><p class="mt-4 font-bold">MSDS</p><p class="mt-1 text-xs text-slate-500">化学品安全技术说明</p></div>
 <div class="rounded-2xl bg-white border border-slate-200 shadow-card p-6 text-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300"><span class="mx-auto w-16 h-16 rounded-2xl bg-emerald-600 text-white flex items-center justify-center"><iconify-icon class="text-3xl" icon="mdi:airplane-check"></iconify-icon></span><p class="mt-4 font-bold">UN38.3</p><p class="mt-1 text-xs text-slate-500">锂电池运输安全测试</p></div>
 </div>
 <div class="mt-6 rounded-2xl bg-white border border-slate-200 shadow-card p-6">
 <h4 class="font-bold text-slate-900">制造与质量保障</h4>
-<div class="mt-4 grid grid-cols-3 gap-4 text-sm">
+<div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
 <div class="flex gap-3"><iconify-icon class="text-2xl text-emerald-600 shrink-0" icon="mdi:robot-industrial-outline"></iconify-icon><p class="text-slate-600">核心合作工厂自动化生产线</p></div>
 <div class="flex gap-3"><iconify-icon class="text-2xl text-emerald-600 shrink-0" icon="mdi:microscope"></iconify-icon><p class="text-slate-600">专业检测设备出厂检验</p></div>
 <div class="flex gap-3"><iconify-icon class="text-2xl text-emerald-600 shrink-0" icon="mdi:clipboard-check-multiple-outline"></iconify-icon><p class="text-slate-600">完善的质量管理体系</p></div>
@@ -224,8 +241,8 @@ tailwind.config = {
 </div>
 </div>
 <!-- 快速询价 -->
-<aside class="col-span-4 scroll-mt-24" id="quickInquiry">
-<div class="sticky top-[96px] rounded-2xl bg-white border border-slate-200 p-6 shadow-card">
+<aside class="lg:col-span-4 scroll-mt-24" id="quickInquiry">
+<div class="lg:sticky lg:top-[96px] rounded-2xl bg-white border border-slate-200 p-5 lg:p-6 shadow-card">
 <div id="qiForm">
 <h3 class="text-lg font-bold text-slate-900">快速询价</h3>
 <p class="mt-1 text-sm text-slate-500">意向型号：<span class="font-semibold text-emerald-700" id="qiModel"></span></p>
@@ -255,22 +272,22 @@ tailwind.config = {
 </aside>
 </section>
 <!-- 相关型号 -->
-<section class="mt-20">
-<div class="flex items-end justify-between">
-<h2 class="text-2xl font-bold text-slate-900">同电压平台其他型号</h2>
-<a class="group text-sm font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1" href="index.html#product-center" id="relatedMore">查看全部<iconify-icon class="transition-transform group-hover:translate-x-1" icon="mdi:arrow-right"></iconify-icon></a>
+<section class="mt-12 lg:mt-20">
+<div class="flex items-end justify-between gap-4">
+<h2 class="text-xl lg:text-2xl font-bold text-slate-900">同电压平台其他型号</h2>
+<a class="group shrink-0 text-sm font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1" href="index.html#product-center" id="relatedMore">查看全部<iconify-icon class="transition-transform group-hover:translate-x-1" icon="mdi:arrow-right"></iconify-icon></a>
 </div>
-<div class="mt-6 grid grid-cols-4 gap-6" id="relatedGrid"></div>
+<div class="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6" id="relatedGrid"></div>
 </section>
 </main>
 <!-- ========== 页脚（三页共用） ========== -->
-<footer class="bg-[#1D2129] py-16">
-<div class="max-w-[1200px] mx-auto px-6 grid grid-cols-12 gap-8">
-<div class="col-span-4">
+<footer class="bg-[#1D2129] py-12 lg:py-16">
+<div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-4">
 <a aria-label="HUAZHAO 华昭新能源 首页" class="inline-flex items-center rounded-lg bg-white px-3 py-1" href="index.html"><span class="relative block w-[108px] h-[72px] overflow-hidden"><span class="absolute left-1/2 top-1/2 w-[150px] h-[150px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain" data-hz-img="logo"></span></span></a>
 <p class="mt-4 text-sm leading-[1.6] text-[#86909C]">西安华昭新能源科技有限公司<br/>太阳能光伏 · 储能电池</p>
 </div>
-<div class="col-span-5 grid grid-cols-2 gap-8">
+<div class="lg:col-span-5 grid grid-cols-2 gap-8">
 <div>
 <h5 class="text-sm font-bold text-white">OEM代工</h5>
 <ul class="mt-4 space-y-3 text-sm">
@@ -286,9 +303,9 @@ tailwind.config = {
 </ul>
 </div>
 </div>
-<div class="col-span-3 flex flex-col items-end">
+<div class="lg:col-span-3 flex flex-col items-start lg:items-end">
 <h5 class="text-sm font-bold text-white">联系我们</h5>
-<ul class="mt-4 space-y-3 text-sm text-right">
+<ul class="mt-4 space-y-3 text-sm text-left lg:text-right break-words">
 <li><a class="text-[#86909C] hover:text-white transition-colors" href="mailto:info@huazhaoenergy.com">邮箱：info@huazhaoenergy.com</a></li>
 <li><a class="text-[#86909C] hover:text-white transition-colors" href="https://wa.me/8617600085536" rel="noopener" target="_blank">whatsapp：+86 176 0008 5536</a></li>
 </ul>
@@ -468,7 +485,7 @@ tailwind.config = {
         ['电池尺寸', p.size], ['包装尺寸', p.pack], ['可选服务', 'OEM 贴牌 / ODM 定制 / 系统方案配套']
       ];
       document.getElementById('specTable').innerHTML = rows.map(function (r, i) {
-        return '<tr class="' + (i % 2 ? 'bg-slate-50' : 'bg-white') + '"><th class="w-44 px-6 py-3.5 text-left font-medium text-slate-500 border-r border-slate-100">' + r[0] + '</th><td class="px-6 py-3.5 font-semibold text-slate-800">' + r[1] + '</td></tr>';
+        return '<tr class="' + (i % 2 ? 'bg-slate-50' : 'bg-white') + '"><th class="w-28 lg:w-44 px-4 lg:px-6 py-3.5 text-left font-medium text-slate-500 border-r border-slate-100">' + r[0] + '</th><td class="px-4 lg:px-6 py-3.5 font-semibold text-slate-800 [overflow-wrap:anywhere] lg:[overflow-wrap:normal]">' + r[1] + '</td></tr>';
       }).join('');
 
       document.getElementById('lgSize').textContent = p.size;
@@ -485,10 +502,10 @@ tailwind.config = {
         rel = rel.concat(PRODUCTS.filter(function (x) { return x.v !== p.v; }).slice(0, 4 - rel.length));
       }
       document.getElementById('relatedGrid').innerHTML = rel.slice(0, 4).map(function (x) {
-        return '<a href="product-detail.html?id=' + x.id + '" class="group rounded-2xl bg-white border border-slate-200 shadow-card overflow-hidden hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg transition-all duration-300">'
+        return '<a href="product-detail.html?id=' + x.id + '" class="group min-w-0 rounded-2xl bg-white border border-slate-200 shadow-card overflow-hidden hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg transition-all duration-300">'
           + '<div class="h-36 bg-[linear-gradient(135deg,#E8F3FF_0%,#F4F7FC_60%,#FFFFFF_100%)] flex items-center justify-center"><span class="transition-transform duration-300 group-hover:scale-105">' + batteryVisual(x) + '</span></div>'
-          + '<div class="p-4"><p class="font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">' + x.model + '</p>'
-          + '<p class="mt-1 text-sm text-slate-500">' + x.v + 'V · ' + x.ah + 'Ah · 净重 ' + x.nw + '</p></div></a>';
+          + '<div class="p-3 lg:p-4"><p class="text-sm lg:text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors [overflow-wrap:anywhere] lg:[overflow-wrap:normal]">' + x.model + '</p>'
+          + '<p class="mt-1 text-xs lg:text-sm text-slate-500">' + x.v + 'V · ' + x.ah + 'Ah · 净重 ' + x.nw + '</p></div></a>';
       }).join('');
 
       setGallery(0);

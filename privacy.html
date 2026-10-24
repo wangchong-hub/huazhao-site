@@ -55,34 +55,51 @@ tailwind.config = {
   })();
 </script>
 </head>
-<body class="bg-white text-slate-900 antialiased leading-[1.6] font-normal">
+<body class="bg-white text-slate-900 antialiased leading-[1.6] font-normal overflow-x-hidden lg:overflow-x-visible">
 <!-- ========== 顶部导航（与其它页面一致，本页无当前高亮项） ========== -->
 <header class="sticky top-0 z-40 bg-white border-b border-[#E5E6EB]">
 <div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
 <a aria-label="HUAZHAO 华昭新能源 首页" class="flex items-center gap-2 h-[56px] shrink-0" href="index.html"><span class="relative block w-[60px] h-[52px] overflow-hidden bg-white shrink-0"><span class="absolute left-1/2 top-[-22px] w-[117px] h-[117px] max-w-none -translate-x-1/2 object-contain" data-hz-img="logo"></span></span><span class="text-[22px] leading-none font-bold tracking-wide text-[#1F6FE0]">HUAZHAO</span></a>
-<div class="flex items-center gap-10 h-full">
-<nav class="flex items-center gap-10 h-full text-[15px] font-medium whitespace-nowrap">
-<a class="relative h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html">首页</a>
-<a class="relative h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html#product-center">产品中心</a>
-<a class="relative h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html#about">关于华昭</a>
+<div class="hidden absolute left-0 right-0 top-full flex-col items-start gap-4 px-6 py-4 bg-white border-b border-[#E5E6EB] shadow-[0_8px_24px_rgba(22,93,255,0.08)] lg:flex lg:static lg:flex-row lg:items-center lg:gap-10 lg:h-full lg:p-0 lg:border-0 lg:shadow-none lg:bg-transparent" id="hzMenu">
+<nav class="flex flex-col items-start gap-1 w-full lg:w-auto lg:flex-row lg:items-center lg:gap-10 lg:h-full text-[15px] font-medium whitespace-nowrap">
+<a class="relative h-11 lg:h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html">首页</a>
+<a class="relative h-11 lg:h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html#product-center">产品中心</a>
+<a class="relative h-11 lg:h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html#about">关于华昭</a>
 </nav>
 <div aria-label="Language" class="flex items-center h-8 p-0.5 rounded-full border border-[#E5E6EB] bg-white text-[13px] font-medium whitespace-nowrap shrink-0" data-i18n-skip="" role="group">
 <button class="h-7 px-3 rounded-full transition-colors bg-[#165DFF] text-white" data-lang-btn="en" onclick="hzSetLang('en')" type="button">EN</button>
 <button class="h-7 px-3 rounded-full transition-colors text-[#4E5969] hover:text-[#165DFF]" data-lang-btn="zh" onclick="hzSetLang('zh')" type="button">中文</button>
 </div>
 </div>
+<button aria-controls="hzMenu" aria-expanded="false" aria-label="Menu" class="lg:hidden w-10 h-10 -mr-2 rounded-lg flex items-center justify-center text-[#1D2129] hover:bg-[#F4F7FC] transition-colors" id="hzMenuBtn" onclick="hzToggleMenu()" type="button"><iconify-icon class="text-2xl" icon="mdi:menu"></iconify-icon></button>
 </div>
 </header>
-<main class="bg-[#F4F7FC] py-16">
-<div class="max-w-[848px] mx-auto px-6">
-<nav aria-label="Breadcrumb" class="flex items-center gap-1 text-sm text-[#86909C]">
+<script>
+  /* ---- 手机端导航：汉堡菜单展开/收起（≥1024px 时菜单常显，不受影响） ---- */
+  function hzToggleMenu(open) {
+    var m = document.getElementById('hzMenu');
+    var b = document.getElementById('hzMenuBtn');
+    if (!m || !b) return;
+    if (typeof open !== 'boolean') open = m.classList.contains('hidden');
+    m.classList.toggle('hidden', !open);
+    m.classList.toggle('flex', open);
+    b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    b.querySelector('iconify-icon').setAttribute('icon', open ? 'mdi:close' : 'mdi:menu');
+  }
+  document.querySelectorAll('#hzMenu nav a').forEach(function (a) {
+    a.addEventListener('click', function () { hzToggleMenu(false); });
+  });
+</script>
+<main class="bg-[#F4F7FC] py-8 lg:py-16">
+<div class="max-w-[848px] mx-auto px-4 lg:px-6">
+<nav aria-label="Breadcrumb" class="flex flex-wrap lg:flex-nowrap items-center gap-1 text-sm text-[#86909C]">
 <a class="hover:text-[#165DFF] transition-colors" href="index.html">首页</a><iconify-icon icon="mdi:chevron-right"></iconify-icon><span class="text-[#1D2129]">隐私声明</span>
 </nav>
 <!-- ========== English version (default) ========== -->
-<article class="mt-6 rounded-2xl bg-white shadow-card px-14 py-14 text-[15px] leading-[1.6] text-[#4E5969]" data-hz-lang-block="en" data-i18n-skip="" lang="en">
+<article class="mt-6 rounded-2xl bg-white shadow-card px-5 sm:px-8 lg:px-14 py-8 lg:py-14 text-[15px] leading-[1.6] text-[#4E5969] [overflow-wrap:anywhere] lg:[overflow-wrap:normal]" data-hz-lang-block="en" data-i18n-skip="" lang="en">
 <header class="pb-8 border-b border-[#E5E6EB]">
 <span class="inline-flex items-center gap-1 h-7 px-3 rounded-full bg-[#E8F3FF] text-xs font-bold text-[#165DFF]"><iconify-icon class="text-sm" icon="mdi:shield-lock-outline"></iconify-icon>Legal</span>
-<h1 class="mt-4 text-[36px] leading-[1.25] font-bold text-[#1D2129]">Privacy Policy</h1>
+<h1 class="mt-4 text-[28px] lg:text-[36px] leading-[1.25] font-bold text-[#1D2129]">Privacy Policy</h1>
 <p class="mt-3 text-base font-bold text-[#1D2129]">Xi'an Huazhao New Energy Technology Co., Ltd.</p>
 <p class="mt-1 text-sm text-[#86909C]">Last Updated: [October 24, 2026]</p>
 </header>
@@ -143,10 +160,10 @@ tailwind.config = {
 <p class="mt-4">We may revise this Privacy Policy from time to time due to business changes, technology updates or legal requirements. The revised version will be posted on this page, and the "Last Updated" date at the top will be updated accordingly. In the event of material changes, we will notify you through a prominent notice on our website or by other practicable means.</p>
 </article>
 <!-- ========== 中文原文 ========== -->
-<article class="hidden mt-6 rounded-2xl bg-white shadow-card px-14 py-14 text-[15px] leading-[1.6] text-[#4E5969]" data-hz-lang-block="zh" data-i18n-skip="" lang="zh-CN">
+<article class="hidden mt-6 rounded-2xl bg-white shadow-card px-5 sm:px-8 lg:px-14 py-8 lg:py-14 text-[15px] leading-[1.6] text-[#4E5969] [overflow-wrap:anywhere] lg:[overflow-wrap:normal]" data-hz-lang-block="zh" data-i18n-skip="" lang="zh-CN">
 <header class="pb-8 border-b border-[#E5E6EB]">
 <span class="inline-flex items-center gap-1 h-7 px-3 rounded-full bg-[#E8F3FF] text-xs font-bold text-[#165DFF]"><iconify-icon class="text-sm" icon="mdi:shield-lock-outline"></iconify-icon>法律声明</span>
-<h1 class="mt-4 text-[36px] leading-[1.25] font-bold text-[#1D2129]">隐私声明</h1>
+<h1 class="mt-4 text-[28px] lg:text-[36px] leading-[1.25] font-bold text-[#1D2129]">隐私声明</h1>
 <p class="mt-3 text-base font-bold text-[#1D2129]">西安华昭新能源科技有限公司</p>
 <p class="mt-1 text-sm text-[#86909C]">最后更新：[2026年10月24日]</p>
 </header>
@@ -209,13 +226,13 @@ tailwind.config = {
 </div>
 </main>
 <!-- ========== 页脚（与其它页面一致） ========== -->
-<footer class="bg-[#1D2129] py-16">
-<div class="max-w-[1200px] mx-auto px-6 grid grid-cols-12 gap-8">
-<div class="col-span-4">
+<footer class="bg-[#1D2129] py-12 lg:py-16">
+<div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-4">
 <a aria-label="HUAZHAO 华昭新能源 首页" class="inline-flex items-center rounded-lg bg-white px-3 py-1" href="index.html"><span class="relative block w-[108px] h-[72px] overflow-hidden"><span class="absolute left-1/2 top-1/2 w-[150px] h-[150px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain" data-hz-img="logo"></span></span></a>
 <p class="mt-4 text-sm leading-[1.6] text-[#86909C]">西安华昭新能源科技有限公司<br/>太阳能光伏 · 储能电池</p>
 </div>
-<div class="col-span-5 grid grid-cols-2 gap-8">
+<div class="lg:col-span-5 grid grid-cols-2 gap-8">
 <div>
 <h5 class="text-sm font-bold text-white">OEM代工</h5>
 <ul class="mt-4 space-y-3 text-sm">
@@ -231,9 +248,9 @@ tailwind.config = {
 </ul>
 </div>
 </div>
-<div class="col-span-3 flex flex-col items-end">
+<div class="lg:col-span-3 flex flex-col items-start lg:items-end">
 <h5 class="text-sm font-bold text-white">联系我们</h5>
-<ul class="mt-4 space-y-3 text-sm text-right">
+<ul class="mt-4 space-y-3 text-sm text-left lg:text-right break-words">
 <li><a class="text-[#86909C] hover:text-white transition-colors" href="mailto:info@huazhaoenergy.com">邮箱：info@huazhaoenergy.com</a></li>
 <li><a class="text-[#86909C] hover:text-white transition-colors" href="https://wa.me/8617600085536" rel="noopener" target="_blank">whatsapp：+86 176 0008 5536</a></li>
 </ul>

@@ -56,29 +56,46 @@
     })();
   </script>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased leading-[1.6]">
+<body class="bg-slate-50 text-slate-800 antialiased leading-[1.6] overflow-x-hidden lg:overflow-x-visible">
 <!-- ========== 顶部导航（三页共用） ========== -->
 <header class="sticky top-0 z-40 bg-white border-b border-[#E5E6EB]">
 <div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
 <a aria-label="HUAZHAO 华昭新能源 首页" class="flex items-center gap-2 h-[56px] shrink-0" href="index.html"><span class="relative block w-[60px] h-[52px] overflow-hidden bg-white shrink-0"><span class="absolute left-1/2 top-[-22px] w-[117px] h-[117px] max-w-none -translate-x-1/2 object-contain" data-hz-img="logo"></span></span><span class="text-[22px] leading-none font-bold tracking-wide text-[#1F6FE0]">HUAZHAO</span></a>
-<div class="flex items-center gap-10 h-full">
-<nav class="flex items-center gap-10 h-full text-[15px] font-medium whitespace-nowrap">
-<a class="h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html">首页</a>
-<a class="relative h-full flex items-center text-[#165DFF] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:bg-[#165DFF]" href="index.html#product-center">产品中心</a>
-<a class="h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html#about">关于华昭</a>
+<div class="hidden absolute left-0 right-0 top-full flex-col items-start gap-4 px-6 py-4 bg-white border-b border-[#E5E6EB] shadow-[0_8px_24px_rgba(22,93,255,0.08)] lg:flex lg:static lg:flex-row lg:items-center lg:gap-10 lg:h-full lg:p-0 lg:border-0 lg:shadow-none lg:bg-transparent" id="hzMenu">
+<nav class="flex flex-col items-start gap-1 w-full lg:w-auto lg:flex-row lg:items-center lg:gap-10 lg:h-full text-[15px] font-medium whitespace-nowrap">
+<a class="h-11 lg:h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html">首页</a>
+<a class="relative h-11 lg:h-full flex items-center text-[#165DFF] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:bg-[#165DFF]" href="index.html#product-center">产品中心</a>
+<a class="h-11 lg:h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html#about">关于华昭</a>
 </nav>
 <div aria-label="Language" class="flex items-center h-8 p-0.5 rounded-full border border-[#E5E6EB] bg-white text-[13px] font-medium whitespace-nowrap shrink-0" data-i18n-skip="" role="group">
 <button class="h-7 px-3 rounded-full transition-colors bg-[#165DFF] text-white" data-lang-btn="en" onclick="hzSetLang('en')" type="button">EN</button>
 <button class="h-7 px-3 rounded-full transition-colors text-[#4E5969] hover:text-[#165DFF]" data-lang-btn="zh" onclick="hzSetLang('zh')" type="button">中文</button>
 </div>
 </div>
+<button aria-controls="hzMenu" aria-expanded="false" aria-label="Menu" class="lg:hidden w-10 h-10 -mr-2 rounded-lg flex items-center justify-center text-[#1D2129] hover:bg-[#F4F7FC] transition-colors" id="hzMenuBtn" onclick="hzToggleMenu()" type="button"><iconify-icon class="text-2xl" icon="mdi:menu"></iconify-icon></button>
 </div>
 </header>
+<script>
+    /* ---- 手机端导航：汉堡菜单展开/收起（≥1024px 时菜单常显，不受影响） ---- */
+    function hzToggleMenu(open) {
+      var m = document.getElementById('hzMenu');
+      var b = document.getElementById('hzMenuBtn');
+      if (!m || !b) return;
+      if (typeof open !== 'boolean') open = m.classList.contains('hidden');
+      m.classList.toggle('hidden', !open);
+      m.classList.toggle('flex', open);
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      b.querySelector('iconify-icon').setAttribute('icon', open ? 'mdi:close' : 'mdi:menu');
+    }
+    document.querySelectorAll('#hzMenu nav a').forEach(function (a) {
+      a.addEventListener('click', function () { hzToggleMenu(false); });
+    });
+  </script>
 <main>
-<section class="max-w-[1200px] mx-auto px-6 pt-10 pb-20 grid grid-cols-12 gap-8">
+<section class="max-w-[1200px] mx-auto px-6 pt-6 lg:pt-10 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
 <!-- 筛选侧栏 -->
-<aside class="col-span-3">
-<div class="sticky top-[96px] rounded-2xl bg-white border border-slate-200 shadow-card p-6">
+<aside class="lg:col-span-3">
+<div class="lg:sticky lg:top-[96px] rounded-2xl bg-white border border-slate-200 shadow-card p-5 lg:p-6">
 <div class="flex items-center justify-between">
 <h3 class="font-bold text-slate-900 flex items-center gap-2"><iconify-icon class="text-emerald-600" icon="mdi:filter-variant"></iconify-icon>筛选条件</h3>
 <button class="text-sm text-slate-500 hover:text-emerald-700 flex items-center gap-1 transition-colors" onclick="resetFilters()"><iconify-icon icon="mdi:refresh"></iconify-icon>重置</button>
@@ -107,13 +124,13 @@
 </div>
 </aside>
 <!-- 列表 -->
-<div class="col-span-9">
-<div class="rounded-2xl bg-white border border-slate-200 shadow-card p-4 flex items-center gap-4">
-<div class="relative flex-1">
+<div class="lg:col-span-9 min-w-0 lg:min-w-[auto]">
+<div class="rounded-2xl bg-white border border-slate-200 shadow-card p-3 lg:p-4 flex flex-wrap lg:flex-nowrap items-center gap-3 lg:gap-4">
+<div class="relative flex-1 basis-full lg:basis-0">
 <iconify-icon class="absolute left-3 top-1/2 -translate-y-1/2 text-xl text-slate-400" icon="mdi:magnify"></iconify-icon>
 <input class="w-full h-11 rounded-lg border border-slate-200 pl-10 pr-3 text-sm transition-colors hover:border-slate-300 focus:outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100" id="searchInput" oninput="applyFilters()" placeholder="搜索型号，如 F02、51.2314、8kWh" type="text"/>
 </div>
-<select class="h-11 rounded-lg border border-slate-200 bg-white px-3 text-sm cursor-pointer transition-colors hover:border-slate-300 focus:outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100" id="sortSel" onchange="applyFilters()">
+<select class="flex-1 min-w-0 lg:flex-initial lg:min-w-[auto] h-11 rounded-lg border border-slate-200 bg-white px-3 text-sm cursor-pointer transition-colors hover:border-slate-300 focus:outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100" id="sortSel" onchange="applyFilters()">
 <option value="default">默认排序（目录顺序）</option>
 <option value="kwh-desc">能量 从高到低</option>
 <option value="kwh-asc">能量 从低到高</option>
@@ -124,14 +141,14 @@
 <button class="w-10 h-9 rounded-md text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors" id="viewTable" onclick="setView('table')" title="参数表视图"><iconify-icon class="text-lg" icon="mdi:table-large"></iconify-icon></button>
 </div>
 </div>
-<div class="mt-6 min-h-[28px] flex items-center justify-between gap-4">
+<div class="mt-4 lg:mt-6 min-h-[28px] flex flex-wrap lg:flex-nowrap items-center justify-between gap-2 lg:gap-4">
 <p class="text-sm text-slate-500">共找到 <span class="font-bold text-emerald-700" id="resultCount">15</span> 款型号</p>
-<div class="flex flex-wrap justify-end gap-2" id="activeChips"></div>
+<div class="flex flex-wrap justify-start lg:justify-end gap-2" id="activeChips"></div>
 </div>
-<div class="mt-4 grid grid-cols-3 gap-6" id="gridView"></div>
+<div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6" id="gridView"></div>
 <div class="hidden mt-4 rounded-2xl bg-white border border-slate-200 shadow-card overflow-hidden" id="tableView">
 <div class="overflow-x-auto [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
-<table class="w-full text-sm">
+<table class="w-full min-w-[760px] lg:min-w-0 text-sm">
 <thead class="bg-[#F4F7FC] text-[#4E5969] border-b border-slate-200">
 <tr>
 <th class="px-4 py-3 text-left font-semibold">对比</th>
@@ -150,43 +167,43 @@
 </div>
 <div class="hidden mt-4 rounded-2xl bg-white border border-dashed border-slate-300 py-16 text-center" id="emptyState">
 <iconify-icon class="text-6xl text-slate-300" icon="mdi:battery-off-outline"></iconify-icon>
-<h4 class="mt-4 text-lg font-semibold text-slate-700">没有匹配当前条件的型号</h4>
-<p class="mt-2 text-sm text-slate-500">尝试放宽筛选条件，或直接提交定制需求</p>
-<div class="mt-6 flex justify-center gap-4">
+<h4 class="mt-4 px-4 lg:px-0 text-lg font-semibold text-slate-700">没有匹配当前条件的型号</h4>
+<p class="mt-2 px-4 lg:px-0 text-sm text-slate-500">尝试放宽筛选条件，或直接提交定制需求</p>
+<div class="mt-6 flex flex-wrap lg:flex-nowrap justify-center gap-3 lg:gap-4 px-4 lg:px-0">
 <button class="h-10 px-5 rounded-lg border border-slate-300 text-sm font-semibold text-slate-700 hover:border-emerald-600 hover:text-emerald-700 transition-colors" onclick="resetFilters()">清除筛选</button>
 <a class="h-10 px-5 rounded-lg bg-emerald-600 text-white text-sm font-semibold flex items-center hover:bg-emerald-700 transition-colors" href="index.html#contact">提交定制需求</a>
 </div>
 </div>
-<p class="mt-6 text-xs text-slate-400 flex items-center gap-1"><iconify-icon icon="mdi:information-outline"></iconify-icon>参数数据来源：《锂电池目录-0901》；标称能量为额定电压 × 额定容量的计算值，仅供选型参考。</p>
+<p class="mt-6 text-xs text-slate-400 flex items-start lg:items-center gap-1"><iconify-icon class="shrink-0 mt-0.5 lg:mt-0" icon="mdi:information-outline"></iconify-icon>参数数据来源：《锂电池目录-0901》；标称能量为额定电压 × 额定容量的计算值，仅供选型参考。</p>
 </div>
 </section>
 </main>
 <!-- 对比栏 -->
-<div class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-30 rounded-2xl bg-slate-900 text-white shadow-[0_12px_32px_rgba(10,25,47,0.28)] px-6 py-3 flex items-center gap-4" id="compareBar">
+<div class="hidden fixed bottom-3 lg:bottom-6 left-1/2 -translate-x-1/2 z-30 w-[calc(100%-24px)] lg:w-auto rounded-2xl bg-slate-900 text-white shadow-[0_12px_32px_rgba(10,25,47,0.28)] px-4 lg:px-6 py-3 flex flex-wrap lg:flex-nowrap items-center gap-2 lg:gap-4" id="compareBar">
 <iconify-icon class="text-2xl text-[#00B4D8]" icon="mdi:compare-horizontal"></iconify-icon>
-<div class="flex gap-2" id="compareChips"></div>
-<span class="text-xs text-slate-400">最多 3 款</span>
+<div class="order-last lg:order-none w-full lg:w-auto flex flex-wrap lg:flex-nowrap gap-2" id="compareChips"></div>
+<span class="flex-1 lg:flex-initial text-xs text-slate-400">最多 3 款</span>
 <button class="h-10 px-5 rounded-lg bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-500 active:scale-[0.98] transition-all" onclick="openCompare()">开始对比</button>
 <button class="h-10 px-3 rounded-lg text-sm text-slate-300 hover:bg-white/10 transition-colors" onclick="clearCompare()">清空</button>
 </div>
 <!-- 对比弹窗 -->
-<div class="hidden fixed inset-0 z-50 bg-[#0A192F]/50 items-center justify-center p-10" id="compareModal" onclick="if(event.target===this)closeCompare()">
+<div class="hidden fixed inset-0 z-50 bg-[#0A192F]/50 items-center justify-center p-4 lg:p-10" id="compareModal" onclick="if(event.target===this)closeCompare()">
 <div class="w-full max-w-4xl max-h-full overflow-y-auto [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden rounded-2xl bg-white shadow-xl">
-<div class="h-16 px-6 flex items-center justify-between border-b border-slate-200">
+<div class="h-16 px-4 lg:px-6 flex items-center justify-between gap-3 border-b border-slate-200">
 <h3 class="font-bold text-slate-900 flex items-center gap-2"><iconify-icon class="text-emerald-600 text-xl" icon="mdi:compare-horizontal"></iconify-icon>型号参数对比</h3>
-<button aria-label="关闭" class="w-9 h-9 rounded-lg hover:bg-slate-100 flex items-center justify-center transition-colors" onclick="closeCompare()"><iconify-icon class="text-xl" icon="mdi:close"></iconify-icon></button>
+<button aria-label="关闭" class="w-9 h-9 shrink-0 rounded-lg hover:bg-slate-100 flex items-center justify-center transition-colors" onclick="closeCompare()"><iconify-icon class="text-xl" icon="mdi:close"></iconify-icon></button>
 </div>
-<div class="p-6"><table class="w-full text-sm" id="compareTable"></table></div>
+<div class="p-4 lg:p-6 overflow-x-auto lg:overflow-visible [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden"><table class="w-full min-w-[520px] lg:min-w-0 text-sm" id="compareTable"></table></div>
 </div>
 </div>
 <!-- ========== 页脚（三页共用） ========== -->
-<footer class="bg-[#1D2129] py-16">
-<div class="max-w-[1200px] mx-auto px-6 grid grid-cols-12 gap-8">
-<div class="col-span-4">
+<footer class="bg-[#1D2129] py-12 lg:py-16">
+<div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-4">
 <a aria-label="HUAZHAO 华昭新能源 首页" class="inline-flex items-center rounded-lg bg-white px-3 py-1" href="index.html"><span class="relative block w-[108px] h-[72px] overflow-hidden"><span class="absolute left-1/2 top-1/2 w-[150px] h-[150px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain" data-hz-img="logo"></span></span></a>
 <p class="mt-4 text-sm leading-[1.6] text-[#86909C]">西安华昭新能源科技有限公司<br/>太阳能光伏 · 储能电池</p>
 </div>
-<div class="col-span-5 grid grid-cols-2 gap-8">
+<div class="lg:col-span-5 grid grid-cols-2 gap-8">
 <div>
 <h5 class="text-sm font-bold text-white">OEM代工</h5>
 <ul class="mt-4 space-y-3 text-sm">
@@ -202,9 +219,9 @@
 </ul>
 </div>
 </div>
-<div class="col-span-3 flex flex-col items-end">
+<div class="lg:col-span-3 flex flex-col items-start lg:items-end">
 <h5 class="text-sm font-bold text-white">联系我们</h5>
-<ul class="mt-4 space-y-3 text-sm text-right">
+<ul class="mt-4 space-y-3 text-sm text-left lg:text-right break-words">
 <li><a class="text-[#86909C] hover:text-white transition-colors" href="mailto:info@huazhaoenergy.com">邮箱：info@huazhaoenergy.com</a></li>
 <li><a class="text-[#86909C] hover:text-white transition-colors" href="https://wa.me/8617600085536" rel="noopener" target="_blank">whatsapp：+86 176 0008 5536</a></li>
 </ul>
@@ -368,14 +385,14 @@
       var t = '';
       list.forEach(function (p) {
         var inCmp = compare.indexOf(p.id) > -1;
-        g += '<div class="group rounded-2xl border ' + (inCmp ? 'border-emerald-500' : 'border-slate-200') + ' bg-white shadow-card overflow-hidden flex flex-col hover:-translate-y-1 hover:shadow-lg hover:border-emerald-300 transition-all duration-300">'
+        g += '<div class="group min-w-0 rounded-2xl border ' + (inCmp ? 'border-emerald-500' : 'border-slate-200') + ' bg-white shadow-card overflow-hidden flex flex-col hover:-translate-y-1 hover:shadow-lg hover:border-emerald-300 transition-all duration-300">'
           + '<div class="relative h-48 bg-[linear-gradient(135deg,#E8F3FF_0%,#F4F7FC_60%,#FFFFFF_100%)] flex items-center justify-center">'
           + '<span class="absolute left-3 top-3 px-2 py-0.5 rounded bg-emerald-600 text-white text-[11px] font-semibold">' + SERIES[p.series] + '</span>'
           + '<span class="absolute right-3 top-3 px-2 py-0.5 rounded bg-white/90 border border-slate-200 text-[11px] font-semibold text-slate-600">≈ ' + kwh(p) + ' kWh</span>'
           + '<a href="product-detail.html?id=' + p.id + '" class="flex items-center justify-center w-full h-full"><span class="transition-transform duration-300 group-hover:scale-105">' + batteryVisual(p) + '</span></a>'
           + '<label class="absolute left-3 bottom-3 flex items-center gap-1.5 px-2 py-1 rounded border text-[11px] cursor-pointer transition-colors ' + (inCmp ? 'bg-emerald-600 border-emerald-600 text-white' : 'bg-white/90 border-slate-200 text-slate-600 hover:border-emerald-500') + '"><input type="checkbox" ' + (inCmp ? 'checked' : '') + ' onchange="toggleCompare(' + p.id + ')" class="w-3.5 h-3.5 accent-emerald-600" />' + (inCmp ? '已加入对比' : '对比') + '</label>'
           + '</div>'
-          + '<div class="p-5 flex-1 flex flex-col"><a href="product-detail.html?id=' + p.id + '" class="font-bold text-slate-900 hover:text-emerald-700 transition-colors">' + p.model + '</a>'
+          + '<div class="p-5 flex-1 flex flex-col"><a href="product-detail.html?id=' + p.id + '" class="font-bold text-slate-900 hover:text-emerald-700 transition-colors break-words">' + p.model + '</a>'
           + '<div class="mt-4 grid grid-cols-3 gap-2 text-center">'
           + '<div class="rounded-lg bg-slate-50 py-2"><p class="text-[11px] text-slate-400">电压</p><p class="text-sm font-bold text-slate-800">' + p.v + 'V</p></div>'
           + '<div class="rounded-lg bg-slate-50 py-2"><p class="text-[11px] text-slate-400">容量</p><p class="text-sm font-bold text-slate-800">' + p.ah + 'Ah</p></div>'
@@ -436,7 +453,7 @@
       document.getElementById('compareBar').classList.toggle('hidden', compare.length === 0);
       document.getElementById('compareChips').innerHTML = compare.map(function (id) {
         var p = findProduct(id);
-        return '<span class="h-8 px-3 rounded-lg bg-white/10 text-sm flex items-center gap-1.5">' + p.model + '<button aria-label="移出对比" onclick="toggleCompare(' + id + ')" class="text-slate-400 hover:text-white flex transition-colors"><iconify-icon icon="mdi:close"></iconify-icon></button></span>';
+        return '<span class="h-8 px-3 rounded-lg bg-white/10 text-xs lg:text-sm flex items-center gap-1.5">' + p.model + '<button aria-label="移出对比" onclick="toggleCompare(' + id + ')" class="text-slate-400 hover:text-white flex transition-colors"><iconify-icon icon="mdi:close"></iconify-icon></button></span>';
       }).join('');
     }
     function openCompare() {
