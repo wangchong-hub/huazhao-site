@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>隐私声明 | 华昭新能源 HUAZHAO</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: '#165DFF',
+        emerald: { 50: '#E8F3FF', 100: '#D4E5FF', 200: '#AECBFF', 300: '#7FAAFF', 400: '#4C86FF', 500: '#2E6FFF', 600: '#165DFF', 700: '#0E48D6', 800: '#0C3AA8', 900: '#0B2C7A', 950: '#0A192F' },
+        lime: { 50: '#F3FBEC', 100: '#E3F6D3', 200: '#C7EDA8', 300: '#95DE64', 400: '#73D13D', 500: '#52C41A', 600: '#389E0D', 700: '#237804', 800: '#135200', 900: '#0E3D00', 950: '#072600' },
+        slate: { 50: '#F4F7FC', 100: '#EEF1F6', 200: '#E5E6EB', 300: '#C9CDD4', 400: '#86909C', 500: '#86909C', 600: '#4E5969', 700: '#4E5969', 800: '#1D2129', 900: '#1D2129', 950: '#141720' }
+      },
+      boxShadow: {
+        card: '0 8px 24px rgba(22,93,255,0.06)',
+        sm: '0 8px 24px rgba(22,93,255,0.06)',
+        md: '0 8px 24px rgba(22,93,255,0.06)',
+        lg: '0 8px 24px rgba(22,93,255,0.10)',
+        xl: '0 12px 32px rgba(22,93,255,0.10)'
+      },
+      fontFamily: { sans: ['"PingFang SC"', '"Microsoft YaHei"', '"Helvetica Neue"', 'Arial', 'sans-serif'] },
+      fontWeight: { extrabold: '700', black: '700' },
+      lineHeight: { relaxed: '1.6' }
+    }
+  }
+};
+</script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<script>
+  /* 语言预判：未选择中文（含首次访问）时先以英文状态隐藏页面，翻译完成后立即显示，避免中文闪烁 */
+  (function () {
+    var zh = false;
+    try { zh = localStorage.getItem('hzLang') === 'zh'; } catch (e) {}
+    if (zh) return;
+    var d = document.documentElement;
+    d.setAttribute('lang', 'en');
+    d.style.visibility = 'hidden';
+    setTimeout(function () { d.style.visibility = ''; }, 3000);
+  })();
+</script>
+</head>
+<body class="bg-white text-slate-900 antialiased leading-[1.6] font-normal">
+<!-- ========== 顶部导航（与其它页面一致，本页无当前高亮项） ========== -->
+<header class="sticky top-0 z-40 bg-white border-b border-[#E5E6EB]">
+<div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
+<a aria-label="HUAZHAO 华昭新能源 首页" class="flex items-center gap-2 h-[56px] shrink-0" href="home.html"><span class="relative block w-[60px] h-[52px] overflow-hidden bg-white shrink-0"><span class="absolute left-1/2 top-[-22px] w-[117px] h-[117px] max-w-none -translate-x-1/2 object-contain" data-hz-img="logo"></span></span><span class="text-[22px] leading-none font-bold tracking-wide text-[#1F6FE0]">HUAZHAO</span></a>
+<div class="flex items-center gap-10 h-full">
+<nav class="flex items-center gap-10 h-full text-[15px] font-medium whitespace-nowrap">
+<a class="relative h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="home.html">首页</a>
+<a class="relative h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="home.html#product-center">产品中心</a>
+<a class="relative h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="home.html#about">关于华昭</a>
+</nav>
+<div aria-label="Language" class="flex items-center h-8 p-0.5 rounded-full border border-[#E5E6EB] bg-white text-[13px] font-medium whitespace-nowrap shrink-0" data-i18n-skip="" role="group">
+<button class="h-7 px-3 rounded-full transition-colors bg-[#165DFF] text-white" data-lang-btn="en" onclick="hzSetLang('en')" type="button">EN</button>
+<button class="h-7 px-3 rounded-full transition-colors text-[#4E5969] hover:text-[#165DFF]" data-lang-btn="zh" onclick="hzSetLang('zh')" type="button">中文</button>
+</div>
+</div>
+</div>
+</header>
+<main class="bg-[#F4F7FC] py-16">
+<div class="max-w-[848px] mx-auto px-6">
+<nav aria-label="Breadcrumb" class="flex items-center gap-1 text-sm text-[#86909C]">
+<a class="hover:text-[#165DFF] transition-colors" href="home.html">首页</a><iconify-icon icon="mdi:chevron-right"></iconify-icon><span class="text-[#1D2129]">隐私声明</span>
+</nav>
+<!-- ========== English version (default) ========== -->
+<article class="mt-6 rounded-2xl bg-white shadow-card px-14 py-14 text-[15px] leading-[1.6] text-[#4E5969]" data-hz-lang-block="en" data-i18n-skip="" lang="en">
+<header class="pb-8 border-b border-[#E5E6EB]">
+<span class="inline-flex items-center gap-1 h-7 px-3 rounded-full bg-[#E8F3FF] text-xs font-bold text-[#165DFF]"><iconify-icon class="text-sm" icon="mdi:shield-lock-outline"></iconify-icon>Legal</span>
+<h1 class="mt-4 text-[36px] leading-[1.25] font-bold text-[#1D2129]">Privacy Policy</h1>
+<p class="mt-3 text-base font-bold text-[#1D2129]">Xi'an Huazhao New Energy Technology Co., Ltd.</p>
+<p class="mt-1 text-sm text-[#86909C]">Last Updated: [October 24, 2026]</p>
+</header>
+<p class="mt-8">Xi'an Huazhao New Energy Technology Co., Ltd. ("Huazhao New Energy", "we", "us" or "the Company") understands the importance of your personal information. This Privacy Policy applies when you visit the official website of Huazhao New Energy (<a class="text-[#165DFF] hover:underline" href="https://www.huazhaoenergy.com" rel="noopener" target="_blank">www.huazhaoenergy.com</a>), or interact with us through our Facebook ads, lead forms (Lead Ads) and other online channels. It explains how we collect, use, share and protect your personal information, and the rights available to you.</p>
+<p class="mt-4 rounded-lg bg-[#F4F7FC] border-l-4 border-[#165DFF] px-5 py-4 text-[#1D2129]"><strong>Please read this Policy carefully before using our website or submitting any information.</strong> If you do not agree with the processing described in this Policy, please do not submit any personal information and stop using the relevant features.</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">1.</span>Information We Collect</h2>
+<p class="mt-4"><strong class="text-[#1D2129]">Information you provide to us.</strong> When you contact us through the inquiry form on our website, Facebook lead forms (Instant Forms), email or other business communication channels, we collect the business contact information you voluntarily submit, including: name, company name, job title, work email address, phone number, country/region, and project requirements or inquiry details. As a B2B energy storage and solar PV OEM service provider, we collect this information to respond to your business inquiries and technical requirements, not for consumer profiling.</p>
+<p class="mt-4"><strong class="text-[#1D2129]">Information collected through automated technologies.</strong> When you visit our website, we and our third-party advertising partners (including Meta) may use cookies, pixel code (Meta Pixel) and similar technologies to automatically collect limited technical information, including: IP address, browser type and language, device type, operating system, pages visited, time spent on pages, referrer, and approximate geographic location (generally at city level only). This information is used to measure advertising effectiveness, optimize the website experience, and show relevant ads to business users who may be interested in our products.</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">2.</span>How We Use Your Information</h2>
+<p class="mt-4">We use your personal information for the following purposes:</p>
+<ul class="mt-3 pl-5 list-disc marker:text-[#165DFF] space-y-2">
+<li><strong class="text-[#1D2129]">Responding to inquiries and providing quotations:</strong> communicating with you regarding energy storage systems, solar PV modules, OEM/ODM manufacturing needs or other business inquiries;</li>
+<li><strong class="text-[#1D2129]">Ad delivery and performance measurement:</strong> using Meta Pixel and the Conversions API to measure the conversion performance of our Facebook ads, optimize our advertising strategy, and show retargeting ads to audiences who share similar business characteristics or who have visited our website;</li>
+<li><strong class="text-[#1D2129]">Business communications:</strong> following up on your project requirements by email or phone after you have contacted us;</li>
+<li><strong class="text-[#1D2129]">Website improvement and security:</strong> analyzing traffic trends, troubleshooting technical issues and preventing misuse;</li>
+<li><strong class="text-[#1D2129]">Legal compliance:</strong> fulfilling applicable legal, tax or export compliance obligations.</li>
+</ul>
+<p class="mt-4"><strong class="text-[#1D2129]">Legal bases for processing (where the GDPR applies):</strong> For B2B business communications and responding to inquiries, we process your data on the basis of the performance of a contract or steps necessary prior to entering into a contract, and our legitimate interests (conducting effective B2B business communications). For advertising tracking, retargeting cookies and sending you marketing communications, we rely on your consent, which you may withdraw at any time.</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">3.</span>How We Share Information with Meta</h2>
+<p class="mt-4"><strong class="text-[#1D2129]">This is a key disclosure of this Policy.</strong> When you submit information through our Facebook ads (including lead forms), or visit pages of our website where Meta Pixel is deployed, the following data is shared with Meta Platforms, Inc. (Facebook):</p>
+<ul class="mt-3 pl-5 list-disc marker:text-[#165DFF] space-y-2">
+<li><strong class="text-[#1D2129]">Information submitted via Lead Ads forms:</strong> the name, email address, phone number and answers to custom questions you provide in a Facebook lead form are transmitted to both us and Meta. Meta processes this information in accordance with its own data policy; for details, please refer to Meta's Privacy Policy (<a class="text-[#165DFF] hover:underline break-all" href="https://www.facebook.com/privacy/policy" rel="noopener" target="_blank">https://www.facebook.com/privacy/policy</a>).</li>
+<li><strong class="text-[#1D2129]">Website activity data:</strong> Meta Pixel collects event data such as page views and button clicks on our website, which is used to build Custom Audiences and measure ad conversions. This data may include your IP address and cookie identifiers.</li>
+</ul>
+<p class="mt-4">We do not sell your personal information to Meta or any other third party. We share the above data only to the extent directly related to ad delivery, lead collection and performance measurement with Meta.</p>
+<p class="mt-4"><strong class="text-[#1D2129]">Your choices:</strong> You may limit or object to our processing for advertising purposes at any time by: (a) refusing or deleting Meta Pixel and other tracking cookies through your browser settings; (b) managing the ads you see in your Facebook "Ad Preferences" settings; or (c) contacting us directly using the contact details in Section 8 of this Policy to request that we stop using your data for retargeting purposes. Please note that Meta has adjusted its platform-level "Off-Facebook Activity" controls; therefore, raising an objection through our direct contact channel is an effective way to ensure that processing stops on our side.</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">4.</span>Cookies and Similar Technologies</h2>
+<p class="mt-4">Our website uses the following types of cookies:</p>
+<ul class="mt-3 pl-5 list-disc marker:text-[#165DFF] space-y-2">
+<li><strong class="text-[#1D2129]">Strictly necessary cookies:</strong> ensure the basic functionality and secure operation of the website;</li>
+<li><strong class="text-[#1D2129]">Analytics cookies:</strong> help us understand how visitors use the website so that we can improve content and navigation;</li>
+<li><strong class="text-[#1D2129]">Advertising cookies (including Meta Pixel):</strong> used to measure the effectiveness of Facebook ads, build retargeting audiences and show you more relevant ads.</li>
+</ul>
+<p class="mt-4">You can manage or disable cookies through your browser settings. Disabling advertising cookies will not prevent you from accessing the website, but may affect the relevance of the ads you see. Where required by applicable law (such as in the EU/UK), we will obtain your consent through a consent banner before deploying non-essential cookies.</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">5.</span>International Data Transfers</h2>
+<p class="mt-4">Huazhao New Energy serves the global market. Information you submit through this website or Facebook ads may be transferred to and processed in mainland China and other countries/regions where we or our service providers operate. When personal information is transferred out of the EU/European Economic Area, the UK or other jurisdictions with cross-border transfer restrictions, we implement safeguards based on applicable legal mechanisms (such as the Standard Contractual Clauses (SCC)). Where personal information is provided from within China to recipients outside China, we will, in accordance with the requirements of the Personal Information Protection Law of the People's Republic of China, fulfill our notification obligations and, where necessary, obtain separate consent or adopt compliance mechanisms such as the standard contract.</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">6.</span>Data Retention and Security</h2>
+<p class="mt-4">We retain your personal information only for as long as necessary to fulfill the purposes described in this Policy, unless a longer retention period is required or permitted by law. For inquiry and lead information, the retention period is generally [24] months from the last business contact, so that we can follow up on project progress; upon expiry of this period, we will delete or anonymize the relevant data.</p>
+<p class="mt-4">We take reasonable technical and organizational measures to protect personal information, including transport layer encryption (HTTPS/SSL), access controls and least-privilege authorization. Please note, however, that no method of transmission over the internet can guarantee absolute security.</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">7.</span>Your Rights</h2>
+<p class="mt-4">Subject to the applicable laws of your region (including the GDPR, PIPL and other data protection regulations), you have the following rights regarding your personal information:</p>
+<ul class="mt-3 pl-5 list-disc marker:text-[#165DFF] space-y-2">
+<li><strong class="text-[#1D2129]">Right of access:</strong> to know whether we process your personal information and to obtain a copy;</li>
+<li><strong class="text-[#1D2129]">Right to rectification:</strong> to request the correction of inaccurate or incomplete information;</li>
+<li><strong class="text-[#1D2129]">Right to erasure:</strong> to request the deletion of your personal information under statutory conditions;</li>
+<li><strong class="text-[#1D2129]">Right to restriction of processing / right to object:</strong> to object to our use of your data for direct marketing or retargeting ads;</li>
+<li><strong class="text-[#1D2129]">Right to withdraw consent:</strong> for processing based on consent (including ad tracking), to withdraw your consent at any time, without affecting the lawfulness of processing carried out before the withdrawal.</li>
+</ul>
+<p class="mt-4">To exercise any of the above rights, please contact us as described in Section 8. We will respond within the time limits required by applicable law and may need to verify your identity before processing your request.</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">8.</span>Contact Us</h2>
+<p class="mt-4">If you have any questions about this Privacy Policy, or wish to exercise the rights described above (including requesting that we stop using your data for Facebook retargeting), please contact:</p>
+<div class="mt-4 rounded-2xl border border-[#E5E6EB] bg-[#F8FAFE] px-6 py-5">
+<p class="font-bold text-[#1D2129]">Xi'an Huazhao New Energy Technology Co., Ltd.</p>
+<p class="mt-2 flex items-center gap-2"><iconify-icon class="text-lg text-[#165DFF]" icon="mdi:email-outline"></iconify-icon>Email: <a class="text-[#165DFF] hover:underline" href="mailto:info@huazhaoenergy.com">info@huazhaoenergy.com</a></p>
+</div>
+<p class="mt-4">We will respond within [2] business days of receiving your request.</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">9.</span>Updates to This Policy</h2>
+<p class="mt-4">We may revise this Privacy Policy from time to time due to business changes, technology updates or legal requirements. The revised version will be posted on this page, and the "Last Updated" date at the top will be updated accordingly. In the event of material changes, we will notify you through a prominent notice on our website or by other practicable means.</p>
+</article>
+<!-- ========== 中文原文 ========== -->
+<article class="hidden mt-6 rounded-2xl bg-white shadow-card px-14 py-14 text-[15px] leading-[1.6] text-[#4E5969]" data-hz-lang-block="zh" data-i18n-skip="" lang="zh-CN">
+<header class="pb-8 border-b border-[#E5E6EB]">
+<span class="inline-flex items-center gap-1 h-7 px-3 rounded-full bg-[#E8F3FF] text-xs font-bold text-[#165DFF]"><iconify-icon class="text-sm" icon="mdi:shield-lock-outline"></iconify-icon>法律声明</span>
+<h1 class="mt-4 text-[36px] leading-[1.25] font-bold text-[#1D2129]">隐私声明</h1>
+<p class="mt-3 text-base font-bold text-[#1D2129]">西安华昭新能源科技有限公司</p>
+<p class="mt-1 text-sm text-[#86909C]">最后更新：[2026年10月24日]</p>
+</header>
+<p class="mt-8">西安华昭新能源科技有限公司（以下简称“华昭新能源”“我们”或“本公司”）深知个人信息对您的重要性。本隐私声明适用于您访问华昭新能源官方网站（<a class="text-[#165DFF] hover:underline" href="https://www.huazhaoenergy.com" rel="noopener" target="_blank">www.huazhaoenergy.com</a>），或通过我们投放的 Facebook 广告、潜在客户表单（Lead Ads）及其他线上渠道与我们互动的场景，说明我们如何收集、使用、共享和保护您的个人信息，以及您所享有的权利。</p>
+<p class="mt-4 rounded-lg bg-[#F4F7FC] border-l-4 border-[#165DFF] px-5 py-4 text-[#1D2129]"><strong>请在使用我们的网站或提交任何信息前，仔细阅读本声明。</strong> 如果您不同意本声明所述的处理方式，请不要提交个人信息，并停止使用相关功能。</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">1.</span>我们收集哪些信息</h2>
+<p class="mt-4"><strong class="text-[#1D2129]">您主动提供的信息。</strong> 当您通过官网询盘表单、Facebook 潜在客户表单（Instant Form）、电子邮件或商务沟通渠道联系我们时，我们会收集您自愿提交的业务联系信息，包括：姓名、公司名称、职位、工作邮箱、电话号码、国家/地区、项目需求或询盘内容。作为 B2B 储能与光伏 OEM 服务商，我们收集这些信息的目的是回应您的业务咨询和技术需求，而非用于消费级画像。</p>
+<p class="mt-4"><strong class="text-[#1D2129]">通过自动化技术收集的信息。</strong> 当您访问我们的网站时，我们及我们的第三方广告合作伙伴（包括 Meta）可能通过 Cookie、像素代码（Meta Pixel）及类似技术自动收集有限的技术信息，包括：IP 地址、浏览器类型与语言、设备类型、操作系统、访问页面、页面停留时间、引荐来源（Referrer）以及大致地理位置（通常仅到城市级别） 。这些信息用于衡量广告效果、优化网站体验以及向可能对我们产品感兴趣的企业用户展示相关广告。</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">2.</span>我们如何使用您的信息</h2>
+<p class="mt-4">我们将您的个人信息用于以下目的：</p>
+<ul class="mt-3 pl-5 list-disc marker:text-[#165DFF] space-y-2">
+<li><strong class="text-[#1D2129]">回应询盘与提供报价：</strong>就储能系统、光伏组件、OEM/ODM 代工需求或其他业务咨询与您沟通；</li>
+<li><strong class="text-[#1D2129]">广告投放与效果衡量：</strong>通过 Meta Pixel 和 Conversions API 衡量 Facebook 广告的转化效果，优化广告投放策略，并向与您具有相似企业特征或访问过我们网站的受众展示再营销广告；</li>
+<li><strong class="text-[#1D2129]">业务沟通：</strong>在您主动联系后，通过电子邮件或电话跟进您的项目需求；</li>
+<li><strong class="text-[#1D2129]">网站改进与安全：</strong>分析访问趋势、排查技术问题、防范滥用行为；</li>
+<li><strong class="text-[#1D2129]">法律合规：</strong>履行适用的法律、税务或出口合规义务。</li>
+</ul>
+<p class="mt-4"><strong class="text-[#1D2129]">处理的法律依据（适用于 GDPR 覆盖的情形）：</strong> 对于 B2B 商务沟通和回应询盘，我们基于合同履行或订立合同前的必要步骤以及合法利益（有效开展 B2B 业务沟通）进行处理；对于广告追踪、再营销 Cookie 以及向您发送营销信息，我们依据您的同意进行处理，您可以随时撤回该同意。</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">3.</span>我们如何与 Meta 共享信息</h2>
+<p class="mt-4"><strong class="text-[#1D2129]">这是本声明的核心披露事项。</strong> 当您通过我们的 Facebook 广告（包括潜在客户表单）提交信息，或访问我们部署了 Meta Pixel 的网站页面时，以下数据会与 Meta Platforms, Inc.（Facebook）共享：</p>
+<ul class="mt-3 pl-5 list-disc marker:text-[#165DFF] space-y-2">
+<li><strong class="text-[#1D2129]">通过 Lead Ads 表单提交的信息：</strong>您在 Facebook 潜在客户表单中填写的姓名、邮箱、电话及自定义问题答案，会同时传输给我们和 Meta。Meta 依据其自身的数据政策处理这些信息，具体请参阅 Meta 的隐私政策（<a class="text-[#165DFF] hover:underline break-all" href="https://www.facebook.com/privacy/policy" rel="noopener" target="_blank">https://www.facebook.com/privacy/policy</a>）。</li>
+<li><strong class="text-[#1D2129]">网站行为数据：</strong>Meta Pixel 会收集您在我们网站上的页面浏览、按钮点击等事件数据，用于构建 Custom Audiences（自定义受众）和衡量广告转化。这些数据可能包含您的 IP 地址和 Cookie 标识符。</li>
+</ul>
+<p class="mt-4">我们不会将您的个人信息出售给 Meta 或任何其他第三方。我们仅在与 Meta 的广告投放、线索收集和效果衡量直接相关的范围内共享上述数据。</p>
+<p class="mt-4"><strong class="text-[#1D2129]">您的选择权：</strong> 您可以随时通过以下方式限制或反对我们基于广告目的的处理：（a）通过浏览器设置拒绝或删除 Meta Pixel 及其他追踪 Cookie；（b）在 Facebook 的“广告偏好”设置中管理您看到的广告；（c）通过本声明第 8 条的联系方式直接联系我们，要求我们停止将您的数据用于再营销目的。请注意，Meta 已调整其平台层面的“站外活动”控制选项，因此通过我们的直接联系方式提出反对，是确保我们这边停止处理的有效途径。</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">4.</span>Cookie 与类似技术</h2>
+<p class="mt-4">我们的网站使用以下类型的 Cookie：</p>
+<ul class="mt-3 pl-5 list-disc marker:text-[#165DFF] space-y-2">
+<li><strong class="text-[#1D2129]">必要 Cookie：</strong>保障网站基本功能和安全运行；</li>
+<li><strong class="text-[#1D2129]">分析 Cookie：</strong>帮助我们了解访客如何使用网站，以便改进内容和导航；</li>
+<li><strong class="text-[#1D2129]">广告 Cookie（含 Meta Pixel） ：</strong>用于衡量 Facebook 广告效果、构建再营销受众以及向您展示更相关的广告。</li>
+</ul>
+<p class="mt-4">您可以通过浏览器设置管理或禁用 Cookie。禁用广告 Cookie 不会导致网站无法访问，但可能会影响广告的相关性。在适用法律要求的情形下（如欧盟/英国），我们会在部署非必要 Cookie 前通过同意横幅征求您的同意。</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">5.</span>跨境传输</h2>
+<p class="mt-4">华昭新能源的业务面向全球市场。您通过本网站或 Facebook 广告提交的信息，可能会被传输至中国境内以及我们或服务提供商运营的其他国家/地区进行处理。当个人信息从欧盟/欧洲经济区、英国或其他有跨境传输限制的法域传出时，我们会依据适用的法律机制（如标准合同条款 SCC）采取保障措施；涉及从中国境内向境外提供个人信息的情形，我们将按照《中华人民共和国个人信息保护法》的要求，履行告知义务并在必要时取得单独同意或采用标准合同等合规路径。</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">6.</span>数据保留与安全</h2>
+<p class="mt-4">我们仅在实现本声明所述目的所必需的期限内保留您的个人信息，除非法律要求或允许更长的保留期。对于询盘和潜在客户信息，保留期限通常为自最后一次业务联系起 [24] 个月，以便跟进项目进展；期限届满后，我们将删除或匿名化处理相关数据。</p>
+<p class="mt-4">我们采取合理的技术和组织措施保护个人信息，包括传输层加密（HTTPS/SSL）、访问控制和最小化授权。但请注意，任何互联网传输方式都无法保证绝对安全。</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">7.</span>您所享有的权利</h2>
+<p class="mt-4">根据您所在地区的适用法律（包括 GDPR、PIPL 及其他数据保护法规），您对您的个人信息享有以下权利：</p>
+<ul class="mt-3 pl-5 list-disc marker:text-[#165DFF] space-y-2">
+<li><strong class="text-[#1D2129]">访问权：</strong>了解我们是否处理您的个人信息，并获取副本；</li>
+<li><strong class="text-[#1D2129]">更正权：</strong>要求更正不准确或不完整的信息；</li>
+<li><strong class="text-[#1D2129]">删除权：</strong>在法定条件下要求删除您的个人信息；</li>
+<li><strong class="text-[#1D2129]">限制处理权 / 反对权：</strong>反对我们将您的数据用于直接营销或再营销广告；</li>
+<li><strong class="text-[#1D2129]">撤回同意权：</strong>对于基于同意进行的处理（包括广告追踪），随时撤回同意，不影响撤回前处理的合法性。</li>
+</ul>
+<p class="mt-4">如需行使上述权利，请通过第 8 条的方式联系我们。我们将在适用法律要求的期限内响应，并可能需要在处理请求前核实您的身份。</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">8.</span>联系我们</h2>
+<p class="mt-4">如果您对本隐私声明有任何疑问，或希望行使上述权利（包括要求我们停止将您的数据用于 Facebook 再营销），请联系：</p>
+<div class="mt-4 rounded-2xl border border-[#E5E6EB] bg-[#F8FAFE] px-6 py-5">
+<p class="font-bold text-[#1D2129]">西安华昭新能源科技有限公司</p>
+<p class="mt-2 flex items-center gap-2"><iconify-icon class="text-lg text-[#165DFF]" icon="mdi:email-outline"></iconify-icon>电子邮箱：<a class="text-[#165DFF] hover:underline" href="mailto:info@huazhaoenergy.com">info@huazhaoenergy.com</a></p>
+</div>
+<p class="mt-4">我们将在收到请求后 [2] 个工作日内予以回复。</p>
+<h2 class="mt-10 pt-8 border-t border-[#F2F3F5] flex items-baseline gap-3 text-[20px] leading-[1.4] font-bold text-[#1D2129]"><span class="text-[#165DFF]">9.</span>本声明的更新</h2>
+<p class="mt-4">我们可能会因业务变化、技术更新或法律要求而不时修订本隐私声明。修订后的版本将发布在本页面，并更新顶部的“最后更新”日期。重大变更时，我们会在网站显著位置或通过可行方式向您告知。</p>
+</article>
+</div>
+</main>
+<!-- ========== 页脚（与其它页面一致） ========== -->
+<footer class="bg-[#1D2129] py-16">
+<div class="max-w-[1200px] mx-auto px-6 grid grid-cols-12 gap-8">
+<div class="col-span-4">
+<a aria-label="HUAZHAO 华昭新能源 首页" class="inline-flex items-center rounded-lg bg-white px-3 py-1" href="home.html"><span class="relative block w-[108px] h-[72px] overflow-hidden"><span class="absolute left-1/2 top-1/2 w-[150px] h-[150px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain" data-hz-img="logo"></span></span></a>
+<p class="mt-4 text-sm leading-[1.6] text-[#86909C]">西安华昭新能源科技有限公司<br/>太阳能光伏 · 储能电池</p>
+</div>
+<div class="col-span-5 grid grid-cols-2 gap-8">
+<div>
+<h5 class="text-sm font-bold text-white">OEM代工</h5>
+<ul class="mt-4 space-y-3 text-sm">
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="home.html#oem">OEM/ODM 贴牌</a></li>
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="home.html#solar">光储系统配套</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-sm font-bold text-white">关于华昭</h5>
+<ul class="mt-4 space-y-3 text-sm">
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="home.html#about">公司简介</a></li>
+<li><a aria-current="page" class="text-white transition-colors" href="privacy.html">隐私声明</a></li>
+</ul>
+</div>
+</div>
+<div class="col-span-3 flex flex-col items-end">
+<h5 class="text-sm font-bold text-white">联系我们</h5>
+<ul class="mt-4 space-y-3 text-sm text-right">
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="mailto:info@huazhaoenergy.com">邮箱：info@huazhaoenergy.com</a></li>
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="https://wa.me/8617600085536" rel="noopener" target="_blank">whatsapp：+86 176 0008 5536</a></li>
+</ul>
+</div>
+</div>
+<p class="max-w-[1200px] mx-auto px-6 mt-12 text-center text-xs text-[#86909C]">© 2026 西安华昭新能源科技有限公司 版权所有</p>
+</footer>
+<script>
+    /* ---- Logo：images/logo.png，失败回退平台地址一次，再失败隐藏 ---- */
+    var HZ_IMGS = {
+      logo: { src: 'images/logo.png', fb: '/agent-py/media/generated_images/2026-10-23/ac9a035bd71945ad8e91cddabdaf131c.png', alt: 'HUAZHAO company logo' }
+    };
+    Array.prototype.forEach.call(document.querySelectorAll('[data-hz-img]'), function (el) {
+      var im = HZ_IMGS[el.getAttribute('data-hz-img')];
+      if (!im) return;
+      el.outerHTML = '<img class="' + el.className + '" src="' + im.src + '" data-fallback="' + im.fb + '" onerror="var f=this.getAttribute(\'data-fallback\');if(f){this.removeAttribute(\'data-fallback\');this.src=f;}else{this.style.visibility=\'hidden\';}" alt="' + im.alt + '">';
+    });
+  </script>
+<script>
+    /* ---- 中英文切换（与其它页面一致）：默认英文，选择记忆于 localStorage；正文按语言切换整块显示 ---- */
+    (function () {
+      var D = {
+        '隐私声明 | 华昭新能源 HUAZHAO': 'Privacy Policy | HUAZHAO New Energy',
+        'HUAZHAO 华昭新能源 首页': 'HUAZHAO New Energy Home',
+        '首页': 'Home', '产品中心': 'Products', '关于华昭': 'About Us', '联系我们': 'Contact Us',
+        '西安华昭新能源科技有限公司': "Xi'an Huazhao New Energy Technology Co., Ltd.", '太阳能光伏 · 储能电池': 'Solar PV · Energy Storage Batteries',
+        '© 2026 西安华昭新能源科技有限公司 版权所有': "\u00a9 2026 Xi'an Huazhao New Energy Technology Co., Ltd. All rights reserved.",
+        'OEM代工': 'OEM Services', 'OEM/ODM 贴牌': 'OEM/ODM Private Label', '光储系统配套': 'Solar + Storage Systems',
+        '公司简介': 'Company Profile', '隐私声明': 'Privacy Policy'
+      };
+      var F = { '邮箱：': 'Email: ', '：': ': ' };
+      var CJK = /[\u3000-\u303f\u3400-\u9fff\uff00-\uffef]/;
+      function norm(s) { return s.replace(/\s+/g, ''); }
+      var EXACT = {};
+      Object.keys(D).forEach(function (k) { EXACT[norm(k)] = D[k]; });
+      var FRAG = Object.keys(D).concat(Object.keys(F)).sort(function (a, b) { return b.length - a.length; });
+      function fragVal(k) { return Object.prototype.hasOwnProperty.call(F, k) ? F[k] : D[k]; }
+      function tr(s) {
+        var m = /^(\s*)([\s\S]*?)(\s*)$/.exec(s), core = m[2];
+        if (!CJK.test(core)) return s;
+        var out = EXACT[norm(core)];
+        if (out == null) {
+          out = core;
+          for (var j = 0; j < FRAG.length && CJK.test(out); j++) {
+            if (out.indexOf(FRAG[j]) > -1) out = out.split(FRAG[j]).join(fragVal(FRAG[j]));
+          }
+          out = out.replace(/ {2,}/g, ' ').trim();
+        }
+        return m[1] + out + m[3];
+      }
+      var lang = 'en';
+      try { lang = localStorage.getItem('hzLang') === 'zh' ? 'zh' : 'en'; } catch (e) {}
+      var ATTRS = ['placeholder', 'title', 'aria-label', 'alt'];
+      var SKIP = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, TEXTAREA: 1 };
+      function skipped(el) { return SKIP[el.tagName] || el.hasAttribute('data-i18n-skip'); }
+      function inSkip(el) { for (; el && el.nodeType === 1; el = el.parentNode) { if (skipped(el)) return true; } return false; }
+      function doText(n) {
+        var v = n.nodeValue;
+        if (lang === 'en') {
+          if (!CJK.test(v)) return;
+          var e = tr(v);
+          n.__hzZh = v; n.__hzEn = e;
+          if (e !== v) n.nodeValue = e;
+        } else if (n.__hzZh != null && v === n.__hzEn) {
+          n.nodeValue = n.__hzZh;
+        }
+      }
+      function doAttr(el, a) {
+        var v = el.getAttribute(a);
+        if (v == null) return;
+        var st = el.__hzA || (el.__hzA = {});
+        if (lang === 'en') {
+          if (!CJK.test(v)) return;
+          var e = tr(v);
+          st[a] = [v, e];
+          if (e !== v) el.setAttribute(a, e);
+        } else if (st[a] && v === st[a][1]) {
+          el.setAttribute(a, st[a][0]);
+        }
+      }
+      function doEl(el) { for (var i = 0; i < ATTRS.length; i++) doAttr(el, ATTRS[i]); }
+      function walk(root) {
+        if (root.nodeType === 3) { if (!inSkip(root.parentNode)) doText(root); return; }
+        if (root.nodeType !== 1 || inSkip(root)) return;
+        doEl(root);
+        var w = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
+          acceptNode: function (n) { return n.nodeType === 1 && skipped(n) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; }
+        });
+        var n;
+        while ((n = w.nextNode())) { if (n.nodeType === 3) doText(n); else doEl(n); }
+      }
+      var BTN_ON = 'h-7 px-3 rounded-full transition-colors bg-[#165DFF] text-white';
+      var BTN_OFF = 'h-7 px-3 rounded-full transition-colors text-[#4E5969] hover:text-[#165DFF]';
+      function apply() {
+        document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh-CN');
+        document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+          var on = b.getAttribute('data-lang-btn') === lang;
+          b.className = on ? BTN_ON : BTN_OFF;
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        document.querySelectorAll('[data-hz-lang-block]').forEach(function (b) {
+          b.classList.toggle('hidden', b.getAttribute('data-hz-lang-block') !== lang);
+        });
+        walk(document.documentElement);
+        document.documentElement.style.visibility = '';
+      }
+      window.hzSetLang = function (l) {
+        l = l === 'zh' ? 'zh' : 'en';
+        if (l === lang) return;
+        lang = l;
+        try { localStorage.setItem('hzLang', l); } catch (e) {}
+        apply();
+      };
+      apply();
+      new MutationObserver(function (list) {
+        list.forEach(function (r) {
+          if (r.type === 'childList') { for (var i = 0; i < r.addedNodes.length; i++) walk(r.addedNodes[i]); }
+          else if (r.type === 'characterData') walk(r.target);
+          else if (r.type === 'attributes' && !inSkip(r.target)) doAttr(r.target, r.attributeName);
+        });
+      }).observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ATTRS });
+    })();
+  </script>
+</body></html>

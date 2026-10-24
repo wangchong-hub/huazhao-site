@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>华昭新能源 HUAZHAO | 储能与光伏 OEM 解决方案</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: '#165DFF',
+        emerald: { 50: '#E8F3FF', 100: '#D4E5FF', 200: '#AECBFF', 300: '#7FAAFF', 400: '#4C86FF', 500: '#2E6FFF', 600: '#165DFF', 700: '#0E48D6', 800: '#0C3AA8', 900: '#0B2C7A', 950: '#0A192F' },
+        lime: { 50: '#F3FBEC', 100: '#E3F6D3', 200: '#C7EDA8', 300: '#95DE64', 400: '#73D13D', 500: '#52C41A', 600: '#389E0D', 700: '#237804', 800: '#135200', 900: '#0E3D00', 950: '#072600' },
+        slate: { 50: '#F4F7FC', 100: '#EEF1F6', 200: '#E5E6EB', 300: '#C9CDD4', 400: '#86909C', 500: '#86909C', 600: '#4E5969', 700: '#4E5969', 800: '#1D2129', 900: '#1D2129', 950: '#141720' }
+      },
+      boxShadow: {
+        card: '0 8px 24px rgba(22,93,255,0.06)',
+        sm: '0 8px 24px rgba(22,93,255,0.06)',
+        md: '0 8px 24px rgba(22,93,255,0.06)',
+        lg: '0 8px 24px rgba(22,93,255,0.10)',
+        xl: '0 12px 32px rgba(22,93,255,0.10)'
+      },
+      fontFamily: { sans: ['"PingFang SC"', '"Microsoft YaHei"', '"Helvetica Neue"', 'Arial', 'sans-serif'] },
+      fontWeight: { extrabold: '700', black: '700' },
+      lineHeight: { relaxed: '1.6' }
+    }
+  }
+};
+</script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+<script>
+  /* 语言预判：未选择中文（含首次访问）时先以英文状态隐藏页面，翻译完成后立即显示，避免中文闪烁 */
+  (function () {
+    var zh = false;
+    try { zh = localStorage.getItem('hzLang') === 'zh'; } catch (e) {}
+    if (zh) return;
+    var d = document.documentElement;
+    d.setAttribute('lang', 'en');
+    d.style.visibility = 'hidden';
+    setTimeout(function () { d.style.visibility = ''; }, 3000);
+  })();
+</script>
+</head>
+<body class="bg-white text-slate-900 antialiased leading-[1.6] font-normal">
+<!-- 渐变描边图标共享定义 -->
+<svg aria-hidden="true" class="absolute w-0 h-0">
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="hzIconGrad" x1="2" x2="22" y1="2" y2="22">
+<stop offset="0" stop-color="#165DFF"></stop>
+<stop offset="1" stop-color="#52C41A"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- ========== 顶部导航（三页共用） ========== -->
+<header class="sticky top-0 z-40 bg-white border-b border-[#E5E6EB]">
+<div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
+<a aria-label="HUAZHAO 华昭新能源 首页" class="flex items-center gap-2 h-[56px] shrink-0" href="home.html"><span class="relative block w-[60px] h-[52px] overflow-hidden bg-white shrink-0"><span class="absolute left-1/2 top-[-22px] w-[117px] h-[117px] max-w-none -translate-x-1/2 object-contain" data-hz-img="logo"></span></span><span class="text-[22px] leading-none font-bold tracking-wide text-[#1F6FE0]">HUAZHAO</span></a>
+<div class="flex items-center gap-10 h-full">
+<nav class="flex items-center gap-10 h-full text-[15px] font-medium whitespace-nowrap">
+<a class="relative h-full flex items-center text-[#165DFF] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:bg-[#165DFF]" data-nav="home" href="home.html">首页</a>
+<a class="relative h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" data-nav="product" href="#product-center">产品中心</a>
+<a class="relative h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" data-nav="about" href="home.html#about?render_html=true&amp;render_html=true&amp;render_html=true">关于华昭</a>
+</nav>
+<div aria-label="Language" class="flex items-center h-8 p-0.5 rounded-full border border-[#E5E6EB] bg-white text-[13px] font-medium whitespace-nowrap shrink-0" data-i18n-skip="" role="group">
+<button class="h-7 px-3 rounded-full transition-colors bg-[#165DFF] text-white" data-lang-btn="en" onclick="hzSetLang('en')" type="button">EN</button>
+<button class="h-7 px-3 rounded-full transition-colors text-[#4E5969] hover:text-[#165DFF]" data-lang-btn="zh" onclick="hzSetLang('zh')" type="button">中文</button>
+</div>
+</div>
+</div>
+</header>
+<main>
+<!-- ========== Hero ========== -->
+<section class="relative overflow-hidden bg-[linear-gradient(135deg,#0A192F_0%,#165DFF_100%)]">
+<span class="absolute inset-0 w-full h-full object-cover object-center" data-hz-img="banner"></span>
+<div class="pointer-events-none absolute inset-0 mix-blend-screen bg-[linear-gradient(90deg,rgba(64,150,255,0.85)_0%,rgba(64,150,255,0.6)_35%,rgba(64,150,255,0.2)_60%,rgba(64,150,255,0)_80%),radial-gradient(ellipse_at_top_left,rgba(96,170,255,0.7)_0%,rgba(96,170,255,0)_55%)]"></div>
+<div class="relative max-w-[1200px] mx-auto px-6 min-h-[540px] py-20 flex items-center [text-shadow:0_2px_12px_rgba(8,40,100,0.45)]">
+<div class="max-w-[680px]">
+<h1 class="text-[48px] [&amp;:lang(en)]:text-[40px] leading-[1.25] font-bold text-white">赋能零碳未来，领先的储能与光伏 OEM 解决方案</h1>
+<p class="mt-6 max-w-[680px] text-[20px] [&amp;:lang(en)]:text-[17px] leading-[1.6] font-bold text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">西安华昭新能源科技有限公司专注于太阳能光伏、储能及配套产品的研发、制造与国际分销。公司采用“工贸一体 + 战略制造基地”的运营模式，在中国拥有长期稳定的核心合作工厂，配备自动化生产线、专业检测设备和完善的质量管理体系，产品通过CE、MSDS、UN38.3等国际认证。</p>
+<div class="mt-12 flex items-center gap-4">
+<button class="h-12 px-8 rounded-lg bg-white text-[#165DFF] text-base font-bold flex items-center gap-2 hover:bg-[#E8F3FF] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200" onclick="openContact('plan')">获取报价<iconify-icon class="text-lg" icon="mdi:arrow-right"></iconify-icon></button>
+<button class="h-12 px-8 rounded-lg bg-transparent border-[1.5px] border-white text-white text-base font-bold hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200" onclick="openContact('contact')">联系我们</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== 核心优势 ========== -->
+<section class="scroll-mt-[72px] bg-[#F4F7FC] pt-12 pb-10" id="about">
+<span class="block relative -top-[72px]" id="oem"></span>
+<span class="block relative -top-[72px]" id="quality"></span>
+<div class="max-w-[1200px] mx-auto px-6">
+<div class="text-center">
+<h2 class="text-[32px] font-bold text-[#1D2129]" style="opacity: 1;">为什么选择华昭</h2><p class="mt-4 text-base text-[#4E5969]" style="opacity: 1;">从电芯到系统，从制造到交付，为全球渠道伙伴打造可贴牌、可追溯、可持续的新能源供应链</p>
+</div>
+<div class="mt-12 grid grid-cols-3 gap-6">
+<div class="rounded-2xl bg-white p-8 shadow-card border border-transparent transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[#D4E5FF]">
+<svg fill="none" height="48" stroke="url(#hzIconGrad)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="48">
+<path d="M3 21V10l5 3v-3l5 3V7l8 4v10H3z"></path>
+<path d="M7 17h2M12 17h2M17 17h1"></path>
+</svg>
+<h3 class="mt-6 text-xl font-bold text-[#1D2129]">工贸一体 · 战略制造基地</h3>
+<p class="mt-4 text-sm leading-[1.6] text-[#4E5969]">贸易端直面海外渠道需求，长期稳定的核心合作工厂保障产能与批次一致性，帮助渠道伙伴降低采购成本、缩短交付周期。</p>
+<div class="mt-6 flex flex-wrap gap-2 text-xs text-[#4E5969]">
+<span class="px-2 py-1 rounded bg-[#F4F7FC]">稳定产能</span><span class="px-2 py-1 rounded bg-[#F4F7FC]">出口包装</span><span class="px-2 py-1 rounded bg-[#F4F7FC]">国际分销</span>
+</div>
+</div>
+<div class="rounded-2xl bg-white p-8 shadow-card border border-transparent transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[#D4E5FF]">
+<svg fill="none" height="48" stroke="url(#hzIconGrad)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="48">
+<path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"></path>
+<path d="M8.5 12l2.5 2.5 4.5-5"></path>
+</svg>
+<h3 class="mt-6 text-xl font-bold text-[#1D2129]">全流程质控 · 国际认证</h3>
+<p class="mt-4 text-sm leading-[1.6] text-[#4E5969]">自动化产线与专业检测设备覆盖来料、制程到出厂检验，完善的质量管理体系让品质可追溯到批次；产品具备 CE、MSDS、UN38.3 认证，满足国际运输与市场准入。</p>
+<div class="mt-6 flex flex-wrap gap-2 text-xs text-[#4E5969]">
+<span class="px-2 py-1 rounded bg-[#F4F7FC]">CE</span><span class="px-2 py-1 rounded bg-[#F4F7FC]">MSDS</span><span class="px-2 py-1 rounded bg-[#F4F7FC]">UN38.3</span>
+</div>
+</div>
+<div class="rounded-2xl bg-white p-8 shadow-card border border-transparent transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[#D4E5FF]">
+<svg fill="none" height="48" stroke="url(#hzIconGrad)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="48">
+<path d="M12 3l9 5-9 5-9-5 9-5z"></path>
+<path d="M3 12.5l9 5 9-5"></path>
+<path d="M3 17l9 5 9-5"></path>
+</svg>
+<h3 class="mt-6 text-xl font-bold text-[#1D2129]">OEM全周期服务</h3>
+<p class="mt-4 text-sm leading-[1.6] text-[#4E5969]">品牌丝印、外观配色、包装与多语言说明书按需定制；同步提供光伏与储能系统方案配套、技术支持与售后保障，助力渠道伙伴建立本地品牌优势。</p>
+<div class="mt-6 flex flex-wrap gap-2 text-xs text-[#4E5969]">
+<span class="px-2 py-1 rounded bg-[#F4F7FC]">贴牌定制</span><span class="px-2 py-1 rounded bg-[#F4F7FC]">系统配套</span><span class="px-2 py-1 rounded bg-[#F4F7FC]">售后保障</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== 产品中心（15 款型号，按系列分组，图文左右交替） ========== -->
+<section class="scroll-mt-[72px] bg-[#F4F7FC] pt-10 pb-20" id="product-center">
+<div class="max-w-[1200px] mx-auto px-6">
+<div class="text-center">
+<h2 class="text-[32px] font-bold text-[#1D2129]">产品中心</h2>
+<p class="mt-4 text-base text-[#4E5969]">涵盖户用1.5-30kWh及工商业100-1000kWh多场景解决方案</p>
+</div>
+<div class="mt-8 flex items-center justify-center gap-3" id="pcVoltTabs"><button class="h-10 px-5 rounded-lg border text-sm font-bold transition-colors bg-[#165DFF] text-white border-[#165DFF]" onclick="setPcVolt('')">全部<span class="ml-1.5 text-xs opacity-70">15</span></button><button class="h-10 px-5 rounded-lg border text-sm font-bold transition-colors bg-white text-[#4E5969] border-[#E5E6EB] hover:border-[#165DFF] hover:text-[#165DFF]" onclick="setPcVolt('3.2')">3.2V<span class="ml-1.5 text-xs opacity-70">2</span></button><button class="h-10 px-5 rounded-lg border text-sm font-bold transition-colors bg-white text-[#4E5969] border-[#E5E6EB] hover:border-[#165DFF] hover:text-[#165DFF]" onclick="setPcVolt('12.8')">12.8V<span class="ml-1.5 text-xs opacity-70">3</span></button><button class="h-10 px-5 rounded-lg border text-sm font-bold transition-colors bg-white text-[#4E5969] border-[#E5E6EB] hover:border-[#165DFF] hover:text-[#165DFF]" onclick="setPcVolt('25.6')">25.6V<span class="ml-1.5 text-xs opacity-70">2</span></button><button class="h-10 px-5 rounded-lg border text-sm font-bold transition-colors bg-white text-[#4E5969] border-[#E5E6EB] hover:border-[#165DFF] hover:text-[#165DFF]" onclick="setPcVolt('51.2')">51.2V<span class="ml-1.5 text-xs opacity-70">8</span></button></div>
+<div class="mt-12 space-y-20" id="pcGroups"><div class="scroll-mt-[96px] grid grid-cols-2 gap-16 items-center" id="pc-F07"><div><div class="relative aspect-[4/3] rounded-2xl border-2 border-dashed border-[#AECBFF] bg-[linear-gradient(135deg,#E8F3FF_0%,#FFFFFF_100%)] flex flex-col items-center justify-center text-center overflow-hidden"><span class="absolute left-4 top-4 px-2 py-1 rounded bg-white text-xs font-bold text-[#165DFF]">F07 Series</span><span class="absolute right-4 top-4 px-2 py-1 rounded bg-[#165DFF]/10 text-xs font-bold text-[#165DFF]">占位图</span><span class="w-16 h-16 rounded-2xl bg-white shadow-card flex items-center justify-center"><iconify-icon class="text-3xl text-[#165DFF]" icon="mdi:image-outline"></iconify-icon></span><p class="mt-4 text-base font-bold text-[#1D2129]">3.2V 单体模组 产品图</p><p class="mt-1 text-sm text-[#86909C]">图片待提供，后续替换为实拍产品图</p><span class="absolute right-4 bottom-4 text-xs text-[#86909C]">建议比例 4:3</span></div></div><div><div class="flex items-center gap-3"><span class="text-sm font-bold text-[#165DFF]">01</span><span class="h-px w-8 bg-[#165DFF]"></span><span class="text-sm text-[#86909C]">F07 Series · 2 款型号</span></div><h3 class="mt-3 text-[28px] leading-[1.3] font-bold text-[#1D2129]">3.2V 单体模组</h3><p class="mt-4 text-base text-[#4E5969]">3.2V 电压平台、314Ah 容量规格的单体模组，结构紧凑，可作为电池包与储能系统的组配单元，支持 OEM 贴牌。</p><div class="mt-6 grid grid-cols-3 gap-4"><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">电压平台</p><p class="mt-1 text-base font-bold text-[#1D2129]">3.2V</p></div><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">容量规格</p><p class="mt-1 text-base font-bold text-[#1D2129]">314Ah</p></div><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">单机能量</p><p class="mt-1 text-base font-bold text-[#1D2129]">1.00 kWh</p></div></div><div class="mt-6 rounded-2xl bg-white shadow-card overflow-hidden"><div class="grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] gap-2 px-5 py-3 text-xs font-bold text-[#86909C] bg-[#F8FAFE]"><span>型号</span><span>电压 · 容量</span><span>能量</span><span>净重</span><span></span></div><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=1"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC F07-300</span><span class="text-[#4E5969]">3.2V · 314Ah</span><span class="text-[#4E5969]">1.00 kWh</span><span class="text-[#4E5969]">8.9kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=2"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC F07-500</span><span class="text-[#4E5969]">3.2V · 314Ah</span><span class="text-[#4E5969]">1.00 kWh</span><span class="text-[#4E5969]">12kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a></div><div class="mt-6 flex items-center gap-4"><a class="h-11 px-6 rounded-lg bg-[#165DFF] text-white text-sm font-bold flex items-center gap-1 hover:bg-[#0E48D6] transition-colors" href="product-detail.html?id=1">查看详情<iconify-icon class="text-base" icon="mdi:arrow-right"></iconify-icon></a><button class="h-11 px-6 rounded-lg border border-[#E5E6EB] bg-white text-sm font-bold text-[#4E5969] hover:border-[#165DFF] hover:text-[#165DFF] transition-colors" onclick="inquireGroup('F07')">询价该系列</button></div></div></div><div class="scroll-mt-[96px] grid grid-cols-2 gap-16 items-center" id="pc-F06"><div><div class="flex items-center gap-3"><span class="text-sm font-bold text-[#165DFF]">02</span><span class="h-px w-8 bg-[#165DFF]"></span><span class="text-sm text-[#86909C]">F06 Series · 3 款型号</span></div><h3 class="mt-3 text-[28px] leading-[1.3] font-bold text-[#1D2129]">12.8V 低压电池</h3><p class="mt-4 text-base text-[#4E5969]">12.8V 低压平台，提供 100Ah / 200Ah / 314Ah 三档容量，适用于小型离网储能、备用电源等低压应用场景。</p><div class="mt-6 grid grid-cols-3 gap-4"><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">电压平台</p><p class="mt-1 text-base font-bold text-[#1D2129]">12.8V</p></div><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">容量规格</p><p class="mt-1 text-base font-bold text-[#1D2129]">100 / 200 / 314Ah</p></div><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">单机能量</p><p class="mt-1 text-base font-bold text-[#1D2129]">1.28 – 4.02 kWh</p></div></div><div class="mt-6 rounded-2xl bg-white shadow-card overflow-hidden"><div class="grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] gap-2 px-5 py-3 text-xs font-bold text-[#86909C] bg-[#F8FAFE]"><span>型号</span><span>电压 · 容量</span><span>能量</span><span>净重</span><span></span></div><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=3"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F06-1280</span><span class="text-[#4E5969]">12.8V · 100Ah</span><span class="text-[#4E5969]">1.28 kWh</span><span class="text-[#4E5969]">12.5kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=4"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F06-2560</span><span class="text-[#4E5969]">12.8V · 200Ah</span><span class="text-[#4E5969]">2.56 kWh</span><span class="text-[#4E5969]">23kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=5"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F06-4020</span><span class="text-[#4E5969]">12.8V · 314Ah</span><span class="text-[#4E5969]">4.02 kWh</span><span class="text-[#4E5969]">32kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a></div><div class="mt-6 flex items-center gap-4"><a class="h-11 px-6 rounded-lg bg-[#165DFF] text-white text-sm font-bold flex items-center gap-1 hover:bg-[#0E48D6] transition-colors" href="product-detail.html?id=3">查看详情<iconify-icon class="text-base" icon="mdi:arrow-right"></iconify-icon></a><button class="h-11 px-6 rounded-lg border border-[#E5E6EB] bg-white text-sm font-bold text-[#4E5969] hover:border-[#165DFF] hover:text-[#165DFF] transition-colors" onclick="inquireGroup('F06')">询价该系列</button></div></div><div><div class="relative aspect-[4/3] rounded-2xl border-2 border-dashed border-[#AECBFF] bg-[linear-gradient(135deg,#E8F3FF_0%,#FFFFFF_100%)] flex flex-col items-center justify-center text-center overflow-hidden"><span class="absolute left-4 top-4 px-2 py-1 rounded bg-white text-xs font-bold text-[#165DFF]">F06 Series</span><span class="absolute right-4 top-4 px-2 py-1 rounded bg-[#165DFF]/10 text-xs font-bold text-[#165DFF]">占位图</span><span class="w-16 h-16 rounded-2xl bg-white shadow-card flex items-center justify-center"><iconify-icon class="text-3xl text-[#165DFF]" icon="mdi:image-outline"></iconify-icon></span><p class="mt-4 text-base font-bold text-[#1D2129]">12.8V 低压电池 产品图</p><p class="mt-1 text-sm text-[#86909C]">图片待提供，后续替换为实拍产品图</p><span class="absolute right-4 bottom-4 text-xs text-[#86909C]">建议比例 4:3</span></div></div></div><div class="scroll-mt-[96px] grid grid-cols-2 gap-16 items-center" id="pc-F01"><div><div class="relative aspect-[4/3] rounded-2xl border-2 border-dashed border-[#AECBFF] bg-[linear-gradient(135deg,#E8F3FF_0%,#FFFFFF_100%)] flex flex-col items-center justify-center text-center overflow-hidden"><span class="absolute left-4 top-4 px-2 py-1 rounded bg-white text-xs font-bold text-[#165DFF]">F01 Series</span><span class="absolute right-4 top-4 px-2 py-1 rounded bg-[#165DFF]/10 text-xs font-bold text-[#165DFF]">占位图</span><span class="w-16 h-16 rounded-2xl bg-white shadow-card flex items-center justify-center"><iconify-icon class="text-3xl text-[#165DFF]" icon="mdi:image-outline"></iconify-icon></span><p class="mt-4 text-base font-bold text-[#1D2129]">F01 储能电池 产品图</p><p class="mt-1 text-sm text-[#86909C]">图片待提供，后续替换为实拍产品图</p><span class="absolute right-4 bottom-4 text-xs text-[#86909C]">建议比例 4:3</span></div></div><div><div class="flex items-center gap-3"><span class="text-sm font-bold text-[#165DFF]">03</span><span class="h-px w-8 bg-[#165DFF]"></span><span class="text-sm text-[#86909C]">F01 Series · 3 款型号</span></div><h3 class="mt-3 text-[28px] leading-[1.3] font-bold text-[#1D2129]">F01 储能电池</h3><p class="mt-4 text-base text-[#4E5969]">覆盖 25.6V 与 51.2V 两个电压平台，100Ah – 314Ah 多档容量可选，适用于户用储能与小型商用备电。</p><div class="mt-6 grid grid-cols-3 gap-4"><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">电压平台</p><p class="mt-1 text-base font-bold text-[#1D2129]">25.6V / 51.2V</p></div><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">容量规格</p><p class="mt-1 text-base font-bold text-[#1D2129]">314 / 100 / 200Ah</p></div><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">单机能量</p><p class="mt-1 text-base font-bold text-[#1D2129]">5.12 – 10.24 kWh</p></div></div><div class="mt-6 rounded-2xl bg-white shadow-card overflow-hidden"><div class="grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] gap-2 px-5 py-3 text-xs font-bold text-[#86909C] bg-[#F8FAFE]"><span>型号</span><span>电压 · 容量</span><span>能量</span><span>净重</span><span></span></div><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=6"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F01-25.6314</span><span class="text-[#4E5969]">25.6V · 314Ah</span><span class="text-[#4E5969]">8.04 kWh</span><span class="text-[#4E5969]">62kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=7"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F01-51.2100</span><span class="text-[#4E5969]">51.2V · 100Ah</span><span class="text-[#4E5969]">5.12 kWh</span><span class="text-[#4E5969]">43.2kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=8"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F01-51.2200-B</span><span class="text-[#4E5969]">51.2V · 200Ah</span><span class="text-[#4E5969]">10.24 kWh</span><span class="text-[#4E5969]">81.5kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a></div><div class="mt-6 flex items-center gap-4"><a class="h-11 px-6 rounded-lg bg-[#165DFF] text-white text-sm font-bold flex items-center gap-1 hover:bg-[#0E48D6] transition-colors" href="product-detail.html?id=6">查看详情<iconify-icon class="text-base" icon="mdi:arrow-right"></iconify-icon></a><button class="h-11 px-6 rounded-lg border border-[#E5E6EB] bg-white text-sm font-bold text-[#4E5969] hover:border-[#165DFF] hover:text-[#165DFF] transition-colors" onclick="inquireGroup('F01')">询价该系列</button></div></div></div><div class="scroll-mt-[96px] grid grid-cols-2 gap-16 items-center" id="pc-F02"><div><div class="flex items-center gap-3"><span class="text-sm font-bold text-[#165DFF]">04</span><span class="h-px w-8 bg-[#165DFF]"></span><span class="text-sm text-[#86909C]">F02 Series · 3 款型号</span></div><h3 class="mt-3 text-[28px] leading-[1.3] font-bold text-[#1D2129]">F02 储能电池</h3><p class="mt-4 text-base text-[#4E5969]">51.2V 电压平台，100Ah / 200Ah / 314Ah 三档容量，单机能量 5.12 – 16.08kWh，适合户用储能系统配套。</p><div class="mt-6 grid grid-cols-3 gap-4"><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">电压平台</p><p class="mt-1 text-base font-bold text-[#1D2129]">51.2V</p></div><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">容量规格</p><p class="mt-1 text-base font-bold text-[#1D2129]">100 / 200 / 314Ah</p></div><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">单机能量</p><p class="mt-1 text-base font-bold text-[#1D2129]">5.12 – 16.08 kWh</p></div></div><div class="mt-6 rounded-2xl bg-white shadow-card overflow-hidden"><div class="grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] gap-2 px-5 py-3 text-xs font-bold text-[#86909C] bg-[#F8FAFE]"><span>型号</span><span>电压 · 容量</span><span>能量</span><span>净重</span><span></span></div><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=9"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F02-51.2100</span><span class="text-[#4E5969]">51.2V · 100Ah</span><span class="text-[#4E5969]">5.12 kWh</span><span class="text-[#4E5969]">42.7kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=13"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F02-51.2200-B</span><span class="text-[#4E5969]">51.2V · 200Ah</span><span class="text-[#4E5969]">10.24 kWh</span><span class="text-[#4E5969]">83kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=14"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F02-51.2314</span><span class="text-[#4E5969]">51.2V · 314Ah</span><span class="text-[#4E5969]">16.08 kWh</span><span class="text-[#4E5969]">111.7kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a></div><div class="mt-6 flex items-center gap-4"><a class="h-11 px-6 rounded-lg bg-[#165DFF] text-white text-sm font-bold flex items-center gap-1 hover:bg-[#0E48D6] transition-colors" href="product-detail.html?id=9">查看详情<iconify-icon class="text-base" icon="mdi:arrow-right"></iconify-icon></a><button class="h-11 px-6 rounded-lg border border-[#E5E6EB] bg-white text-sm font-bold text-[#4E5969] hover:border-[#165DFF] hover:text-[#165DFF] transition-colors" onclick="inquireGroup('F02')">询价该系列</button></div></div><div><div class="relative aspect-[4/3] rounded-2xl border-2 border-dashed border-[#AECBFF] bg-[linear-gradient(135deg,#E8F3FF_0%,#FFFFFF_100%)] flex flex-col items-center justify-center text-center overflow-hidden"><span class="absolute left-4 top-4 px-2 py-1 rounded bg-white text-xs font-bold text-[#165DFF]">F02 Series</span><span class="absolute right-4 top-4 px-2 py-1 rounded bg-[#165DFF]/10 text-xs font-bold text-[#165DFF]">占位图</span><span class="w-16 h-16 rounded-2xl bg-white shadow-card flex items-center justify-center"><iconify-icon class="text-3xl text-[#165DFF]" icon="mdi:image-outline"></iconify-icon></span><p class="mt-4 text-base font-bold text-[#1D2129]">F02 储能电池 产品图</p><p class="mt-1 text-sm text-[#86909C]">图片待提供，后续替换为实拍产品图</p><span class="absolute right-4 bottom-4 text-xs text-[#86909C]">建议比例 4:3</span></div></div></div><div class="scroll-mt-[96px] grid grid-cols-2 gap-16 items-center" id="pc-F03"><div><div class="relative aspect-[4/3] rounded-2xl border-2 border-dashed border-[#AECBFF] bg-[linear-gradient(135deg,#E8F3FF_0%,#FFFFFF_100%)] flex flex-col items-center justify-center text-center overflow-hidden"><span class="absolute left-4 top-4 px-2 py-1 rounded bg-white text-xs font-bold text-[#165DFF]">F03 Series</span><span class="absolute right-4 top-4 px-2 py-1 rounded bg-[#165DFF]/10 text-xs font-bold text-[#165DFF]">占位图</span><span class="w-16 h-16 rounded-2xl bg-white shadow-card flex items-center justify-center"><iconify-icon class="text-3xl text-[#165DFF]" icon="mdi:image-outline"></iconify-icon></span><p class="mt-4 text-base font-bold text-[#1D2129]">F03 移动机柜 产品图</p><p class="mt-1 text-sm text-[#86909C]">图片待提供，后续替换为实拍产品图</p><span class="absolute right-4 bottom-4 text-xs text-[#86909C]">建议比例 4:3</span></div></div><div><div class="flex items-center gap-3"><span class="text-sm font-bold text-[#165DFF]">05</span><span class="h-px w-8 bg-[#165DFF]"></span><span class="text-sm text-[#86909C]">F03 Series · 2 款型号</span></div><h3 class="mt-3 text-[28px] leading-[1.3] font-bold text-[#1D2129]">F03 移动机柜</h3><p class="mt-4 text-base text-[#4E5969]">51.2V 带轮移动机柜，314Ah / 628Ah 两档容量，便于现场搬运与部署，适用于工商业储能与应急备电。</p><div class="mt-6 grid grid-cols-3 gap-4"><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">电压平台</p><p class="mt-1 text-base font-bold text-[#1D2129]">51.2V</p></div><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">容量规格</p><p class="mt-1 text-base font-bold text-[#1D2129]">628 / 314Ah</p></div><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">单机能量</p><p class="mt-1 text-base font-bold text-[#1D2129]">16.08 – 32.15 kWh</p></div></div><div class="mt-6 rounded-2xl bg-white shadow-card overflow-hidden"><div class="grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] gap-2 px-5 py-3 text-xs font-bold text-[#86909C] bg-[#F8FAFE]"><span>型号</span><span>电压 · 容量</span><span>能量</span><span>净重</span><span></span></div><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=10"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F03-51.2628</span><span class="text-[#4E5969]">51.2V · 628Ah</span><span class="text-[#4E5969]">32.15 kWh</span><span class="text-[#4E5969]">239kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=15"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F03-51.2314</span><span class="text-[#4E5969]">51.2V · 314Ah</span><span class="text-[#4E5969]">16.08 kWh</span><span class="text-[#4E5969]">120kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a></div><div class="mt-6 flex items-center gap-4"><a class="h-11 px-6 rounded-lg bg-[#165DFF] text-white text-sm font-bold flex items-center gap-1 hover:bg-[#0E48D6] transition-colors" href="product-detail.html?id=10">查看详情<iconify-icon class="text-base" icon="mdi:arrow-right"></iconify-icon></a><button class="h-11 px-6 rounded-lg border border-[#E5E6EB] bg-white text-sm font-bold text-[#4E5969] hover:border-[#165DFF] hover:text-[#165DFF] transition-colors" onclick="inquireGroup('F03')">询价该系列</button></div></div></div><div class="scroll-mt-[96px] grid grid-cols-2 gap-16 items-center" id="pc-F09"><div><div class="flex items-center gap-3"><span class="text-sm font-bold text-[#165DFF]">06</span><span class="h-px w-8 bg-[#165DFF]"></span><span class="text-sm text-[#86909C]">F09 Series · 2 款型号</span></div><h3 class="mt-3 text-[28px] leading-[1.3] font-bold text-[#1D2129]">F09 储能系统</h3><p class="mt-4 text-base text-[#4E5969]">一体化储能系统，提供 25.6V 314Ah（约 8kWh）与 51.2V 625Ah（约 32kWh）两种配置，适用于户用及工商业储能。</p><div class="mt-6 grid grid-cols-3 gap-4"><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">电压平台</p><p class="mt-1 text-base font-bold text-[#1D2129]">25.6V / 51.2V</p></div><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">容量规格</p><p class="mt-1 text-base font-bold text-[#1D2129]">314 / 625Ah</p></div><div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">单机能量</p><p class="mt-1 text-base font-bold text-[#1D2129]">8.04 – 32.00 kWh</p></div></div><div class="mt-6 rounded-2xl bg-white shadow-card overflow-hidden"><div class="grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] gap-2 px-5 py-3 text-xs font-bold text-[#86909C] bg-[#F8FAFE]"><span>型号</span><span>电压 · 容量</span><span>能量</span><span>净重</span><span></span></div><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=11"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F09-3.2K-8kWh</span><span class="text-[#4E5969]">25.6V · 314Ah</span><span class="text-[#4E5969]">8.04 kWh</span><span class="text-[#4E5969]">86.32kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a><a class="group/row grid grid-cols-[1.7fr_1.1fr_0.9fr_0.9fr_24px] items-center gap-2 px-5 py-3 text-sm border-t border-[#F2F3F5] hover:bg-[#E8F3FF] transition-colors" href="product-detail.html?id=12"><span class="font-bold text-[#1D2129] group-hover/row:text-[#165DFF]">WKC-F09-12K-32kWh</span><span class="text-[#4E5969]">51.2V · 625Ah</span><span class="text-[#4E5969]">32.00 kWh</span><span class="text-[#4E5969]">259.5kg</span><iconify-icon class="text-base text-[#86909C] transition-transform group-hover/row:translate-x-1 group-hover/row:text-[#165DFF]" icon="mdi:chevron-right"></iconify-icon></a></div><div class="mt-6 flex items-center gap-4"><a class="h-11 px-6 rounded-lg bg-[#165DFF] text-white text-sm font-bold flex items-center gap-1 hover:bg-[#0E48D6] transition-colors" href="product-detail.html?id=11">查看详情<iconify-icon class="text-base" icon="mdi:arrow-right"></iconify-icon></a><button class="h-11 px-6 rounded-lg border border-[#E5E6EB] bg-white text-sm font-bold text-[#4E5969] hover:border-[#165DFF] hover:text-[#165DFF] transition-colors" onclick="inquireGroup('F09')">询价该系列</button></div></div><div><div class="relative aspect-[4/3] rounded-2xl border-2 border-dashed border-[#AECBFF] bg-[linear-gradient(135deg,#E8F3FF_0%,#FFFFFF_100%)] flex flex-col items-center justify-center text-center overflow-hidden"><span class="absolute left-4 top-4 px-2 py-1 rounded bg-white text-xs font-bold text-[#165DFF]">F09 Series</span><span class="absolute right-4 top-4 px-2 py-1 rounded bg-[#165DFF]/10 text-xs font-bold text-[#165DFF]">占位图</span><span class="w-16 h-16 rounded-2xl bg-white shadow-card flex items-center justify-center"><iconify-icon class="text-3xl text-[#165DFF]" icon="mdi:image-outline"></iconify-icon></span><p class="mt-4 text-base font-bold text-[#1D2129]">F09 储能系统 产品图</p><p class="mt-1 text-sm text-[#86909C]">图片待提供，后续替换为实拍产品图</p><span class="absolute right-4 bottom-4 text-xs text-[#86909C]">建议比例 4:3</span></div></div></div></div>
+<div class="hidden mt-12 rounded-2xl bg-white p-12 text-center shadow-card" id="pcEmpty">
+<span class="mx-auto w-14 h-14 rounded-2xl bg-[#E8F3FF] text-[#165DFF] flex items-center justify-center"><iconify-icon class="text-3xl" icon="mdi:battery-off-outline"></iconify-icon></span>
+<p class="mt-4 text-base font-bold text-[#1D2129]">没有找到匹配的型号</p>
+<p class="mt-1 text-sm text-[#86909C]">请调整电压平台或搜索关键词，也可提交询盘咨询定制规格</p>
+<button class="mt-6 h-11 px-6 rounded-lg border border-[#E5E6EB] text-sm font-bold text-[#4E5969] hover:border-[#165DFF] hover:text-[#165DFF] transition-colors" onclick="resetPcFilter()">查看全部型号</button>
+</div>
+</div>
+</section>
+<!-- ========== 数据背书 ========== -->
+<section class="bg-[linear-gradient(90deg,#00B4D8_0%,#52C41A_100%)] py-20">
+<p class="max-w-[1200px] mx-auto px-6 text-center text-[40px] leading-[1.3] font-bold text-white">你可以拿到最好的质量和价格</p>
+</section>
+</main>
+<!-- ========== 页脚（三页共用） ========== -->
+<footer class="bg-[#1D2129] py-16">
+<div class="max-w-[1200px] mx-auto px-6 grid grid-cols-12 gap-8">
+<div class="col-span-4">
+<a aria-label="HUAZHAO 华昭新能源 首页" class="inline-flex items-center rounded-lg bg-white px-3 py-1" href="home.html"><span class="relative block w-[108px] h-[72px] overflow-hidden"><span class="absolute left-1/2 top-1/2 w-[150px] h-[150px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain" data-hz-img="logo"></span></span></a>
+<p class="mt-4 text-sm leading-[1.6] text-[#86909C]">西安华昭新能源科技有限公司<br/>太阳能光伏 · 储能电池</p>
+</div>
+<div class="col-span-5 grid grid-cols-2 gap-8">
+<div>
+<h5 class="text-sm font-bold text-white">OEM代工</h5>
+<ul class="mt-4 space-y-3 text-sm">
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="home.html#oem?render_html=true&amp;render_html=true&amp;render_html=true">OEM/ODM 贴牌</a></li>
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="home.html#solar?render_html=true&amp;render_html=true&amp;render_html=true">光储系统配套</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-sm font-bold text-white">关于华昭</h5>
+<ul class="mt-4 space-y-3 text-sm">
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="home.html#about?render_html=true&amp;render_html=true&amp;render_html=true">公司简介</a></li>
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="privacy.html">隐私声明</a></li>
+</ul>
+</div>
+</div>
+<div class="col-span-3 flex flex-col items-end">
+<h5 class="text-sm font-bold text-white">联系我们</h5>
+<ul class="mt-4 space-y-3 text-sm text-right">
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="mailto:info@huazhaoenergy.com">邮箱：info@huazhaoenergy.com</a></li>
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="https://wa.me/8617600085536" rel="noopener" target="_blank">whatsapp：+86 176 0008 5536</a></li>
+</ul>
+</div>
+</div>
+<p class="max-w-[1200px] mx-auto px-6 mt-12 text-center text-xs text-[#86909C]">© 2026 西安华昭新能源科技有限公司 版权所有</p>
+</footer>
+<!-- ========== 询盘弹窗 ========== -->
+<div class="hidden fixed inset-0 z-50 bg-[#0A192F]/50 items-center justify-center" id="contactModal" onclick="if(event.target===this)closeContact()">
+<div class="w-[640px] max-h-[90vh] overflow-y-auto [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden rounded-2xl bg-white shadow-card">
+<div class="px-8 h-16 flex items-center justify-between border-b border-[#E5E6EB]">
+<h3 class="text-lg font-bold text-[#1D2129]" id="contactTitle">获取储能与光伏解决方案</h3>
+<button aria-label="关闭" class="w-9 h-9 rounded-lg hover:bg-[#F4F7FC] flex items-center justify-center transition-colors" onclick="closeContact()"><iconify-icon class="text-xl text-[#4E5969]" icon="mdi:close"></iconify-icon></button>
+</div>
+<div class="p-8">
+<ul class="space-y-3">
+<li class="flex items-center gap-4 h-14 px-5 rounded-lg border border-[#E5E6EB]"><iconify-icon class="text-xl text-[#165DFF]" icon="mdi:email-outline"></iconify-icon><span class="w-20 [&amp;:lang(en)]:w-28 shrink-0 whitespace-nowrap text-sm text-[#4E5969]">公司邮箱：</span><a class="text-sm font-bold text-[#1D2129] hover:text-[#165DFF] transition-colors" href="mailto:info@huazhaoenergy.com">info@huazhaoenergy.com</a></li>
+<li class="flex items-center gap-4 h-14 px-5 rounded-lg border border-[#E5E6EB]"><iconify-icon class="text-xl text-[#165DFF]" icon="mdi:account-tie-outline"></iconify-icon><span class="w-20 [&amp;:lang(en)]:w-28 shrink-0 whitespace-nowrap text-sm text-[#4E5969]">销售总监：</span><a class="text-sm font-bold text-[#1D2129] hover:text-[#165DFF] transition-colors" href="mailto:wangchong@huazhaoenergy.com">wangchong@huazhaoenergy.com</a></li>
+<li class="flex items-center gap-4 h-14 px-5 rounded-lg border border-[#E5E6EB]"><iconify-icon class="text-xl text-[#165DFF]" icon="mdi:whatsapp"></iconify-icon><span class="w-20 [&amp;:lang(en)]:w-28 shrink-0 whitespace-nowrap text-sm text-[#4E5969]">whatsapp：</span><a class="text-sm font-bold text-[#1D2129] hover:text-[#165DFF] transition-colors" href="https://wa.me/8617600085536" rel="noopener" target="_blank">+86 176 0008 5536</a></li>
+</ul>
+<div class="flex justify-end pt-6">
+<button class="h-11 px-8 rounded-lg bg-[#165DFF] text-white text-sm font-bold hover:bg-[#0E48D6] active:scale-[0.98] transition-all" onclick="closeContact()" type="button">关闭</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden fixed top-24 left-1/2 -translate-x-1/2 z-[60] px-5 py-3 rounded-lg bg-slate-900 text-white text-sm shadow-xl flex items-center gap-2" id="toast">
+<iconify-icon class="text-lime-500 text-lg" icon="mdi:check-circle"></iconify-icon><span id="toastText"></span>
+</div>
+<script>
+    /* ---- Logo / 首页大图：与产品轮播一致，由脚本写入原图 ---- */
+    var HZ_IMGS = {
+      logo: { src: 'images/logo.png', fb: '/agent-py/media/generated_images/2026-10-23/ac9a035bd71945ad8e91cddabdaf131c.png', alt: 'HUAZHAO company logo' },
+      banner: { src: 'images/banner.png', fb: '/agent-py/media/generated_images/2026-10-23/a4f78281c1c34e5eb9d480b2cd085fe6.png', alt: 'Huazhao new energy containerized battery storage cabinets with solar panel array and wind turbines' }
+    };
+    Array.prototype.forEach.call(document.querySelectorAll('[data-hz-img]'), function (el) {
+      var im = HZ_IMGS[el.getAttribute('data-hz-img')];
+      if (!im) return;
+      el.outerHTML = '<img class="' + el.className + '" src="' + im.src + '" data-fallback="' + im.fb + '" onerror="var f=this.getAttribute(\'data-fallback\');if(f){this.removeAttribute(\'data-fallback\');this.src=f;}else{this.style.visibility=\'hidden\';}" alt="' + im.alt + '">';
+    });
+
+    var PRODUCTS = [
+      { id: 1, model: 'WKC F07-300', series: 'F07', v: 3.2, ah: 314, nw: '8.9kg', gw: '10.5kg', size: '230x145x290mm', pack: '纸箱 270x185x370mm' },
+      { id: 2, model: 'WKC F07-500', series: 'F07', v: 3.2, ah: 314, nw: '12kg', gw: '13.7kg', size: '230x150x310mm', pack: '纸箱 280x185x380mm' },
+      { id: 3, model: 'WKC-F06-1280', series: 'F06', v: 12.8, ah: 100, nw: '12.5kg', gw: '14.1kg', size: '330x180x190mm', pack: '纸箱 400x255x270mm' },
+      { id: 4, model: 'WKC-F06-2560', series: 'F06', v: 12.8, ah: 200, nw: '23kg', gw: '24.5kg', size: '545x200x215mm', pack: '纸箱 615x270x295mm' },
+      { id: 5, model: 'WKC-F06-4020', series: 'F06', v: 12.8, ah: 314, nw: '32kg', gw: '33.5kg', size: '430x220x290mm', pack: '纸箱 500x290x370mm' },
+      { id: 6, model: 'WKC-F01-25.6314', series: 'F01', v: 25.6, ah: 314, nw: '62kg', gw: '77kg', size: '440x235x520mm', pack: '木箱 620x540x467mm' },
+      { id: 7, model: 'WKC-F01-51.2100', series: 'F01', v: 51.2, ah: 100, nw: '43.2kg', gw: '48.15kg', size: '380x148x615mm', pack: '纸箱 720*520*270/380（含木托）mm' },
+      { id: 8, model: 'WKC-F01-51.2200-B', series: 'F01', v: 51.2, ah: 200, nw: '81.5kg', gw: '104.15kg', size: '550*148*780mm', pack: '木箱 870*645*280/390（含木托）mm' },
+      { id: 9, model: 'WKC-F02-51.2100', series: 'F02', v: 51.2, ah: 100, nw: '42.7kg', gw: '47.5kg', size: '440x550x140mm', pack: '纸箱 720*520*270/380（含木托）mm' },
+      { id: 10, model: 'WKC-F03-51.2628', series: 'F03', v: 51.2, ah: 628, nw: '239kg', gw: '260.4kg', size: '460*774*600/680mm（纯机箱/含轮子）', pack: '木箱 880*560*720/830（含木托）mm' },
+      { id: 11, model: 'WKC-F09-3.2K-8kWh', series: 'F09', v: 25.6, ah: 314, nw: '86.32kg', gw: '104.8kg', size: '235x480x910mm', pack: '木箱 1020x590x490mm' },
+      { id: 12, model: 'WKC-F09-12K-32kWh', series: 'F09', v: 51.2, ah: 625, nw: '259.5kg', gw: '/', size: '722*744*500mm', pack: '木箱 /' },
+      { id: 13, model: 'WKC-F02-51.2200-B', series: 'F02', v: 51.2, ah: 200, nw: '83kg', gw: '98kg', size: '530x720x140mm', pack: '木箱 870*645*280/390（含木托）mm' },
+      { id: 14, model: 'WKC-F02-51.2314', series: 'F02', v: 51.2, ah: 314, nw: '111.7kg', gw: '128.5kg', size: '440x780x235mm', pack: '木箱 860×530×355/465（含木托）mm' },
+      { id: 15, model: 'WKC-F03-51.2314', series: 'F03', v: 51.2, ah: 314, nw: '120kg', gw: '140.4kg', size: '600x230x615/700mm（纯机箱/含轮子）', pack: '木箱 770*710*380/490（含木托）mm' }
+    ];
+
+    function findProduct(id) {
+      for (var i = 0; i < PRODUCTS.length; i++) { if (PRODUCTS[i].id === id) return PRODUCTS[i]; }
+      return null;
+    }
+
+    function batteryVisual(p) {
+      var s = p.series;
+      if (s === 'F09') {
+        var block = '<div class="w-24 h-8 rounded-md bg-gradient-to-b from-slate-600 to-slate-800 border border-slate-500 flex items-center px-2 gap-1"><span class="w-1.5 h-1.5 rounded-full bg-lime-500"></span><span class="h-1 flex-1 rounded bg-emerald-500/60"></span></div>';
+        return '<div class="flex flex-col gap-1">' + block + block + block + '</div>';
+      }
+      var shapes = { F07: 'w-14 h-24', F06: 'w-28 h-20', F01: 'w-20 h-28', F02: 'w-32 h-[72px]', F03: 'w-24 h-28' };
+      var terms = '';
+      if (s === 'F07' || s === 'F06') {
+        terms = '<div class="w-full flex justify-between px-2"><span class="w-3 h-2 rounded-t bg-red-500"></span><span class="w-3 h-2 rounded-t bg-slate-400"></span></div>';
+      }
+      var body = '<div class="' + shapes[s] + ' rounded-lg bg-gradient-to-b from-slate-600 to-slate-900 border border-slate-500 shadow-xl flex flex-col items-center justify-center gap-1"><span class="w-2 h-2 rounded-full bg-lime-500"></span><span class="text-[8px] tracking-widest text-emerald-300 font-bold">HUAZHAO</span><span class="w-3/4 h-1 rounded bg-gradient-to-r from-[#00B4D8] to-[#52C41A]"></span><span class="text-[9px] text-slate-300">' + p.v + 'V</span></div>';
+      var wheels = '';
+      if (s === 'F03') {
+        wheels = '<div class="w-full flex justify-between px-2 -mt-0.5"><span class="w-3 h-3 rounded-full bg-slate-700 border-2 border-slate-400"></span><span class="w-3 h-3 rounded-full bg-slate-700 border-2 border-slate-400"></span></div>';
+      }
+      return '<div class="inline-flex flex-col items-center">' + terms + body + wheels + '</div>';
+    }
+
+    /* ---- 产品中心：按系列分组，图文左右交替 ---- */
+    var PC_GROUPS = [
+      { key: 'F07', name: 'F07系列 便携式 1kWh', tag: 'F07 Series', desc: 'F07便携式电源系列产品采用模拟与数字化结合的控制技术，软硬多重完善保护，可以高效地控制太阳能、市电、电池储能与负载之间的能量转换，峰值效率最高达90%以上' },
+      { key: 'F06', name: 'F01系列 壁挂式 5kWh', tag: 'F06 Series', desc: '产品采用壁挂式圆弧设计、造型美观；匹配市场所有主流逆变器通讯协议；采用全方位、多层次的电池保护策略和故障隔离措施，保证系统安全运行。广泛应用于家庭储能系统中，给用户极致的用电体验。' },
+      { key: 'F02R', name: 'F02系列 机架式 5kWh', tag: 'F02 Series', tier: '5', desc: '产品采用机架式设计、可内置19英寸机柜中；匹配市场所有主流逆变器通讯协议；采用全方位、多层次的电池保护策略和故障隔离措施，保证系统安全运行。广泛应用于通信备电领域及家庭储能系统中，给用户极致的用电体验。' },
+      { key: 'F01', name: 'F01系列 壁挂式 8kWh', tag: 'F01 Series', desc: '产品采用壁挂式圆弧设计、造型美观；匹配市场所有主流逆变器通讯协议；采用全方位、多层次的电池保护策略和故障隔离措施，保证系统安全运行。广泛应用于家庭储能系统中，给用户极致的用电体验。' },
+      { key: 'F02', name: 'F01系列 壁挂式 10kWh', tag: 'F02 Series', desc: '产品采用壁挂式圆弧设计、造型美观；匹配市场所有主流逆变器通讯协议；采用全方位、多层次的电池保护策略和故障隔离措施，保证系统安全运行。广泛应用于家庭储能系统中，给用户极致的用电体验。' },
+      { key: 'F03', name: 'F03系列 轮式 16kWh', tag: 'F03 Series', desc: '产品采用轮式圆弧设计、造型美观、移动方便;匹配市场所有主流逆变器通讯协议;采用全方位、多层次的电池保护策略和故障隔离措施，保证系统安全运行。广泛应用于家庭储能系统中，给用户极致的用电体验。' },
+      { key: 'F09', name: 'F03系列 轮式 32kWh', tag: 'F09 Series', desc: '产品采用轮式圆弧设计、造型美观、移动方便；匹配市场所有主流逆变器通讯协议；采用全方位、多层次的电池保护策略和故障隔离措施，保证系统安全运行。广泛应用于家庭储能系统中，给用户极致的用电体验。' }
+    ];
+    var PC_VOLTS = ['', '1', '5', '8', '10', '16', '32'];
+    var PC_LEGACY_V = { '3.2': '1', '12.8': '5', '25.6': '8', '51.2': '10' };
+    var pcState = { v: '', q: '' };
+
+    function kwh(p) { return (p.v * p.ah / 1000).toFixed(2); }
+    function pcTier(p) {
+      var e = p.v * p.ah / 1000, best = '', d = Infinity;
+      PC_VOLTS.forEach(function (t) {
+        if (!t) return;
+        var x = Math.abs(e - parseFloat(t));
+        if (x < d) { d = x; best = t; }
+      });
+      return best;
+    }
+    function uniq(arr) { return arr.filter(function (x, i) { return arr.indexOf(x) === i; }); }
+    function pcNorm(s) { return String(s).toLowerCase().replace(/[\s\-]/g, ''); }
+    function pcMatch(p) {
+      if (pcState.v && pcTier(p) !== pcState.v) return false;
+      if (pcState.q && pcNorm(p.model).indexOf(pcNorm(pcState.q)) === -1) return false;
+      return true;
+    }
+
+    function pcPlaceholder(g) {
+      return '<div class="relative aspect-[4/3] rounded-2xl border-2 border-dashed border-[#AECBFF] bg-[linear-gradient(135deg,#E8F3FF_0%,#FFFFFF_100%)] flex flex-col items-center justify-center text-center overflow-hidden">' +
+        '<span class="absolute left-4 top-4 px-2 py-1 rounded bg-white text-xs font-bold text-[#165DFF]">' + g.tag + '</span>' +
+        '<span class="absolute right-4 top-4 px-2 py-1 rounded bg-[#165DFF]/10 text-xs font-bold text-[#165DFF]">占位图</span>' +
+        '<span class="w-16 h-16 rounded-2xl bg-white shadow-card flex items-center justify-center"><iconify-icon class="text-3xl text-[#165DFF]" icon="mdi:image-outline"></iconify-icon></span>' +
+        '<p class="mt-4 text-base font-bold text-[#1D2129]">' + g.name + ' 产品图</p>' +
+        '<p class="mt-1 text-sm text-[#86909C]">图片待提供，后续替换为实拍产品图</p>' +
+        '<span class="absolute right-4 bottom-4 text-xs text-[#86909C]">建议比例 4:3</span>' +
+        '</div>';
+    }
+
+    /* ---- F07 产品图轮播 ---- */
+    var PC_F07_IMGS = [
+      { src: 'images/f07-1.jpg', fb: '/agent-py/media/generated_images/2026-10-23/f27d09ced622445e89781c20b899c521.jpg', wide: false, alt: 'F07 portable power station front view with power button' },
+      { src: 'images/f07-2.jpg', fb: '/agent-py/media/generated_images/2026-10-23/217bcb9535c643628571769012d96c23.jpg', wide: false, alt: 'F07 portable power station front left perspective view' },
+      { src: 'images/f07-3.jpg', fb: '/agent-py/media/generated_images/2026-10-23/b79d413f1e654fd6a37bf450cd4fa809.jpg', wide: false, alt: 'F07 portable power station front right perspective view' },
+      { src: 'images/f07-4.jpg', fb: '/agent-py/media/generated_images/2026-10-23/5895ab7d00bb491598a544cb974d75f9.jpg', wide: true, alt: 'F07 portable power station side view with AC output socket' },
+      { src: 'images/f07-5.jpg', fb: '/agent-py/media/generated_images/2026-10-23/f920f1e302c4484b89fc42d5da8eb94c.jpg', wide: true, alt: 'F07 portable power station side view with AC and PV input ports' },
+      { src: 'images/f07-6.jpg', fb: '/agent-py/media/generated_images/2026-10-23/4fa5cc4c0fe44f6da13a8df6b0cad0d9.jpg', wide: true, alt: 'F07 portable power station rear view with cooling fans' }
+    ];
+    var PC_F07_SPECS = [
+      ['额定功率', '300W/500W'],
+      ['输出相数', '单相（220v-230v）'],
+      ['输入电压范围', '176~264 Vac'],
+      ['额定输入频率', '50/60 Hz'],
+      ['电池电压欠压点', '2.8±0.1V'],
+      ['电池电压过压点', '3.65±0.1V'],
+      ['输出电压', '230 Vac ± 5%'],
+      ['电网切换逆变模式', '20 ms']
+    ];
+    /* ---- 壁挂式（F06 组）产品图轮播与参数 ---- */
+    var PC_F06_IMGS = [
+      { src: 'images/f01-5kwh-1.jpg', fb: '/agent-py/media/generated_images/2026-10-23/9d525cd5370643869aa0428b8640e388.jpg', wide: false, alt: 'Wall-mounted lithium battery front view with display' },
+      { src: 'images/f01-5kwh-2.jpg', fb: '/agent-py/media/generated_images/2026-10-23/2cf02bdac37a4c8c97f0c72942a7f91b.jpg', wide: false, alt: 'Wall-mounted lithium battery front right perspective view' },
+      { src: 'images/f01-5kwh-3.jpg', fb: '/agent-py/media/generated_images/2026-10-23/4907ffbbba6a4872ab3e9ab978517ce1.jpg', wide: false, alt: 'Wall-mounted lithium battery front left perspective view' },
+      { src: 'images/f01-5kwh-4.jpg', fb: '/agent-py/media/generated_images/2026-10-23/2c6b8432223448b7a81e648b2f201a75.jpg', wide: false, alt: 'Lithium battery module front panel with terminals and ports' }
+    ];
+    var PC_F06_SPECS = [
+      ['工作电压范围', '44.8-58.4V'],
+      ['推荐充电电压', '56.8V'],
+      ['推荐放电截止电压', '44.8V'],
+      ['最大充电放电电流', '50A'],
+      ['通讯方式', 'CAN/RS485/蓝牙/WiFi'],
+      ['循环寿命', '6000次'],
+      ['质保', '5年'],
+      ['尺寸', '615mm*380mm*250mm']
+    ];
+    /* ---- 机架式（F02R 组）产品图轮播与参数 ---- */
+    var PC_F02R_IMGS = [
+      { src: 'images/f02-rack-1.jpg', fb: '/agent-py/media/generated_images/2026-10-23/53621fd6f64f4c7babc043040df9adbe.jpg', wide: false, alt: 'F02 rack-mounted lithium battery product view 1' },
+      { src: 'images/f02-rack-2.jpg', fb: '/agent-py/media/generated_images/2026-10-23/328b650b71c041c58b4259aab6c00685.jpg', wide: false, alt: 'F02 rack-mounted lithium battery product view 2' },
+      { src: 'images/f02-rack-3.jpg', fb: '/agent-py/media/generated_images/2026-10-23/4c2ae15fb096481fa0d51eb844d96447.jpg', wide: false, alt: 'F02 rack-mounted lithium battery product view 3' },
+      { src: 'images/f02-rack-4.jpg', fb: '/agent-py/media/generated_images/2026-10-23/01ed8e0fad474a0cada1191d7c58d34d.jpg', wide: false, alt: 'F02 rack-mounted lithium battery product view 4' },
+      { src: 'images/f02-rack-5.jpg', fb: '/agent-py/media/generated_images/2026-10-23/35c8445703924495affe3e99c398256b.jpg', wide: false, alt: 'F02 rack-mounted lithium battery product view 5' },
+      { src: 'images/f02-rack-6.jpg', fb: '/agent-py/media/generated_images/2026-10-23/e3df179698a147918c1fa5e015c61b49.jpg', wide: false, alt: 'F02 rack-mounted lithium battery product view 6' }
+    ];
+    var PC_F02R_SPECS = [
+      ['工作电压范围', '44.8-58.4V'],
+      ['推荐充电电压', '56.8V'],
+      ['推荐放电截止电压', '44.8V'],
+      ['最大充电放电电流', '50A'],
+      ['通讯方式', 'CAN/RS485/蓝牙/WiFi'],
+      ['循环寿命', '6000次'],
+      ['质保', '5年'],
+      ['尺寸', '440mm*550mm*140mm']
+    ];
+    /* ---- 壁挂式 8kWh（F01 组）产品图轮播与参数 ---- */
+    var PC_F01_IMGS = [
+      { src: 'images/f01-8kwh-1.jpg', fb: '/agent-py/media/generated_images/2026-10-23/61931ab0d206481eb33948e8e23179f3.jpg', wide: false, alt: 'F01 wall-mounted 8kWh battery front view with display' },
+      { src: 'images/f01-8kwh-2.jpg', fb: '/agent-py/media/generated_images/2026-10-23/584986b0ece0430184db1cea8025b364.jpg', wide: false, alt: 'F01 wall-mounted 8kWh battery front left perspective view' },
+      { src: 'images/f01-8kwh-3.jpg', fb: '/agent-py/media/generated_images/2026-10-23/e3624aa414284446a493968ddc6ad405.jpg', wide: false, alt: 'F01 wall-mounted 8kWh battery front right perspective view' },
+      { src: 'images/f01-8kwh-4.jpg', fb: '/agent-py/media/generated_images/2026-10-23/f66b3481c53a42e99d3d615f64041b8a.jpg', wide: false, alt: 'F01 wall-mounted 8kWh battery bottom panel with terminals and ports' }
+    ];
+    var PC_F01_SPECS = [
+      ['工作电压范围', '22.4-29.2V'],
+      ['推荐充电电压', '22.4V'],
+      ['推荐放电截止电压', '28.4V'],
+      ['最大充电放电电流', '150A'],
+      ['通讯方式', 'CAN/RS485/蓝牙/WiFi'],
+      ['循环寿命', '8000次'],
+      ['质保', '5年'],
+      ['尺寸', '440mm*235mm*520mm']
+    ];
+    /* ---- 壁挂式 10kWh（F02 组）产品图轮播与参数 ---- */
+    var PC_F02_IMGS = [
+      { src: 'images/f01-10kwh-1.jpg', fb: '/agent-py/media/generated_images/2026-10-23/4670dc3866434945b9e00308563d1249.jpg', wide: false, alt: 'F01 wall-mounted 10kWh battery product view 1' },
+      { src: 'images/f01-10kwh-2.jpg', fb: '/agent-py/media/generated_images/2026-10-23/ee97c4117c84469daf866163b277f860.jpg', wide: false, alt: 'F01 wall-mounted 10kWh battery product view 2' },
+      { src: 'images/f01-10kwh-3.jpg', fb: '/agent-py/media/generated_images/2026-10-23/bacc442287734e16b3e9652587c13caa.jpg', wide: false, alt: 'F01 wall-mounted 10kWh battery product view 3' },
+      { src: 'images/f01-10kwh-4.jpg', fb: '/agent-py/media/generated_images/2026-10-23/d1837953f1f640d78b94385ca2790ecd.jpg', wide: false, alt: 'F01 wall-mounted 10kWh battery product view 4' }
+    ];
+    var PC_F02_SPECS = [
+      ['工作电压范围', '44.8-58.4V'],
+      ['推荐充电电压', '56.8V'],
+      ['推荐放电截止电压', '44.8V'],
+      ['最大充电放电电流', '100A'],
+      ['通讯方式', 'CAN/RS485/蓝牙/WiFi'],
+      ['循环寿命', '6000次'],
+      ['质保', '5年'],
+      ['尺寸', '780mm*550mm*148mm']
+    ];
+    /* ---- 轮式 16kWh（F03 组）产品图轮播与参数 ---- */
+    var PC_F03_IMGS = [
+      { src: 'images/f03-16kwh-1.jpg', fb: '/agent-py/media/generated_images/2026-10-23/1dfeffbeb9884b0bb2355a7b0d64ff0e.jpg', wide: false, alt: 'F03 wheeled 16kWh battery cabinet product view 1' },
+      { src: 'images/f03-16kwh-2.jpg', fb: '/agent-py/media/generated_images/2026-10-23/efc5f77046974e1b89e081c380070163.jpg', wide: false, alt: 'F03 wheeled 16kWh battery cabinet product view 2' },
+      { src: 'images/f03-16kwh-3.jpg', fb: '/agent-py/media/generated_images/2026-10-23/77cd4f12662c4526a09ab5dbf2812e57.jpg', wide: false, alt: 'F03 wheeled 16kWh battery cabinet product view 3' },
+      { src: 'images/f03-16kwh-4.jpg', fb: '/agent-py/media/generated_images/2026-10-23/151eab0cf25e4f499b19213c038b907f.jpg', wide: false, alt: 'F03 wheeled 16kWh battery cabinet product view 4' }
+    ];
+    var PC_F03_SPECS = [
+      ['工作电压范围', '44.8-58.4V'],
+      ['推荐充电电压', '56.8V'],
+      ['推荐放电截止电压', '44.8V'],
+      ['最大充电放电电流', '150A'],
+      ['通讯方式', 'CAN/RS485/蓝牙/WiFi'],
+      ['循环寿命', '6000次'],
+      ['质保', '5年'],
+      ['尺寸', '600mm*230mm*700mm']
+    ];
+    /* ---- 轮式 32kWh（F09 组）产品图轮播与参数 ---- */
+    var PC_F09_IMGS = [
+      { src: 'images/f03-32kwh-1.jpg', fb: '/agent-py/media/generated_images/2026-10-23/6d0c6336190a4a84b703d9de47ca5fc0.jpg', wide: false, alt: 'F03 wheeled 32kWh battery cabinet product view 1' },
+      { src: 'images/f03-32kwh-2.jpg', fb: '/agent-py/media/generated_images/2026-10-23/7a95ec3056d342fc9f71bce84e60fccf.jpg', wide: false, alt: 'F03 wheeled 32kWh battery cabinet product view 2' },
+      { src: 'images/f03-32kwh-3.jpg', fb: '/agent-py/media/generated_images/2026-10-23/308b40c59ad24ccfb43b74b27acb03f1.jpg', wide: false, alt: 'F03 wheeled 32kWh battery cabinet product view 3' },
+      { src: 'images/f03-32kwh-4.jpg', fb: '/agent-py/media/generated_images/2026-10-23/52e2f8e1f6e44bdebdaf3ce0b7b2a180.jpg', wide: false, alt: 'F03 wheeled 32kWh battery cabinet product view 4' },
+      { src: 'images/f03-32kwh-5.jpg', fb: '/agent-py/media/generated_images/2026-10-23/6a4a4c8cfa2d4e5aa02b04383b296d3b.jpg', wide: false, alt: 'F03 wheeled 32kWh battery cabinet product view 5' },
+      { src: 'images/f03-32kwh-6.jpg', fb: '/agent-py/media/generated_images/2026-10-23/c5dac34ac76a4deaa2fa704a42471191.jpg', wide: false, alt: 'F03 wheeled 32kWh battery cabinet product view 6' }
+    ];
+    var PC_F09_SPECS = [
+      ['工作电压范围', '44.8-58.4V'],
+      ['推荐充电电压', '56.8V'],
+      ['推荐放电截止电压', '44.8V'],
+      ['最大充电放电电流', '200A'],
+      ['通讯方式', 'CAN/RS485/蓝牙/WiFi'],
+      ['循环寿命', '6000次'],
+      ['质保', '5年'],
+      ['尺寸', '460mm*774mm*680mm']
+    ];
+    var PC_CAR = {
+      F07: { imgs: PC_F07_IMGS, specs: PC_F07_SPECS },
+      F06: { imgs: PC_F06_IMGS, specs: PC_F06_SPECS },
+      F02R: { imgs: PC_F02R_IMGS, specs: PC_F02R_SPECS },
+      F01: { imgs: PC_F01_IMGS, specs: PC_F01_SPECS },
+      F02: { imgs: PC_F02_IMGS, specs: PC_F02_SPECS },
+      F03: { imgs: PC_F03_IMGS, specs: PC_F03_SPECS },
+      F09: { imgs: PC_F09_IMGS, specs: PC_F09_SPECS }
+    };
+    var pcCarIdx = { F07: 0, F06: 0, F02R: 0, F01: 0, F02: 0, F03: 0, F09: 0 };
+
+    function pcCarousel(g) {
+      var imgs = PC_CAR[g.key].imgs, cur = pcCarIdx[g.key];
+      var slides = imgs.map(function (im, i) {
+        return '<div class="pc-car-slide absolute inset-0 flex items-center justify-center p-6 transition-opacity duration-700 ' + (i === cur ? 'opacity-100' : 'opacity-0 pointer-events-none') + '">' +
+          '<img class="w-full h-full object-contain ' + (im.wide ? 'scale-[1.3]' : '') + '" src="' + im.src + '" data-fallback="' + (im.fb || '') + '" onerror="var f=this.getAttribute(\'data-fallback\');if(f){this.removeAttribute(\'data-fallback\');this.src=f;}" alt="' + im.alt + '" loading="lazy">' +
+          '</div>';
+      }).join('');
+      var dots = imgs.map(function (im, i) {
+        return '<button class="pc-car-dot h-2 rounded-full transition-all ' + (i === cur ? 'w-6 bg-[#165DFF]' : 'w-2 bg-[#C9CDD4] hover:bg-[#86909C]') + '" onclick="pcCarGo(\'' + g.key + '\',' + i + ');pcCarStart()" aria-label="第 ' + (i + 1) + ' 张"></button>';
+      }).join('');
+      return '<div class="group relative h-full min-h-[420px] rounded-2xl bg-white shadow-card overflow-hidden" id="pcCarousel-' + g.key + '">' +
+        '<div class="absolute inset-0 flex flex-col items-center justify-center text-center bg-[linear-gradient(135deg,#E8F3FF_0%,#FFFFFF_100%)]"><iconify-icon class="text-4xl text-[#165DFF]" icon="mdi:battery-charging-high"></iconify-icon><p class="mt-3 text-base font-bold text-[#1D2129]">' + g.name + '</p></div>' +
+        '<div class="absolute inset-0 bg-white">' + slides + '</div>' +
+        '<button class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-card flex items-center justify-center text-[#4E5969] hover:text-[#165DFF] transition-colors" onclick="pcCarStep(\'' + g.key + '\',-1)" aria-label="上一张"><iconify-icon class="text-xl" icon="mdi:chevron-left"></iconify-icon></button>' +
+        '<button class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-card flex items-center justify-center text-[#4E5969] hover:text-[#165DFF] transition-colors" onclick="pcCarStep(\'' + g.key + '\',1)" aria-label="下一张"><iconify-icon class="text-xl" icon="mdi:chevron-right"></iconify-icon></button>' +
+        '<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">' + dots + '</div>' +
+        '</div>';
+    }
+
+    function pcCarGo(key, i) {
+      var n = PC_CAR[key].imgs.length;
+      var cur = pcCarIdx[key] = ((i % n) + n) % n;
+      var box = document.getElementById('pcCarousel-' + key);
+      if (!box) return;
+      box.querySelectorAll('.pc-car-slide').forEach(function (el, k) {
+        el.classList.toggle('opacity-100', k === cur);
+        el.classList.toggle('opacity-0', k !== cur);
+        el.classList.toggle('pointer-events-none', k !== cur);
+      });
+      box.querySelectorAll('.pc-car-dot').forEach(function (el, k) {
+        var on = k === cur;
+        el.classList.toggle('w-6', on);
+        el.classList.toggle('bg-[#165DFF]', on);
+        el.classList.toggle('w-2', !on);
+        el.classList.toggle('bg-[#C9CDD4]', !on);
+        el.classList.toggle('hover:bg-[#86909C]', !on);
+      });
+    }
+    var pcCarTimer = null;
+    function pcCarStart() {
+      clearInterval(pcCarTimer);
+      pcCarTimer = setInterval(function () {
+        Object.keys(PC_CAR).forEach(function (key) { pcCarGo(key, pcCarIdx[key] + 1); });
+      }, 4000);
+    }
+    function pcCarStep(key, d) { pcCarGo(key, pcCarIdx[key] + d); pcCarStart(); }
+    pcCarStart();
+
+    function pcStat(label, val) {
+      return '<div class="rounded-2xl bg-white p-4 shadow-card"><p class="text-xs text-[#86909C]">' + label + '</p><p class="mt-1 text-base font-bold text-[#1D2129]">' + val + '</p></div>';
+    }
+
+    function pcSpec(label, val) {
+      return '<div><p class="text-[#86909C]">' + label + '</p><p class="mt-0.5 font-medium text-[#1D2129] break-words">' + val + '</p></div>';
+    }
+
+    function pcIntro(g, all, list, n) {
+      if (PC_CAR[g.key]) {
+        var specs = PC_CAR[g.key].specs.map(function (s) {
+          return '<div class="px-5 py-3 border-t border-[#F2F3F5] odd:border-r"><p class="text-xs text-[#86909C]">' + s[0] + '</p><p class="mt-1 text-base font-bold text-[#1D2129]">' + s[1] + '</p></div>';
+        }).join('');
+        return '<div class="h-full flex flex-col">' +
+          '<h3 class="text-[28px] leading-[1.3] font-bold text-[#1D2129]">' + g.name + '</h3>' +
+          '<p class="mt-4 text-base text-[#4E5969]">' + g.desc + '</p>' +
+          '<div class="mt-6 flex-1 rounded-2xl bg-white shadow-card overflow-hidden grid grid-cols-2 content-stretch [&>div:nth-child(-n+2)]:border-t-0">' + specs + '</div>' +
+          '<div class="mt-6 flex items-center gap-4">' +
+          '<button class="h-11 px-6 rounded-lg border border-[#E5E6EB] bg-white text-sm font-bold text-[#4E5969] hover:border-[#165DFF] hover:text-[#165DFF] transition-colors" onclick="inquireGroup(\'' + g.key + '\')">获取报价</button>' +
+          '</div></div>';
+      }
+      var volts = uniq(all.map(function (p) { return p.v + 'V'; })).join(' / ');
+      var ahs = uniq(all.map(function (p) { return p.ah; })).join(' / ') + 'Ah';
+      var es = all.map(function (p) { return parseFloat(kwh(p)); });
+      var eMin = Math.min.apply(null, es).toFixed(2), eMax = Math.max.apply(null, es).toFixed(2);
+      var energy = eMin === eMax ? eMin + ' kWh' : eMin + ' – ' + eMax + ' kWh';
+      var rows = list.map(function (p) {
+        return '<div class="px-5 py-4 border-t border-[#F2F3F5]">' +
+          '<div class="flex items-center justify-between gap-3"><span class="text-base font-bold text-[#1D2129]">' + p.model + '</span><span class="px-2 py-0.5 rounded bg-[#E8F3FF] text-xs font-bold text-[#165DFF]">' + kwh(p) + ' kWh</span></div>' +
+          '<div class="mt-3 grid grid-cols-4 gap-x-4 gap-y-2 text-xs">' + pcSpec('额定电压', p.v + 'V') + pcSpec('额定容量', p.ah + 'Ah') + pcSpec('净重', p.nw) + pcSpec('毛重', p.gw) + '</div>' +
+          '<div class="mt-2 grid grid-cols-2 gap-x-4 gap-y-2 text-xs">' + pcSpec('电池尺寸', p.size) + pcSpec('包装尺寸', p.pack) + '</div>' +
+          '</div>';
+      }).join('');
+      return '<div>' +
+        (g.key === 'F07' ? '' : '<div class="flex items-center gap-3"><span class="text-sm font-bold text-[#165DFF]">0' + (n + 1) + '</span><span class="h-px w-8 bg-[#165DFF]"></span><span class="text-sm text-[#86909C]">' + g.tag + ' · ' + all.length + ' 款型号</span></div>') +
+        '<h3 class="' + (g.key === 'F07' ? '' : 'mt-3 ') + 'text-[28px] leading-[1.3] font-bold text-[#1D2129]">' + g.name + '</h3>' +
+        '<p class="mt-4 text-base text-[#4E5969]">' + g.desc + '</p>' +
+        '<div class="mt-6 grid grid-cols-3 gap-4">' + pcStat('电压平台', volts) + pcStat('容量规格', ahs) + pcStat('单机能量', energy) + '</div>' +
+        '<div class="mt-6 rounded-2xl bg-white shadow-card overflow-hidden">' +
+        '<div class="px-5 py-3 text-xs font-bold text-[#86909C] bg-[#F8FAFE]">型号详细参数</div>' +
+        rows + '</div>' +
+        '<div class="mt-6 flex items-center gap-4">' +
+        '<button class="h-11 px-6 rounded-lg border border-[#E5E6EB] bg-white text-sm font-bold text-[#4E5969] hover:border-[#165DFF] hover:text-[#165DFF] transition-colors" onclick="inquireGroup(\'' + g.key + '\')">获取报价</button>' +
+        '</div></div>';
+    }
+
+    function renderPcTabs() {
+      document.getElementById('pcVoltTabs').innerHTML = PC_VOLTS.map(function (v) {
+        var on = pcState.v === v;
+        var cls = on ? 'bg-[#165DFF] text-white border-[#165DFF]' : 'bg-white text-[#4E5969] border-[#E5E6EB] hover:border-[#165DFF] hover:text-[#165DFF]';
+        return '<button class="h-10 px-5 rounded-lg border text-sm font-bold transition-colors ' + cls + '" onclick="setPcVolt(\'' + v + '\')">' + (v ? v + 'kWh' : '全部') + '</button>';
+      }).join('');
+    }
+
+    function renderProductCenter() {
+      renderPcTabs();
+      var html = '', n = 0;
+      PC_GROUPS.forEach(function (g) {
+        var all = PRODUCTS.filter(function (p) { return p.series === g.key; });
+        var list = all.filter(pcMatch);
+        if (g.tier) {
+          if (pcState.v && pcState.v !== g.tier) return;
+          if (pcState.q && pcNorm(g.name).indexOf(pcNorm(pcState.q)) === -1) return;
+        } else if (!list.length) return;
+        var car = !!PC_CAR[g.key];
+        var img = '<div' + (car ? ' class="h-full"' : '') + '>' + (car ? pcCarousel(g) : pcPlaceholder(g)) + '</div>';
+        var intro = pcIntro(g, all, list, n);
+        html += '<div class="scroll-mt-[96px] grid grid-cols-2 gap-16 ' + (car ? 'items-stretch' : 'items-center') + '" id="pc-' + g.key + '">' + (n % 2 === 0 ? img + intro : intro + img) + '</div>';
+        n++;
+      });
+      document.getElementById('pcGroups').innerHTML = html;
+      document.getElementById('pcEmpty').classList.toggle('hidden', n > 0);
+    }
+
+    function setPcVolt(v) { pcState.v = v; renderProductCenter(); }
+    function setPcKeyword(q) { pcState.q = q.trim(); renderProductCenter(); }
+    function resetPcFilter() {
+      pcState = { v: '', q: '' };
+      document.getElementById('pcSearch').value = '';
+      renderProductCenter();
+    }
+    function inquireGroup(key) {
+      openContact('plan');
+    }
+
+    var toastTimer = null;
+    function showToast(msg) {
+      var t = document.getElementById('toast');
+      document.getElementById('toastText').textContent = msg;
+      t.classList.remove('hidden');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { t.classList.add('hidden'); }, 2200);
+    }
+
+    /* ---- 询盘弹窗 ---- */
+    var CONTACT_TITLES = { plan: '获取储能与光伏解决方案', contact: '联系华昭' };
+    function openContact(kind) {
+      document.getElementById('contactTitle').textContent = CONTACT_TITLES[kind] || CONTACT_TITLES.contact;
+      var m = document.getElementById('contactModal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+    function closeContact() {
+      var m = document.getElementById('contactModal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+      if (location.hash === '#contact') history.replaceState(null, '', location.pathname + location.search);
+    }
+    function checkContactHash() {
+      if (location.hash === '#contact') openContact('contact');
+    }
+
+    window.addEventListener('hashchange', checkContactHash);
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (!document.getElementById('contactModal').classList.contains('hidden')) closeContact();
+    });
+    (function () {
+      var sp = new URLSearchParams(location.search);
+      var qv = sp.get('e') || PC_LEGACY_V[sp.get('v')];
+      if (qv && PC_VOLTS.indexOf(qv) > 0) pcState.v = qv;
+      renderProductCenter();
+    })();
+    checkContactHash();
+    window.addEventListener('load', function () {
+      if (location.hash !== '#product-center') return;
+      var pc = document.getElementById('product-center');
+      if (pc) pc.scrollIntoView();
+    });
+    (function () {
+      var ON = ['text-[#165DFF]', 'after:absolute', 'after:left-0', 'after:right-0', 'after:bottom-0', 'after:h-[2px]', 'after:bg-[#165DFF]'];
+      var links = document.querySelectorAll('header nav a[data-nav]');
+      var lockUntil = 0;
+      function setNav(key) {
+        links.forEach(function (a) {
+          var on = a.getAttribute('data-nav') === key;
+          ON.forEach(function (c) { a.classList.toggle(c, on); });
+          a.classList.toggle('text-[#4E5969]', !on);
+        });
+      }
+      function keyFromHash() {
+        var h = location.hash || '';
+        if (h.indexOf('#product-center') === 0) return 'product';
+        if (h.indexOf('#about') === 0) return 'about';
+        return '';
+      }
+      function syncByScroll() {
+        if (Date.now() < lockUntil) return;
+        var y = window.scrollY + 72 + 4;
+        var pc = document.getElementById('product-center');
+        var ab = document.getElementById('about');
+        if (pc && pc.getBoundingClientRect().top + window.scrollY <= y) setNav('product');
+        else if (ab && ab.getBoundingClientRect().top + window.scrollY <= y) setNav('about');
+        else setNav('home');
+      }
+      links.forEach(function (a) {
+        a.addEventListener('click', function () {
+          var key = a.getAttribute('data-nav');
+          if (key === 'home') return;
+          lockUntil = Date.now() + 1200;
+          setNav(key);
+        });
+      });
+      window.addEventListener('scroll', function () {
+        if (Date.now() < lockUntil) lockUntil = Date.now() + 150;
+        syncByScroll();
+      }, { passive: true });
+      window.addEventListener('hashchange', function () {
+        var k = keyFromHash();
+        if (k) { lockUntil = Date.now() + 1200; setNav(k); }
+      });
+      var initKey = keyFromHash();
+      if (initKey) { lockUntil = Date.now() + 1500; setNav(initKey); }
+      else syncByScroll();
+    })();
+  </script>
+<script>
+    /* ---- 中英文切换（三页共用）：默认英文，选择记忆于 localStorage；动态渲染内容由 MutationObserver 自动翻译 ---- */
+    (function () {
+      var D = {
+        '华昭新能源 HUAZHAO | 储能与光伏 OEM 解决方案': 'HUAZHAO New Energy | Energy Storage & Solar PV OEM Solutions',
+        '产品中心 | 华昭新能源 HUAZHAO 锂电池目录': 'Products | HUAZHAO New Energy Lithium Battery Catalog',
+        '产品详情 | 华昭新能源 HUAZHAO': 'Product Details | HUAZHAO New Energy',
+        'HUAZHAO 华昭新能源 首页': 'HUAZHAO New Energy Home',
+        '首页': 'Home', '产品中心': 'Products', '关于华昭': 'About Us',
+        '赋能零碳未来，领先的储能与光伏 OEM 解决方案': 'Powering a Zero-Carbon Future with Leading Energy Storage & Solar PV OEM Solutions',
+        '西安华昭新能源科技有限公司专注于太阳能光伏、储能及配套产品的研发、制造与国际分销。公司采用“工贸一体 + 战略制造基地”的运营模式，在中国拥有长期稳定的核心合作工厂，配备自动化生产线、专业检测设备和完善的质量管理体系，产品通过CE、MSDS、UN38.3等国际认证。': "Xi'an Huazhao New Energy Technology Co., Ltd. specializes in the R&D, manufacturing and global distribution of solar PV, energy storage and related products. Operating an integrated \u201ctrading + strategic manufacturing base\u201d model, we work with long-term core partner factories in China equipped with automated production lines, professional testing equipment and a complete quality management system. Our products are CE, MSDS and UN38.3 certified.",
+        '获取报价': 'Get a Quote', '联系我们': 'Contact Us',
+        '为什么选择华昭': 'Why Choose HUAZHAO',
+        '从电芯到系统，从制造到交付，为全球渠道伙伴打造可贴牌、可追溯、可持续的新能源供应链': 'From cells to systems, from manufacturing to delivery: a private-label, traceable and sustainable new energy supply chain for channel partners worldwide',
+        '工贸一体 · 战略制造基地': 'Integrated Trade & Strategic Manufacturing',
+        '贸易端直面海外渠道需求，长期稳定的核心合作工厂保障产能与批次一致性，帮助渠道伙伴降低采购成本、缩短交付周期。': 'Our trading team serves overseas channel demand directly, while long-term core partner factories secure capacity and batch consistency, helping partners reduce procurement costs and shorten lead times.',
+        '稳定产能': 'Stable Capacity', '出口包装': 'Export Packaging', '国际分销': 'Global Distribution',
+        '全流程质控 · 国际认证': 'Full-Process QC & Global Certifications',
+        '自动化产线与专业检测设备覆盖来料、制程到出厂检验，完善的质量管理体系让品质可追溯到批次；产品具备 CE、MSDS、UN38.3 认证，满足国际运输与市场准入。': 'Automated lines and professional testing equipment cover incoming, in-process and outgoing inspection, and a complete quality management system ensures batch-level traceability. CE, MSDS and UN38.3 certifications meet international shipping and market access requirements.',
+        'OEM全周期服务': 'Full-Cycle OEM Services',
+        '品牌丝印、外观配色、包装与多语言说明书按需定制；同步提供光伏与储能系统方案配套、技术支持与售后保障，助力渠道伙伴建立本地品牌优势。': 'Custom brand printing, colors, packaging and multilingual manuals, plus PV and energy storage system solutions, technical support and after-sales service to help partners build a strong local brand.',
+        '贴牌定制': 'Private Label', '系统配套': 'System Integration', '售后保障': 'After-Sales Support',
+        '涵盖户用1.5-30kWh及工商业100-1000kWh多场景解决方案': 'Residential 1.5-30kWh and C&I 100-1000kWh solutions for diverse applications',
+        '全部': 'All',
+        '占位图': 'Placeholder', '图片待提供，后续替换为实拍产品图': 'Image coming soon; to be replaced with actual product photos', '建议比例 4:3': 'Recommended ratio 4:3',
+        '电压平台': 'Voltage Platform', '容量规格': 'Capacity Options', '单机能量': 'Energy per Unit',
+        '型号': 'Model', '电压 · 容量': 'Voltage · Capacity', '能量': 'Energy', '净重': 'Net Weight', '毛重': 'Gross Weight',
+        '查看详情': 'View Details', '询价该系列': 'Inquire About This Series', '型号详细参数': 'Model Specifications',
+        '额定电压': 'Rated Voltage', '额定容量': 'Rated Capacity', '电池尺寸': 'Battery Size', '包装尺寸': 'Package Size',
+        '款型号': 'models', '上一张': 'Previous image', '下一张': 'Next image',
+        '额定功率': 'Rated Power', '输出相数': 'Output Phase', '输入电压范围': 'Input Voltage Range', '额定输入频率': 'Rated Input Frequency',
+        '电池电压欠压点': 'Battery Undervoltage Point', '电池电压过压点': 'Battery Overvoltage Point', '输出电压': 'Output Voltage',
+        '电网切换逆变模式': 'Grid-to-Inverter Transfer Time', '工作电压范围': 'Operating Voltage Range', '推荐充电电压': 'Recommended Charge Voltage',
+        '推荐放电截止电压': 'Recommended Discharge Cut-off Voltage', '最大充电放电电流': 'Max. Charge/Discharge Current',
+        '通讯方式': 'Communication', '循环寿命': 'Cycle Life', '质保': 'Warranty', '尺寸': 'Dimensions',
+        '单相（220v-230v）': 'Single-phase (220v-230v)',
+        '没有找到匹配的型号': 'No matching models found', '请调整电压平台或搜索关键词，也可提交询盘咨询定制规格': 'Adjust the filter or keyword, or send an inquiry for custom specifications', '查看全部型号': 'View All Models',
+        '你可以拿到最好的质量和价格': 'Get the Best Quality at the Best Price',
+        '西安华昭新能源科技有限公司': "Xi'an Huazhao New Energy Technology Co., Ltd.", '太阳能光伏 · 储能电池': 'Solar PV · Energy Storage Batteries',
+        '© 2026 西安华昭新能源科技有限公司 版权所有': "\u00a9 2026 Xi'an Huazhao New Energy Technology Co., Ltd. All rights reserved.",
+        'OEM代工': 'OEM Services', 'OEM/ODM 贴牌': 'OEM/ODM Private Label', '光储系统配套': 'Solar + Storage Systems',
+        '公司简介': 'Company Profile', '隐私声明': 'Privacy Policy',
+        '获取储能与光伏解决方案': 'Get Energy Storage & Solar PV Solutions', '联系华昭': 'Contact HUAZHAO', '关闭': 'Close',
+        '公司邮箱：': 'Company Email:', '销售总监：': 'Sales Director:', 'whatsapp：': 'WhatsApp:',
+        '3.2V 单体模组': '3.2V Cell Module', '12.8V 低压电池': '12.8V LV Battery', 'F01 储能电池': 'F01 Storage Battery',
+        'F02 储能电池': 'F02 Storage Battery', 'F03 移动机柜': 'F03 Mobile Cabinet', 'F09 储能系统': 'F09 Storage System',
+        '筛选条件': 'Filters', '重置': 'Reset', '产品系列': 'Product Series', '包装方式': 'Packaging',
+        '找不到合适规格？': "Can't find the right spec?",
+        '支持基于现有平台的 ODM 定制开发，告诉我们您的电压、容量与外观需求。': 'ODM development based on our existing platforms is available. Tell us your voltage, capacity and design requirements.',
+        '了解定制流程': 'Learn About Customization', '搜索型号，如 F02、51.2314、8kWh': 'Search models, e.g. F02, 51.2314, 8kWh',
+        '默认排序（目录顺序）': 'Default (Catalog Order)', '能量 从高到低': 'Energy: High to Low', '能量 从低到高': 'Energy: Low to High', '净重 从轻到重': 'Net Weight: Light to Heavy',
+        '卡片视图': 'Card View', '参数表视图': 'Table View', '共找到': 'Found', '对比': 'Compare', '操作': 'Action',
+        '没有匹配当前条件的型号': 'No models match the current filters', '尝试放宽筛选条件，或直接提交定制需求': 'Try broadening your filters or submit a custom request',
+        '清除筛选': 'Clear Filters', '提交定制需求': 'Submit Custom Request',
+        '参数数据来源：《锂电池目录-0901》；标称能量为额定电压 × 额定容量的计算值，仅供选型参考。': 'Data source: Lithium Battery Catalog-0901. Nominal energy is calculated as rated voltage × rated capacity and is for selection reference only.',
+        '最多 3 款': 'Max. 3 models', '开始对比': 'Compare Now', '清空': 'Clear', '型号参数对比': 'Model Comparison',
+        '纸箱': 'Carton', '木箱': 'Crate', '已加入对比': 'Added', '电压': 'Voltage', '容量': 'Capacity', '规格详情': 'View Specs', '详情': 'Details',
+        '移出对比': 'Remove from comparison', '最多同时对比 3 款型号': 'Up to 3 models can be compared at once', '请至少选择 2 款型号进行对比': 'Please select at least 2 models to compare',
+        '标称能量（计算值）': 'Nominal Energy (Calc.)', '标称能量': 'Nominal Energy',
+        '上一款': 'Previous', '下一款': 'Next', '支持 OEM 贴牌': 'OEM Private Label', '产品渲染示意，实物以样品为准': 'Rendering for illustration only; actual product subject to samples',
+        '产品示意': 'Rendering', '实拍图': 'Photos', '尺寸图': 'Dimensions', '包装': 'Packaging',
+        '同系列可选规格': 'Available Variants in This Series', '具体型号适用证书请向销售索取': 'Model-specific certificates on request',
+        '立即询价': 'Request a Quote', '规格书': 'Datasheet', '规格书申请已提交，将发送至您的邮箱': 'Datasheet request submitted. It will be sent to your email.',
+        '规格参数': 'Specifications', '包装与物流': 'Packaging', 'OEM 贴牌定制': 'OEM Customization', '认证与质量': 'Certifications',
+        '基础规格参数': 'Basic Specifications', '数据来源：《锂电池目录-0901》': 'Source: Lithium Battery Catalog-0901',
+        '电芯类型、循环寿命、充放电倍率、BMS 通讯协议、工作温度等详细电气参数未包含在目录中，请提交询盘获取完整规格书，以官方规格书为准。': 'Detailed electrical parameters such as cell type, cycle life, charge/discharge rate, BMS communication protocol and operating temperature are not included in the catalog. Please submit an inquiry for the full datasheet; the official datasheet shall prevail.',
+        '电池本体': 'Battery Unit', '出口运输说明': 'Export Shipping Notes',
+        '大容量储能产品通常以海运为主，按目的港安排整柜或拼箱': 'Large-capacity storage products are mainly shipped by sea, as FCL or LCL depending on the destination port',
+        '随货提供 MSDS、UN38.3 等运输所需文件': 'MSDS, UN38.3 and other required transport documents are provided with each shipment',
+        '“含木托”规格便于叉车装卸与仓储堆放': 'Pallet-included packaging allows forklift handling and warehouse stacking',
+        '装柜数量需按包装尺寸与柜型核算，可向销售索取装柜方案': 'Container loading quantity depends on package size and container type; contact sales for a loading plan',
+        '将': 'Turn', '打造成您的品牌': 'into Your Own Brand',
+        '基于本型号平台提供 Logo 丝印、外观配色、包装与多语言说明书定制，并可搭配光伏及配套产品形成系统方案。': 'We offer logo printing, color, packaging and multilingual manual customization based on this model platform, and can pair it with PV and supporting products for a complete system solution.',
+        '查看合作流程': 'View OEM Process', 'Logo 丝印 / 铭牌': 'Logo Printing / Nameplate', '外壳及标签使用您的品牌': 'Your brand on housing and labels',
+        '外观配色': 'Color Customization', '外壳颜色与面板样式': 'Housing color and panel style', '包装与说明书': 'Packaging & Manuals', '彩盒、唛头与多语言说明书': 'Color boxes, shipping marks and multilingual manuals',
+        '已选': 'Selected', '项定制需求，提交询价时将一并发送给客户经理。': 'customization option(s), to be sent to your account manager with your inquiry.',
+        '欧盟市场符合性': 'EU market conformity', '化学品安全技术说明': 'Material Safety Data Sheet', '锂电池运输安全测试': 'Lithium battery transport safety test',
+        '制造与质量保障': 'Manufacturing & Quality Assurance', '核心合作工厂自动化生产线': 'Automated lines at core partner factories',
+        '专业检测设备出厂检验': 'Outgoing inspection with professional equipment', '完善的质量管理体系': 'Comprehensive quality management system',
+        '了解认证与制造实力': 'Learn About Our Certifications & Manufacturing',
+        '快速询价': 'Quick Inquiry', '意向型号：': 'Model of Interest: ', '姓名 *': 'Name *', '企业邮箱 *': 'Business Email *', '公司名称 / 国家': 'Company / Country',
+        '数量': 'Qty', '减少数量': 'Decrease quantity', '增加数量': 'Increase quantity', '台': 'units',
+        '目标市场、定制需求或期望交期': 'Target market, customization needs or expected lead time', '发送询价': 'Send Inquiry',
+        '工作日 24 小时内回复报价': 'Quotes within 24 hours on business days', '询价已发送': 'Inquiry Sent', '编号': 'Ref. No.',
+        '客户经理将尽快与您联系。': 'Your account manager will contact you shortly.', '继续浏览产品': 'Continue Browsing',
+        '同电压平台其他型号': 'Other Models on the Same Voltage Platform', '查看全部': 'View All', '可选服务': 'Optional Services',
+        'OEM 贴牌 / ODM 定制 / 系统方案配套': 'OEM Private Label / ODM Customization / System Solution Integration'
+      };
+      /* 仅用于句内片段替换（数值、型号、单位保持不变） */
+      var F = {
+        '（额定电压 × 额定容量 计算值）': ' (rated voltage × rated capacity, calculated)',
+        '（纯机箱/含轮子）': ' (cabinet only / with wheels)', '（含木托）': ' (incl. pallet)',
+        '华昭新能源 HUAZHAO': 'HUAZHAO New Energy', '电池尺寸：': 'Battery Size: ', '邮箱：': 'Email: ',
+        '纸箱 ': 'Carton ', '木箱 ': 'Wooden crate ', ' 产品图': ' Product Image', '系列 ': ' Series ',
+        '便携式': 'Portable', '壁挂式': 'Wall-Mounted', '机架式': 'Rack-Mounted', '轮式': 'Wheeled',
+        '蓝牙': 'Bluetooth', '单相': 'Single-phase', '次': ' cycles', '年': ' years',
+        '：': ': ', '，': ', ', '；': '; ', '、': ', ', '。': '. ', '（': ' (', '）': ')'
+      };
+      var GROUP_DESC_EN = {
+        F07: 'The F07 portable power station series combines analog and digital control with multiple hardware and software protections, efficiently managing energy conversion among solar, grid, battery storage and loads, with peak efficiency above 90%.',
+        F06: 'An elegant wall-mounted curved design, compatible with the communication protocols of all mainstream inverters. Comprehensive multi-level battery protection and fault isolation ensure safe system operation. Widely used in residential energy storage systems for an outstanding power experience.',
+        F02R: 'A rack-mounted design that fits into standard 19-inch cabinets, compatible with the communication protocols of all mainstream inverters. Comprehensive multi-level battery protection and fault isolation ensure safe system operation. Widely used in telecom backup power and residential energy storage systems.',
+        F01: 'An elegant wall-mounted curved design, compatible with the communication protocols of all mainstream inverters. Comprehensive multi-level battery protection and fault isolation ensure safe system operation. Widely used in residential energy storage systems for an outstanding power experience.',
+        F02: 'An elegant wall-mounted curved design, compatible with the communication protocols of all mainstream inverters. Comprehensive multi-level battery protection and fault isolation ensure safe system operation. Widely used in residential energy storage systems for an outstanding power experience.',
+        F03: 'A wheeled curved design that is elegant and easy to move, compatible with the communication protocols of all mainstream inverters. Comprehensive multi-level battery protection and fault isolation ensure safe system operation. Widely used in residential energy storage systems.',
+        F09: 'A wheeled curved design that is elegant and easy to move, compatible with the communication protocols of all mainstream inverters. Comprehensive multi-level battery protection and fault isolation ensure safe system operation. Widely used in residential energy storage systems.'
+      };
+      var INTRO_EN = {
+        F07: '3.2V / 314Ah high-capacity cell module, ideal for battery pack assemblers and system integrators to build the voltage platform they need.',
+        F06: '12.8V low-voltage lithium battery for RVs, marine, off-grid lighting and lead-acid replacement, a high-volume essential for channel partners.',
+        F01: 'F01 series storage battery covering 25.6V and 51.2V platforms, suited to residential solar storage and small to mid-size off-grid systems.',
+        F02: 'F02 series 51.2V storage battery with a slim, flat body for easy installation, designed for residential solar storage systems.',
+        F03: 'F03 series 51.2V mobile cabinet with wheels for easy transport and deployment, ideal for high-capacity storage needs.',
+        F09: 'F09 series modular stackable energy storage system, covering models from 8kWh to 32kWh.'
+      };
+      if (typeof PC_GROUPS !== 'undefined') PC_GROUPS.forEach(function (g) { if (GROUP_DESC_EN[g.key]) D[g.desc] = GROUP_DESC_EN[g.key]; });
+      if (typeof SERIES_INTRO !== 'undefined') Object.keys(SERIES_INTRO).forEach(function (k) { if (INTRO_EN[k]) D[SERIES_INTRO[k]] = INTRO_EN[k]; });
+      var RULES = [[/^第\s*(\d+)\s*张$/, 'Image $1']];
+      var CJK = /[\u3000-\u303f\u3400-\u9fff\uff00-\uffef]/;
+      function norm(s) { return s.replace(/\s+/g, ''); }
+      var EXACT = {};
+      Object.keys(D).forEach(function (k) { EXACT[norm(k)] = D[k]; });
+      var FRAG = Object.keys(D).concat(Object.keys(F)).sort(function (a, b) { return b.length - a.length; });
+      function fragVal(k) { return Object.prototype.hasOwnProperty.call(F, k) ? F[k] : D[k]; }
+      function tr(s) {
+        var m = /^(\s*)([\s\S]*?)(\s*)$/.exec(s), core = m[2];
+        if (!CJK.test(core)) return s;
+        var out = EXACT[norm(core)];
+        if (out == null) {
+          for (var i = 0; i < RULES.length; i++) { if (RULES[i][0].test(core)) { out = core.replace(RULES[i][0], RULES[i][1]); break; } }
+        }
+        if (out == null) {
+          out = core;
+          for (var j = 0; j < FRAG.length && CJK.test(out); j++) {
+            if (out.indexOf(FRAG[j]) > -1) out = out.split(FRAG[j]).join(fragVal(FRAG[j]));
+          }
+          out = out.replace(/ {2,}/g, ' ').trim();
+        }
+        return m[1] + out + m[3];
+      }
+      var lang = 'en';
+      try { lang = localStorage.getItem('hzLang') === 'zh' ? 'zh' : 'en'; } catch (e) {}
+      var ATTRS = ['placeholder', 'title', 'aria-label', 'alt'];
+      var SKIP = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, TEXTAREA: 1 };
+      function skipped(el) { return SKIP[el.tagName] || el.hasAttribute('data-i18n-skip'); }
+      function inSkip(el) { for (; el && el.nodeType === 1; el = el.parentNode) { if (skipped(el)) return true; } return false; }
+      function doText(n) {
+        var v = n.nodeValue;
+        if (lang === 'en') {
+          if (!CJK.test(v)) return;
+          var e = tr(v);
+          n.__hzZh = v; n.__hzEn = e;
+          if (e !== v) n.nodeValue = e;
+        } else if (n.__hzZh != null && v === n.__hzEn) {
+          n.nodeValue = n.__hzZh;
+        }
+      }
+      function doAttr(el, a) {
+        var v = el.getAttribute(a);
+        if (v == null) return;
+        var st = el.__hzA || (el.__hzA = {});
+        if (lang === 'en') {
+          if (!CJK.test(v)) return;
+          var e = tr(v);
+          st[a] = [v, e];
+          if (e !== v) el.setAttribute(a, e);
+        } else if (st[a] && v === st[a][1]) {
+          el.setAttribute(a, st[a][0]);
+        }
+      }
+      function doEl(el) { for (var i = 0; i < ATTRS.length; i++) doAttr(el, ATTRS[i]); }
+      function walk(root) {
+        if (root.nodeType === 3) { if (!inSkip(root.parentNode)) doText(root); return; }
+        if (root.nodeType !== 1 || inSkip(root)) return;
+        doEl(root);
+        var w = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
+          acceptNode: function (n) { return n.nodeType === 1 && skipped(n) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; }
+        });
+        var n;
+        while ((n = w.nextNode())) { if (n.nodeType === 3) doText(n); else doEl(n); }
+      }
+      var BTN_ON = 'h-7 px-3 rounded-full transition-colors bg-[#165DFF] text-white';
+      var BTN_OFF = 'h-7 px-3 rounded-full transition-colors text-[#4E5969] hover:text-[#165DFF]';
+      function apply() {
+        document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh-CN');
+        document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+          var on = b.getAttribute('data-lang-btn') === lang;
+          b.className = on ? BTN_ON : BTN_OFF;
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        walk(document.documentElement);
+        document.documentElement.style.visibility = '';
+      }
+      window.hzSetLang = function (l) {
+        l = l === 'zh' ? 'zh' : 'en';
+        if (l === lang) return;
+        lang = l;
+        try { localStorage.setItem('hzLang', l); } catch (e) {}
+        apply();
+      };
+      apply();
+      new MutationObserver(function (list) {
+        list.forEach(function (r) {
+          if (r.type === 'childList') { for (var i = 0; i < r.addedNodes.length; i++) walk(r.addedNodes[i]); }
+          else if (r.type === 'characterData') walk(r.target);
+          else if (r.type === 'attributes' && !inSkip(r.target)) doAttr(r.target, r.attributeName);
+        });
+      }).observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ATTRS });
+    })();
+  </script>
+</body></html>
