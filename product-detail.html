@@ -5,6 +5,18 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>产品详情 | 华昭新能源 HUAZHAO</title>
+<link href="images/favicon.png" rel="icon" type="image/png"/>
+<link href="images/favicon.png" rel="apple-touch-icon"/>
+<script>
+  /* 标签页图标：images/favicon.png 加载失败时（如平台预览）回退到平台地址一次 */
+  (function () {
+    var t = new Image();
+    t.onerror = function () {
+      Array.prototype.forEach.call(document.querySelectorAll('link[rel="icon"],link[rel="apple-touch-icon"]'), function (l) { l.href = '/agent-py/media/generated_images/2026-10-24/4b69ee04b4b74681b1bd27ced7db29ed.png'; });
+    };
+    t.src = 'images/favicon.png';
+  })();
+</script>
 <script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
 <script>
 tailwind.config = {
@@ -48,12 +60,12 @@ tailwind.config = {
 <!-- ========== 顶部导航（三页共用） ========== -->
 <header class="sticky top-0 z-40 bg-white border-b border-[#E5E6EB]">
 <div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
-<a aria-label="HUAZHAO 华昭新能源 首页" class="flex items-center gap-2 h-[56px] shrink-0" href="home.html"><span class="relative block w-[60px] h-[52px] overflow-hidden bg-white shrink-0"><span class="absolute left-1/2 top-[-22px] w-[117px] h-[117px] max-w-none -translate-x-1/2 object-contain" data-hz-img="logo"></span></span><span class="text-[22px] leading-none font-bold tracking-wide text-[#1F6FE0]">HUAZHAO</span></a>
+<a aria-label="HUAZHAO 华昭新能源 首页" class="flex items-center gap-2 h-[56px] shrink-0" href="index.html"><span class="relative block w-[60px] h-[52px] overflow-hidden bg-white shrink-0"><span class="absolute left-1/2 top-[-22px] w-[117px] h-[117px] max-w-none -translate-x-1/2 object-contain" data-hz-img="logo"></span></span><span class="text-[22px] leading-none font-bold tracking-wide text-[#1F6FE0]">HUAZHAO</span></a>
 <div class="flex items-center gap-10 h-full">
 <nav class="flex items-center gap-10 h-full text-[15px] font-medium whitespace-nowrap">
-<a class="h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="home.html">首页</a>
-<a class="relative h-full flex items-center text-[#165DFF] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:bg-[#165DFF]" href="home.html#product-center">产品中心</a>
-<a class="h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="home.html#about">关于华昭</a>
+<a class="h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html">首页</a>
+<a class="relative h-full flex items-center text-[#165DFF] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:bg-[#165DFF]" href="index.html#product-center">产品中心</a>
+<a class="h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html#about">关于华昭</a>
 </nav>
 <div aria-label="Language" class="flex items-center h-8 p-0.5 rounded-full border border-[#E5E6EB] bg-white text-[13px] font-medium whitespace-nowrap shrink-0" data-i18n-skip="" role="group">
 <button class="h-7 px-3 rounded-full transition-colors bg-[#165DFF] text-white" data-lang-btn="en" onclick="hzSetLang('en')" type="button">EN</button>
@@ -66,9 +78,9 @@ tailwind.config = {
 <!-- 面包屑 + 上下款 -->
 <div class="flex items-center justify-between">
 <div class="flex items-center gap-2 text-sm text-slate-500">
-<a class="hover:text-emerald-700 transition-colors" href="home.html">首页</a><iconify-icon icon="mdi:chevron-right"></iconify-icon>
-<a class="hover:text-emerald-700 transition-colors" href="home.html#product-center">产品中心</a><iconify-icon icon="mdi:chevron-right"></iconify-icon>
-<a class="hover:text-emerald-700 transition-colors" href="home.html#product-center" id="crumbSeries"></a><iconify-icon icon="mdi:chevron-right"></iconify-icon>
+<a class="hover:text-emerald-700 transition-colors" href="index.html">首页</a><iconify-icon icon="mdi:chevron-right"></iconify-icon>
+<a class="hover:text-emerald-700 transition-colors" href="index.html#product-center">产品中心</a><iconify-icon icon="mdi:chevron-right"></iconify-icon>
+<a class="hover:text-emerald-700 transition-colors" href="index.html#product-center" id="crumbSeries"></a><iconify-icon icon="mdi:chevron-right"></iconify-icon>
 <span class="text-slate-900 font-medium" id="crumbModel"></span>
 </div>
 <div class="flex items-center gap-2 text-sm">
@@ -183,7 +195,7 @@ tailwind.config = {
 <p class="mt-2 text-white/80 text-sm leading-relaxed">基于本型号平台提供 Logo 丝印、外观配色、包装与多语言说明书定制，并可搭配光伏及配套产品形成系统方案。</p>
 </div>
 <div class="relative col-span-4 flex justify-end">
-<a class="h-11 px-5 rounded-lg bg-white text-emerald-700 font-semibold flex items-center gap-2 hover:bg-emerald-50 transition-colors" href="home.html#oem">查看合作流程<iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
+<a class="h-11 px-5 rounded-lg bg-white text-emerald-700 font-semibold flex items-center gap-2 hover:bg-emerald-50 transition-colors" href="index.html#oem">查看合作流程<iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
 </div>
 </div>
 <div class="mt-6 grid grid-cols-3 gap-4">
@@ -207,7 +219,7 @@ tailwind.config = {
 <div class="flex gap-3"><iconify-icon class="text-2xl text-emerald-600 shrink-0" icon="mdi:microscope"></iconify-icon><p class="text-slate-600">专业检测设备出厂检验</p></div>
 <div class="flex gap-3"><iconify-icon class="text-2xl text-emerald-600 shrink-0" icon="mdi:clipboard-check-multiple-outline"></iconify-icon><p class="text-slate-600">完善的质量管理体系</p></div>
 </div>
-<a class="group mt-6 inline-flex items-center gap-1 text-sm font-semibold text-emerald-700 hover:text-emerald-800" href="home.html#quality">了解认证与制造实力<iconify-icon class="transition-transform group-hover:translate-x-1" icon="mdi:arrow-right"></iconify-icon></a>
+<a class="group mt-6 inline-flex items-center gap-1 text-sm font-semibold text-emerald-700 hover:text-emerald-800" href="index.html#quality">了解认证与制造实力<iconify-icon class="transition-transform group-hover:translate-x-1" icon="mdi:arrow-right"></iconify-icon></a>
 </div>
 </div>
 </div>
@@ -237,7 +249,7 @@ tailwind.config = {
 <span class="mx-auto w-14 h-14 rounded-full bg-emerald-600 text-white flex items-center justify-center"><iconify-icon class="text-2xl" icon="mdi:check-bold"></iconify-icon></span>
 <h3 class="mt-4 text-lg font-bold text-slate-900">询价已发送</h3>
 <p class="mt-2 text-sm text-slate-500">编号 <span class="font-semibold text-emerald-700" id="qiNo"></span><br/>客户经理将尽快与您联系。</p>
-<a class="mt-6 inline-flex h-10 px-5 rounded-lg bg-emerald-50 text-emerald-700 text-sm font-semibold items-center hover:bg-emerald-100 transition-colors" href="home.html#product-center">继续浏览产品</a>
+<a class="mt-6 inline-flex h-10 px-5 rounded-lg bg-emerald-50 text-emerald-700 text-sm font-semibold items-center hover:bg-emerald-100 transition-colors" href="index.html#product-center">继续浏览产品</a>
 </div>
 </div>
 </aside>
@@ -246,7 +258,7 @@ tailwind.config = {
 <section class="mt-20">
 <div class="flex items-end justify-between">
 <h2 class="text-2xl font-bold text-slate-900">同电压平台其他型号</h2>
-<a class="group text-sm font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1" href="home.html#product-center" id="relatedMore">查看全部<iconify-icon class="transition-transform group-hover:translate-x-1" icon="mdi:arrow-right"></iconify-icon></a>
+<a class="group text-sm font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1" href="index.html#product-center" id="relatedMore">查看全部<iconify-icon class="transition-transform group-hover:translate-x-1" icon="mdi:arrow-right"></iconify-icon></a>
 </div>
 <div class="mt-6 grid grid-cols-4 gap-6" id="relatedGrid"></div>
 </section>
@@ -255,21 +267,21 @@ tailwind.config = {
 <footer class="bg-[#1D2129] py-16">
 <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-12 gap-8">
 <div class="col-span-4">
-<a aria-label="HUAZHAO 华昭新能源 首页" class="inline-flex items-center rounded-lg bg-white px-3 py-1" href="home.html"><span class="relative block w-[108px] h-[72px] overflow-hidden"><span class="absolute left-1/2 top-1/2 w-[150px] h-[150px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain" data-hz-img="logo"></span></span></a>
+<a aria-label="HUAZHAO 华昭新能源 首页" class="inline-flex items-center rounded-lg bg-white px-3 py-1" href="index.html"><span class="relative block w-[108px] h-[72px] overflow-hidden"><span class="absolute left-1/2 top-1/2 w-[150px] h-[150px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain" data-hz-img="logo"></span></span></a>
 <p class="mt-4 text-sm leading-[1.6] text-[#86909C]">西安华昭新能源科技有限公司<br/>太阳能光伏 · 储能电池</p>
 </div>
 <div class="col-span-5 grid grid-cols-2 gap-8">
 <div>
 <h5 class="text-sm font-bold text-white">OEM代工</h5>
 <ul class="mt-4 space-y-3 text-sm">
-<li><a class="text-[#86909C] hover:text-white transition-colors" href="home.html#oem">OEM/ODM 贴牌</a></li>
-<li><a class="text-[#86909C] hover:text-white transition-colors" href="home.html#solar">光储系统配套</a></li>
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="index.html#oem">OEM/ODM 贴牌</a></li>
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="index.html#solar">光储系统配套</a></li>
 </ul>
 </div>
 <div>
 <h5 class="text-sm font-bold text-white">关于华昭</h5>
 <ul class="mt-4 space-y-3 text-sm">
-<li><a class="text-[#86909C] hover:text-white transition-colors" href="home.html#about">公司简介</a></li>
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="index.html#about">公司简介</a></li>
 <li><a class="text-[#86909C] hover:text-white transition-colors" href="privacy.html">隐私声明</a></li>
 </ul>
 </div>
@@ -426,7 +438,7 @@ tailwind.config = {
       var p = cur;
       document.title = p.model + ' | 华昭新能源 HUAZHAO';
       document.getElementById('crumbSeries').textContent = SERIES[p.series];
-      document.getElementById('crumbSeries').setAttribute('href', 'home.html#pc-' + p.series);
+      document.getElementById('crumbSeries').setAttribute('href', 'index.html#pc-' + p.series);
       document.getElementById('crumbModel').textContent = p.model;
       var idx = PRODUCTS.indexOf(p);
       var prev = PRODUCTS[(idx - 1 + PRODUCTS.length) % PRODUCTS.length];
@@ -467,7 +479,7 @@ tailwind.config = {
       document.getElementById('oemModel').textContent = p.model;
       document.getElementById('qiModel').textContent = p.model;
 
-      document.getElementById('relatedMore').setAttribute('href', 'home.html?v=' + p.v + '#product-center');
+      document.getElementById('relatedMore').setAttribute('href', 'index.html?v=' + p.v + '#product-center');
       var rel = PRODUCTS.filter(function (x) { return x.v === p.v && x.id !== p.id; });
       if (rel.length < 4) {
         rel = rel.concat(PRODUCTS.filter(function (x) { return x.v !== p.v; }).slice(0, 4 - rel.length));

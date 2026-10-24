@@ -5,6 +5,18 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>产品中心 | 华昭新能源 HUAZHAO 锂电池目录</title>
+<link href="images/favicon.png" rel="icon" type="image/png"/>
+<link href="images/favicon.png" rel="apple-touch-icon"/>
+<script>
+    /* 标签页图标：images/favicon.png 加载失败时（如平台预览）回退到平台地址一次 */
+    (function () {
+      var t = new Image();
+      t.onerror = function () {
+        Array.prototype.forEach.call(document.querySelectorAll('link[rel="icon"],link[rel="apple-touch-icon"]'), function (l) { l.href = '/agent-py/media/generated_images/2026-10-24/4b69ee04b4b74681b1bd27ced7db29ed.png'; });
+      };
+      t.src = 'images/favicon.png';
+    })();
+  </script>
 <script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
 <script>
     tailwind.config = {
@@ -48,12 +60,12 @@
 <!-- ========== 顶部导航（三页共用） ========== -->
 <header class="sticky top-0 z-40 bg-white border-b border-[#E5E6EB]">
 <div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
-<a aria-label="HUAZHAO 华昭新能源 首页" class="flex items-center gap-2 h-[56px] shrink-0" href="home.html"><span class="relative block w-[60px] h-[52px] overflow-hidden bg-white shrink-0"><span class="absolute left-1/2 top-[-22px] w-[117px] h-[117px] max-w-none -translate-x-1/2 object-contain" data-hz-img="logo"></span></span><span class="text-[22px] leading-none font-bold tracking-wide text-[#1F6FE0]">HUAZHAO</span></a>
+<a aria-label="HUAZHAO 华昭新能源 首页" class="flex items-center gap-2 h-[56px] shrink-0" href="index.html"><span class="relative block w-[60px] h-[52px] overflow-hidden bg-white shrink-0"><span class="absolute left-1/2 top-[-22px] w-[117px] h-[117px] max-w-none -translate-x-1/2 object-contain" data-hz-img="logo"></span></span><span class="text-[22px] leading-none font-bold tracking-wide text-[#1F6FE0]">HUAZHAO</span></a>
 <div class="flex items-center gap-10 h-full">
 <nav class="flex items-center gap-10 h-full text-[15px] font-medium whitespace-nowrap">
-<a class="h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="home.html">首页</a>
-<a class="relative h-full flex items-center text-[#165DFF] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:bg-[#165DFF]" href="home.html#product-center">产品中心</a>
-<a class="h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="home.html#about">关于华昭</a>
+<a class="h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html">首页</a>
+<a class="relative h-full flex items-center text-[#165DFF] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:bg-[#165DFF]" href="index.html#product-center">产品中心</a>
+<a class="h-full flex items-center text-[#4E5969] hover:text-[#165DFF] transition-colors" href="index.html#about">关于华昭</a>
 </nav>
 <div aria-label="Language" class="flex items-center h-8 p-0.5 rounded-full border border-[#E5E6EB] bg-white text-[13px] font-medium whitespace-nowrap shrink-0" data-i18n-skip="" role="group">
 <button class="h-7 px-3 rounded-full transition-colors bg-[#165DFF] text-white" data-lang-btn="en" onclick="hzSetLang('en')" type="button">EN</button>
@@ -90,7 +102,7 @@
 <div class="mt-6 rounded-lg bg-emerald-50 border border-emerald-100 p-4">
 <p class="text-sm font-semibold text-emerald-800 flex items-center gap-1.5"><iconify-icon icon="mdi:lightbulb-on-outline"></iconify-icon>找不到合适规格？</p>
 <p class="mt-1 text-xs text-slate-600 leading-relaxed">支持基于现有平台的 ODM 定制开发，告诉我们您的电压、容量与外观需求。</p>
-<a class="group mt-3 inline-flex items-center gap-1 text-sm font-semibold text-emerald-700 hover:text-emerald-800" href="home.html#oem">了解定制流程<iconify-icon class="transition-transform group-hover:translate-x-1" icon="mdi:arrow-right"></iconify-icon></a>
+<a class="group mt-3 inline-flex items-center gap-1 text-sm font-semibold text-emerald-700 hover:text-emerald-800" href="index.html#oem">了解定制流程<iconify-icon class="transition-transform group-hover:translate-x-1" icon="mdi:arrow-right"></iconify-icon></a>
 </div>
 </div>
 </aside>
@@ -142,7 +154,7 @@
 <p class="mt-2 text-sm text-slate-500">尝试放宽筛选条件，或直接提交定制需求</p>
 <div class="mt-6 flex justify-center gap-4">
 <button class="h-10 px-5 rounded-lg border border-slate-300 text-sm font-semibold text-slate-700 hover:border-emerald-600 hover:text-emerald-700 transition-colors" onclick="resetFilters()">清除筛选</button>
-<a class="h-10 px-5 rounded-lg bg-emerald-600 text-white text-sm font-semibold flex items-center hover:bg-emerald-700 transition-colors" href="home.html#contact">提交定制需求</a>
+<a class="h-10 px-5 rounded-lg bg-emerald-600 text-white text-sm font-semibold flex items-center hover:bg-emerald-700 transition-colors" href="index.html#contact">提交定制需求</a>
 </div>
 </div>
 <p class="mt-6 text-xs text-slate-400 flex items-center gap-1"><iconify-icon icon="mdi:information-outline"></iconify-icon>参数数据来源：《锂电池目录-0901》；标称能量为额定电压 × 额定容量的计算值，仅供选型参考。</p>
@@ -171,21 +183,21 @@
 <footer class="bg-[#1D2129] py-16">
 <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-12 gap-8">
 <div class="col-span-4">
-<a aria-label="HUAZHAO 华昭新能源 首页" class="inline-flex items-center rounded-lg bg-white px-3 py-1" href="home.html"><span class="relative block w-[108px] h-[72px] overflow-hidden"><span class="absolute left-1/2 top-1/2 w-[150px] h-[150px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain" data-hz-img="logo"></span></span></a>
+<a aria-label="HUAZHAO 华昭新能源 首页" class="inline-flex items-center rounded-lg bg-white px-3 py-1" href="index.html"><span class="relative block w-[108px] h-[72px] overflow-hidden"><span class="absolute left-1/2 top-1/2 w-[150px] h-[150px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain" data-hz-img="logo"></span></span></a>
 <p class="mt-4 text-sm leading-[1.6] text-[#86909C]">西安华昭新能源科技有限公司<br/>太阳能光伏 · 储能电池</p>
 </div>
 <div class="col-span-5 grid grid-cols-2 gap-8">
 <div>
 <h5 class="text-sm font-bold text-white">OEM代工</h5>
 <ul class="mt-4 space-y-3 text-sm">
-<li><a class="text-[#86909C] hover:text-white transition-colors" href="home.html#oem">OEM/ODM 贴牌</a></li>
-<li><a class="text-[#86909C] hover:text-white transition-colors" href="home.html#solar">光储系统配套</a></li>
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="index.html#oem">OEM/ODM 贴牌</a></li>
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="index.html#solar">光储系统配套</a></li>
 </ul>
 </div>
 <div>
 <h5 class="text-sm font-bold text-white">关于华昭</h5>
 <ul class="mt-4 space-y-3 text-sm">
-<li><a class="text-[#86909C] hover:text-white transition-colors" href="home.html#about">公司简介</a></li>
+<li><a class="text-[#86909C] hover:text-white transition-colors" href="index.html#about">公司简介</a></li>
 <li><a class="text-[#86909C] hover:text-white transition-colors" href="privacy.html">隐私声明</a></li>
 </ul>
 </div>
