@@ -472,11 +472,26 @@ tailwind.config = {
     };
     var pcCarIdx = { F07: 0, F06: 0, F02R: 0, F01: 0, F02: 0, F03: 0, F09: 0 };
 
+    /* 轮播图片加载失败：先带时间戳重试一次（绕过移动端应用内浏览器缓存的失败结果），再走平台备用地址，最终失败则隐藏破图并露出渐变兜底卡片 */
+    function pcImgErr(el) {
+      if (!el.getAttribute('data-retry')) {
+        el.setAttribute('data-retry', '1');
+        var s = el.getAttribute('src') || '';
+        el.src = s + (s.indexOf('?') > -1 ? '&' : '?') + 'r=' + Date.now();
+        return;
+      }
+      var f = el.getAttribute('data-fallback');
+      if (f) { el.removeAttribute('data-fallback'); el.src = f; return; }
+      el.style.visibility = 'hidden';
+      var layer = el.parentNode && el.parentNode.parentNode;
+      if (layer) layer.style.background = 'transparent';
+    }
+
     function pcCarousel(g) {
       var imgs = PC_CAR[g.key].imgs, cur = pcCarIdx[g.key];
       var slides = imgs.map(function (im, i) {
         return '<div class="pc-car-slide absolute inset-0 flex items-center justify-center p-4 lg:p-6 transition-opacity duration-700 ' + (i === cur ? 'opacity-100' : 'opacity-0 pointer-events-none') + '">' +
-          '<img class="w-full h-full object-contain ' + (im.wide ? 'scale-[1.3]' : '') + '" src="' + im.src + '" data-fallback="' + (im.fb || '') + '" onerror="var f=this.getAttribute(\'data-fallback\');if(f){this.removeAttribute(\'data-fallback\');this.src=f;}" alt="' + im.alt + '" loading="lazy">' +
+          '<img class="block w-full h-full object-contain ' + (im.wide ? 'scale-[1.3]' : '') + '" src="' + im.src + '" data-fallback="' + (im.fb || '') + '" onerror="pcImgErr(this)" alt="' + im.alt + '" loading="eager" decoding="async">' +
           '</div>';
       }).join('');
       var dots = imgs.map(function (im, i) {
