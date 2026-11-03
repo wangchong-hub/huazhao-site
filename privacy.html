@@ -18,7 +18,14 @@
 </script>
 <script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
 <script>
-tailwind.config = {
+  /* Tailwind 主地址在部署域名不可用时，同步回退到官方 Play CDN，保证后续配置与样式生效 */
+  if (typeof window.tailwind === 'undefined') {
+    document.write('<script src="https://cdn.tailwindcss.com"><\/script>');
+  }
+</script>
+<script>
+window.tailwind = window.tailwind || {};
+window.tailwind.config = {
   theme: {
     extend: {
       colors: {
