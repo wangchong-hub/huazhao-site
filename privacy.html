@@ -237,7 +237,7 @@ window.tailwind.config = {
 <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
 <div class="lg:col-span-4">
 <a aria-label="HUAZHAO 华昭新能源 首页" class="inline-flex items-center rounded-lg bg-white px-3 py-1" href="index.html"><span class="relative block w-[108px] h-[72px] overflow-hidden"><span class="absolute left-1/2 top-1/2 w-[150px] h-[150px] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain" data-hz-img="logo"></span></span></a>
-<p class="mt-4 text-sm leading-[1.6] text-[#86909C]">西安华昭新能源科技有限公司<br/>太阳能光伏 · 储能电池</p>
+<p class="mt-4 text-sm leading-[1.6] text-[#86909C]">西安华昭新能源科技有限公司<br/><span class="hidden" data-hz-lang-block="en" data-i18n-skip="" lang="zh-CN">西安华昭新能源科技有限公司<br/></span>太阳能光伏 · 储能电池</p>
 </div>
 <div class="lg:col-span-5 grid grid-cols-2 gap-8">
 <div>
@@ -263,12 +263,12 @@ window.tailwind.config = {
 </ul>
 </div>
 </div>
-<p class="max-w-[1200px] mx-auto px-6 mt-12 text-center text-xs text-[#86909C]">© 2026 西安华昭新能源科技有限公司 版权所有</p>
+<p class="max-w-[1200px] mx-auto px-6 mt-12 text-center text-xs text-[#86909C]"><span data-hz-lang-block="zh">© 2026 西安华昭新能源科技有限公司 版权所有</span><span class="hidden" data-hz-lang-block="en" data-i18n-skip="">© 2026 Xi'an Huazhao New Energy Technology Co., Ltd.<br/>西安华昭新能源科技有限公司. All rights reserved.</span></p>
 </footer>
 <script>
     /* ---- Logo：images/logo.png，失败回退平台地址一次，再失败隐藏 ---- */
     var HZ_IMGS = {
-      logo: { src: 'images/logo.png', fb: 'images/logo.png', alt: 'HUAZHAO company logo' }
+      logo: { src: 'images/logo.png', fb: '/agent-py/media/generated_images/2026-10-23/ac9a035bd71945ad8e91cddabdaf131c.png', alt: 'HUAZHAO company logo' }
     };
     Array.prototype.forEach.call(document.querySelectorAll('[data-hz-img]'), function (el) {
       var im = HZ_IMGS[el.getAttribute('data-hz-img')];
