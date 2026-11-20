@@ -12,7 +12,7 @@
   (function () {
     var t = new Image();
     t.onerror = function () {
-      Array.prototype.forEach.call(document.querySelectorAll('link[rel="icon"],link[rel="apple-touch-icon"]'), function (l) { l.href = '/agent-py/media/generated_images/2026-10-24/4b69ee04b4b74681b1bd27ced7db29ed.png'; });
+      Array.prototype.forEach.call(document.querySelectorAll('link[rel="icon"],link[rel="apple-touch-icon"]'), function (l) { l.href = 'images/favicon.png'; });
     };
     t.src = 'images/favicon.png';
   })();
@@ -120,7 +120,7 @@ window.tailwind.config = {
 <div class="pointer-events-none absolute -right-24 -bottom-24 w-80 h-80 rounded-full bg-[radial-gradient(circle,rgba(82,196,26,0.16)_0%,rgba(82,196,26,0)_70%)]"></div>
 <div class="pointer-events-none absolute inset-0 opacity-50 bg-[linear-gradient(rgba(22,93,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(22,93,255,0.05)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
 <div class="relative scale-[2]" id="viewMain"></div>
-<img alt="Lithium iron phosphate energy storage battery product photo on white background" class="hidden absolute inset-0 w-full h-full object-cover" data-fallback="/agent-py/media/generated_images/2026-10-23/bf19aa1316d74f749760de930ab4b1f8.jpg" id="viewPhoto" onerror="var f=this.getAttribute('data-fallback');if(f){this.removeAttribute('data-fallback');this.src=f;}else{this.style.display='none'}" src="https://modao.cc/agent-py/workspace/6adad7f0de2fb8a03b163bab/huazhao-website.html/images/product-detail-photo.jpg"/>
+<img alt="Lithium iron phosphate energy storage battery product photo on white background" class="hidden absolute inset-0 w-full h-full object-cover" data-fallback="/agent-py/media/generated_images/2026-10-23/bf19aa1316d74f749760de930ab4b1f8.jpg" id="viewPhoto" onerror="var f=this.getAttribute('data-fallback');if(f){this.removeAttribute('data-fallback');this.src=f;}else{this.style.display='none'}" src="images/f01-5kwh-1.jpg"/>
 <span class="absolute left-5 top-5 px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-semibold" id="seriesBadge"></span>
 <span class="absolute right-5 top-5 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600 flex items-center gap-1"><iconify-icon class="text-emerald-600" icon="mdi:tag-outline"></iconify-icon>支持 OEM 贴牌</span>
 <span class="absolute left-5 bottom-5 text-[11px] text-slate-400">产品渲染示意，实物以样品为准</span>
@@ -326,7 +326,7 @@ window.tailwind.config = {
 <script>
     /* ---- Logo：与产品轮播一致，由脚本写入原图 ---- */
     var HZ_IMGS = {
-      logo: { src: 'images/logo.png', fb: '/agent-py/media/generated_images/2026-10-23/ac9a035bd71945ad8e91cddabdaf131c.png', alt: 'HUAZHAO company logo' }
+      logo: { src: 'images/logo.png', fb: 'images/logo.png', alt: 'HUAZHAO company logo' }
     };
     Array.prototype.forEach.call(document.querySelectorAll('[data-hz-img]'), function (el) {
       var im = HZ_IMGS[el.getAttribute('data-hz-img')];

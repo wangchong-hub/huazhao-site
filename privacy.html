@@ -11,7 +11,7 @@
   (function () {
     var t = new Image();
     t.onerror = function () {
-      Array.prototype.forEach.call(document.querySelectorAll('link[rel="icon"],link[rel="apple-touch-icon"]'), function (l) { l.href = '/agent-py/media/generated_images/2026-10-24/4b69ee04b4b74681b1bd27ced7db29ed.png'; });
+      Array.prototype.forEach.call(document.querySelectorAll('link[rel="icon"],link[rel="apple-touch-icon"]'), function (l) { l.href = 'images/favicon.png'; });
     };
     t.src = 'images/favicon.png';
   })();
@@ -268,7 +268,7 @@ window.tailwind.config = {
 <script>
     /* ---- Logo：images/logo.png，失败回退平台地址一次，再失败隐藏 ---- */
     var HZ_IMGS = {
-      logo: { src: 'images/logo.png', fb: '/agent-py/media/generated_images/2026-10-23/ac9a035bd71945ad8e91cddabdaf131c.png', alt: 'HUAZHAO company logo' }
+      logo: { src: 'images/logo.png', fb: 'images/logo.png', alt: 'HUAZHAO company logo' }
     };
     Array.prototype.forEach.call(document.querySelectorAll('[data-hz-img]'), function (el) {
       var im = HZ_IMGS[el.getAttribute('data-hz-img')];
